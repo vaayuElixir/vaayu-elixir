@@ -270,28 +270,30 @@ reader.readAsDataURL(file);
 const handleRfqSubmit = async (e) => {
 e.preventDefault();
 setIsSubmitting(true);
+const emailSubject = '[TRADE ENQUIRY] ' + activeCommodity.title + ' - ' + rfqForm.volumeMT + ' MT (' + rfqForm.incoterm + ')';
+const volumeDescription = rfqForm.volumeMT + ' Metric Tons (~' + calculatedContainers + ' Container/s)';
 const payload = {
-access_key: "care@vaayuelixir.com",
-subject: ⁠[TRADE ENQUIRY] ${activeCommodity.title} - ${rfqForm.volumeMT} MT (${rfqForm.incoterm})⁠,
-from_name: "Vaayu Elixir Web Terminal",
-to_email: "care@vaayuelixir.com",
+access_key: 'care@vaayuelixir.com',
+subject: emailSubject,
+from_name: 'Vaayu Elixir Web Terminal',
+to_email: 'care@vaayuelixir.com',
 reply_to: rfqForm.email || undefined,
 commodity: activeCommodity.title,
 hsn_code: activeCommodity.hsn,
-volume: ⁠${rfqForm.volumeMT} Metric Tons (~${calculatedContainers} Container/s)⁠,
+volume: volumeDescription,
 incoterm: rfqForm.incoterm,
 destination_port: rfqForm.destinationPort,
 packaging_required: rfqForm.packagingType,
-buyer_entity: rfqForm.buyerEntity || "Direct Importer",
-authorized_contact: rfqForm.contactName || "Representative",
+buyer_entity: rfqForm.buyerEntity || 'Direct Importer',
+authorized_contact: rfqForm.contactName || 'Representative',
 buyer_email: rfqForm.email,
 buyer_phone_whatsapp: rfqForm.phone,
-notes_tolerances: rfqForm.notes || "None specified"
+notes_tolerances: rfqForm.notes || 'None specified'
 };
 try {
-await fetch("https://api.web3forms.com/submit", {
-method: "POST",
-headers: { "Content-Type": "application/json", Accept: "application/json" },
+await fetch('https://api.web3forms.com/submit', {
+method: 'POST',
+headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
 body: JSON.stringify(payload)
 });
 setRfqSuccess(true);
@@ -301,7 +303,18 @@ setRfqSuccess(true);
 setIsSubmitting(false);
 }
 };
-const whatsappUrl = ⁠https://wa.me/917208666522?text=${encodeURIComponent( ⁠VAAYU ELIXIR - COMMERCIAL RFQ\n\n⁠+⁠• Commodity: ${activeCommodity.title}\n⁠+⁠• HSN Code: ${activeCommodity.hsn}\n⁠+⁠• Volume: {rfqForm.volumeMT} MT (~{calculatedContainers} FCL)\n⁠+⁠• Incoterm: ${rfqForm.incoterm} -> ${rfqForm.destinationPort}\n⁠+⁠• Packaging: ${rfqForm.packagingType}\n⁠+⁠• Buyer: {rfqForm.buyerEntity || 'Direct Importer'} ({rfqForm.contactName})\n⁠+⁠• Email: ${rfqForm.email}\n⁠+⁠• Tel: ${rfqForm.phone}\n\n⁠+⁠Please dispatch proforma quotation and next berth stuffing schedule.⁠ )}⁠;
+const whatsappMessage =
+'VAAYU ELIXIR - COMMERCIAL RFQ\n\n' +
+'• Commodity: ' + activeCommodity.title + '\n' +
+'• HSN Code: ' + activeCommodity.hsn + '\n' +
+'• Volume: ' + rfqForm.volumeMT + ' MT (~' + calculatedContainers + ' FCL)\n' +
+'• Incoterm: ' + rfqForm.incoterm + ' -> ' + rfqForm.destinationPort + '\n' +
+'• Packaging: ' + rfqForm.packagingType + '\n' +
+'• Buyer: ' + (rfqForm.buyerEntity || 'Direct Importer') + ' (' + rfqForm.contactName + ')\n' +
+'• Email: ' + rfqForm.email + '\n' +
+'• Tel: ' + rfqForm.phone + '\n\n' +
+'Please dispatch proforma quotation and next berth stuffing schedule.';
+const whatsappUrl = 'https://wa.me/917208666522?text=' + encodeURIComponent(whatsappMessage);
 return (
 <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
 <header className="bg-slate-900 text-slate-300 text-xs border-b border-slate-800 sticky top-0 z-50">
