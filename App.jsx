@@ -764,7 +764,7 @@ export default function App() {
               </div>
               <div className="pitem" style={{ borderLeftColor: '#38BDF8' }}>
                 <small>Trade desk</small>
-                <b>{CONTACT.name} • {CONTACT.role}</b>
+                <b>{CONTACT.name}</b>
                 <span>{CONTACT.phone}</span>
               </div>
             </div>
@@ -934,7 +934,7 @@ export default function App() {
             <RfqForm commodityId={inquiryId} />
             <div className="box contact-box">
               <h3>Trade desk</h3>
-              <div><b>{CONTACT.name}</b>, {CONTACT.role}</div>
+              <div><b>{CONTACT.name}</b></div>
               <div>Phone / WhatsApp: <a href={`tel:+${CONTACT.phoneRaw}`}>{CONTACT.phone}</a></div>
               <div>Email: <a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></div>
               <div>Web: <a href={`https://${CONTACT.web}`}>{CONTACT.web}</a></div>
@@ -962,7 +962,7 @@ export default function App() {
             <div>
               <h4>Trade desk</h4>
               <ul>
-                <li><b>{CONTACT.name}</b>, {CONTACT.role}</li>
+                <li><b>{CONTACT.name}</b></li>
                 <li><a href={`tel:+${CONTACT.phoneRaw}`}>{CONTACT.phone}</a></li>
                 <li><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></li>
                 <li>{CONTACT.city}</li>
