@@ -1,11 +1,10 @@
 import React, { useState, useEffect } from 'react';
-// Displays your uploaded business card artwork with contained aspect ratio
 function VaayuBrandLogo({ size = 48, className = "" }) {
 return (
 <div
 style={{
-width: ⁠${size}px⁠,
-height: ⁠${size}px⁠,
+width: size + "px",
+height: size + "px",
 display: "flex",
 alignItems: "center",
 justifyContent: "center",
@@ -289,7 +288,6 @@ care@vaayuelixir.com
 {/* 2. NAVIGATION BAR */}
 <nav style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "12px 16px" }}>
 <div style={{ maxWidth: "1240px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
-{/* Logo + Brand Container */}
 <div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
 <VaayuBrandLogo size={46} />
 <div>
