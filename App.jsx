@@ -1,64 +1,53 @@
 import React, { useState, useEffect } from 'react';
-// Exact vector reproduction of the Vaayu Elixir business card logo:
-// Slender golden outer circle/crescent enclosing 3 dynamic wing plumes + downward tail hook
-function VaayuBrandLogo({ className = "w-12 h-12", style = {} }) {
+function VaayuEmblem({ size = 46 }) {
 return (
 <svg
-className={className}
-style={{ display: "inline-block", verticalAlign: "middle", flexShrink: 0, ...style }}
+width={size}
+height={size}
 viewBox="0 0 160 160"
 fill="none"
 xmlns="http://www.w3.org/2000/svg"
-aria-label="Vaayu Elixir Official Emblem"
+style={{ flexShrink: 0, display: "block" }}
 >
 <defs>
-{/* Slender Outer Gold Crescent Ring Gradient */}
-<linearGradient id="cardGoldRing" x1="40" y1="10" x2="140" y2="120" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#E5C378" />
-<stop offset="50%" stopColor="#C49A3E" />
-<stop offset="100%" stopColor="#875F1C" />
+<linearGradient id="goldArch" x1="20%" y1="0%" x2="90%" y2="100%">
+<stop offset="0%" stopColor="#DFC07A" />
+<stop offset="50%" stopColor="#B88A34" />
+<stop offset="100%" stopColor="#8A631E" />
 </linearGradient>
-{/* Top Wing Feather: Gold Gradient */}
-<linearGradient id="cardGoldWing" x1="50" y1="35" x2="115" y2="60" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#E9CA83" />
-<stop offset="60%" stopColor="#C2963A" />
-<stop offset="100%" stopColor="#8A611B" />
+<linearGradient id="wingGold" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stopColor="#E5C785" />
+<stop offset="60%" stopColor="#C2973D" />
+<stop offset="100%" stopColor="#966E22" />
 </linearGradient>
-{/* Middle Wing Feather: Deep Navy Gradient */}
-<linearGradient id="cardNavyWing1" x1="45" y1="60" x2="105" y2="85" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#1C2E50" />
-<stop offset="100%" stopColor="#0B1426" />
+<linearGradient id="wingNavyMid" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stopColor="#1B325A" />
+<stop offset="100%" stopColor="#0B172E" />
 </linearGradient>
-{/* Lower Wing Feather: Navy/Slate Gradient */}
-<linearGradient id="cardNavyWing2" x1="50" y1="75" x2="95" y2="105" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#253D68" />
-<stop offset="100%" stopColor="#0A1120" />
+<linearGradient id="wingNavyDark" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stopColor="#0F1C36" />
+<stop offset="100%" stopColor="#040914" />
 </linearGradient>
 </defs>
-{/* 1. Slender Golden Outer Crescent Ring */}
-<path
-d="M 68 18 C 96 18, 122 36, 128 66 C 132 86, 125 106, 112 120 C 111 116, 113 103, 111 91 C 108 64, 92 37, 66 26 C 60 23, 54 23, 48 25 C 54 20, 61 18, 68 18 Z"
-fill="url(#cardGoldRing)"
+<path 
+d="M 68 18 C 112 18 144 50 144 92 C 144 116 132 136 116 146 C 130 134 138 114 138 92 C 138 54 110 24 70 24 C 55 24 41 29 30 38 C 41 25 54 18 68 18 Z" 
+fill="url(#goldArch)" 
 />
-{/* 2. Top Golden Wing Plume */}
-<path
-d="M 44 42 C 65 42, 92 48, 116 66 C 95 64, 69 57, 52 54 C 44 52, 42 47, 44 42 Z"
-fill="url(#cardGoldWing)"
+<path 
+d="M 40 50 C 65 48 108 58 132 75 C 104 77 78 70 54 66 C 46 64 38 58 40 50 Z" 
+fill="url(#wingGold)" 
 />
-{/* 3. Middle Navy Wing Plume */}
-<path
-d="M 43 60 C 64 60, 89 67, 105 84 C 85 80, 63 74, 51 71 C 43 69, 41 65, 43 60 Z"
-fill="url(#cardNavyWing1)"
+<path 
+d="M 46 72 C 72 70 108 78 126 95 C 98 94 76 87 56 83 C 48 81 44 76 46 72 Z" 
+fill="url(#wingNavyMid)" 
 />
-{/* 4. Lower Navy Wing Plume */}
-<path
-d="M 48 77 C 65 78, 86 87, 95 101 C 78 96, 61 91, 53 87 C 47 84, 46 80, 48 77 Z"
-fill="url(#cardNavyWing2)"
+<path 
+d="M 54 94 C 76 92 104 100 116 115 C 94 112 76 106 62 101 C 56 99 52 96 54 94 Z" 
+fill="url(#wingNavyDark)" 
 />
-{/* 5. Downward Curved Taper Tail */}
-<path
-d="M 58 92 C 71 96, 80 106, 84 118 C 72 113, 63 106, 59 100 C 55 96, 55 93, 58 92 Z"
-fill="#0B1426"
+<path 
+d="M 66 112 C 80 112 96 119 104 129 C 88 127 75 122 66 117 C 62 115 62 112 66 112 Z" 
+fill="url(#wingNavyDark)" 
 />
 </svg>
 );
@@ -70,12 +59,12 @@ category: "Grains & Rice",
 title: "1121 Basmati Rice (Steam / Sella)",
 hsn: "1006.30.20",
 botanical: "Oryza sativa var. Basmati 1121",
-origin: "Punjab / Haryana Mandis (India)",
+origin: "Punjab & Haryana Rice Mandis",
 grainLength: "8.35 mm+ Average Pre-Cooked",
 moisture: "Max 12.5%",
 broken: "Under 1.0% (Optical Sortex 100%)",
-purity: "95% Pure Varietal Admixture Max 5%",
-packaging: "25kg / 50kg BOPP & Non-Woven Laminated Poly Bags",
+purity: "95% Pure Varietal Admixture",
+packaging: "25kg & 50kg BOPP Laminated Poly Bags",
 containerPayload: "25.0 MT per 20ft Dry Cargo FCL",
 inspectionStandard: "SGS / Bureau Veritas Pre-Berth Assayed",
 description: "Premier culinary-grade aromatic extra-long grain with elongation ratio exceeding 2.2x post-cook. Certified optical Sortex processed for export."
@@ -86,7 +75,7 @@ category: "Grains & Rice",
 title: "1509 Basmati Rice (Golden / Steam)",
 hsn: "1006.30.20",
 botanical: "Oryza sativa var. Basmati 1509",
-origin: "Taraori & Karnal Rice Belt (India)",
+origin: "Taraori & Karnal Rice Belt",
 grainLength: "8.40 mm+ Pre-Cooked",
 moisture: "Max 12.5%",
 broken: "Under 1.0% Sortex Milled",
@@ -139,7 +128,7 @@ grainLength: "6 cm - 8 cm Whole Dried Pods",
 moisture: "Max 10.0% Sun Cured",
 broken: "Under 2.0% Loose Seeds / Foreign Matter",
 purity: "Hot Pungency: 75,000 - 90,000 SHU",
-packaging: "10kg / 25kg Jute Gunny or PP Bags with Master Poly Liner",
+packaging: "10kg / 25kg Jute Gunny or PP Bags",
 containerPayload: "7.0 MT in 20ft FCL / 14.5 MT in 40ft HC",
 inspectionStandard: "Spices Board India / Agmark Tested",
 description: "Intense fire rating with high natural capsaicin yield. Deep crimson oil extractability, prized worldwide by oleoresin processors and spice blending mills."
@@ -300,113 +289,102 @@ const whatsappMessage =
 "Please provide formal proforma quotation and liner schedule.";
 const whatsappUrl = "https://wa.me/917208666522?text=" + encodeURIComponent(whatsappMessage);
 return (
-<div style={{ minHeight: "100vh", backgroundColor: "#F8FAFC", color: "#1E293B", fontFamily: "'Inter', -apple-system, sans-serif" }}>
-{/* Top Ticker */}
-<header style={{ backgroundColor: "#060D1D", borderBottom: "1px solid #1E293B", color: "#94A3B8", fontSize: "11px", position: "sticky", top: 0, zIndex: 50 }}>
-<div style={{ maxWidth: "1280px", margin: "0 auto", padding: "8px 20px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "10px" }}>
-<div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "'JetBrains Mono', monospace" }}>
-<span style={{ color: "#E5C378", fontWeight: 700, display: "flex", alignItems: "center", gap: "6px" }}>
+<div style={{ minHeight: "100vh", backgroundColor: "#F8FAFC", color: "#1E293B", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
+{/* 1. TOP TICKER */}
+<header style={{ backgroundColor: "#060D1D", borderBottom: "1px solid #1E293B", color: "#94A3B8", fontSize: "11px", position: "sticky", top: 0, zIndex: 100 }}>
+<div style={{ maxWidth: "1240px", margin: "0 auto", padding: "8px 16px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "10px" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "monospace" }}>
+<span style={{ color: "#DFC07A", fontWeight: 700, display: "flex", alignItems: "center", gap: "6px" }}>
 <span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#10B981", display: "inline-block" }}></span>
 GATEWAY: JNPT NHAVA SHEVA (BMCT / NSICT)
 </span>
 <span style={{ color: "#334155" }}>|</span>
-<span style={{ color: "#CBD5E1", fontSize: "10.5px" }}>APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
+<span style={{ color: "#CBD5E1", fontSize: "10px" }}>APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
 </div>
-<div style={{ display: "flex", alignItems: "center", gap: "16px", fontFamily: "'JetBrains Mono', monospace", fontSize: "11px" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "16px", fontFamily: "monospace", fontSize: "11px" }}>
 <span>BOM: <strong style={{ color: "#FFF" }}>{deskTimes.mumbai || "--:--"}</strong></span>
 <span>DXB: <strong style={{ color: "#FFF" }}>{deskTimes.dubai || "--:--"}</strong></span>
-<span style={{ display: "none" }} className="sm:inline">SIN: <strong style={{ color: "#FFF" }}>{deskTimes.singapore || "--:--"}</strong></span>
-<a href="mailto:care@vaayuelixir.com" style={{ color: "#E5C378", textDecoration: "none", fontWeight: 700 }}>
+<a href="mailto:care@vaayuelixir.com" style={{ color: "#DFC07A", textDecoration: "none", fontWeight: 700 }}>
 care@vaayuelixir.com
 </a>
 </div>
 </div>
 </header>
-{/* Main Header / Navigation /}
-<nav style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "16px 20px" }}>
-<div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
-{/ Brand Mark */}
-<div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-<VaayuBrandLogo style={{ width: "52px", height: "52px" }} />
+{/* 2. NAVIGATION BAR */}
+<nav style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "12px 16px" }}>
+<div style={{ maxWidth: "1240px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
+<VaayuEmblem size={48} />
 <div>
-<div style={{ display: "flex", alignItems: "baseline", gap: "6px", lineHeight: "1" }}>
-<span style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "24px", fontWeight: 800, color: "#0B1528", letterSpacing: "0.06em" }}>
+<div style={{ display: "flex", alignItems: "baseline", gap: "6px", lineHeight: 1 }}>
+<span style={{ fontFamily: "Georgia, serif", fontSize: "21px", fontWeight: 800, color: "#0B1528", letterSpacing: "0.08em" }}>
 VAAYU
 </span>
-<span style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "24px", fontWeight: 800, color: "#C49A3E", letterSpacing: "0.06em" }}>
+<span style={{ fontFamily: "Georgia, serif", fontSize: "21px", fontWeight: 800, color: "#B88A34", letterSpacing: "0.08em" }}>
 ELIXIR
 </span>
 </div>
-<p style={{ margin: "5px 0 0 0", fontSize: "9px", fontWeight: 700, color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase" }}>
+<div style={{ fontSize: "8px", fontWeight: 700, color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase", marginTop: "4px" }}>
 GLOBAL TRADE & STRATEGIC VENTURES
-</p>
 </div>
 </div>
-{/* Right Navigation */}
-<div style={{ display: "flex", alignItems: "center", gap: "20px" }}>
-<div style={{ textAlign: "right", paddingRight: "16px", borderRight: "1px solid #E2E8F0" }} className="hidden lg:block">
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#94A3B8", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+</div>
+<div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+<div style={{ textAlign: "right" }}>
+<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#94A3B8", letterSpacing: "0.15em", textTransform: "uppercase" }}>
 TRADE CORRIDORS
 </div>
-<div style={{ fontSize: "11px", fontWeight: 600, color: "#0B1528" }}>
+<div style={{ fontSize: "10.5px", fontWeight: 600, color: "#0B1528" }}>
 INDIA • MIDDLE EAST • AFRICA • EUROPE • ASIA
 </div>
 </div>
 <a
-href="#catalog"
-style={{ fontSize: "12px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.05em", color: "#334155", textDecoration: "none", fontWeight: 600 }}
-className="hidden sm:inline"
->
-Commodity Vault
-</a>
-<a
 href="#proforma"
-style={{ fontSize: "12px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", letterSpacing: "0.06em", padding: "10px 18px", backgroundColor: "#0B1528", color: "#E5C378", borderRadius: "4px", textDecoration: "none", fontWeight: 700, border: "1px solid rgba(196,154,62,0.35)", boxShadow: "0 2px 4px rgba(0,0,0,0.06)" }}
+style={{ fontSize: "11px", fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.06em", padding: "9px 16px", backgroundColor: "#0B1528", color: "#DFC07A", borderRadius: "4px", textDecoration: "none", fontWeight: 700, border: "1px solid rgba(184,138,52,0.4)" }}
 >
 Request Proforma
 </a>
 </div>
 </div>
 </nav>
-{/* Hero Section /}
-<section style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "48px 20px" }}>
-<div style={{ maxWidth: "1280px", margin: "0 auto" }}>
-{/ Card Tagline */}
-<div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 14px", backgroundColor: "#FEF9EE", border: "1px solid #F5E3B8", borderRadius: "4px", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", color: "#875F1C", marginBottom: "22px" }}>
-<span style={{ fontWeight: 700, letterSpacing: "0.08em" }}>MOVING OPPORTUNITIES. CREATING VALUE.</span>
-<span>•</span>
+{/* 3. HERO OVERVIEW */}
+<section style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "36px 16px" }}>
+<div style={{ maxWidth: "1240px", margin: "0 auto" }}>
+<div style={{ display: "inline-block", padding: "5px 12px", backgroundColor: "#FEF9EE", border: "1px solid #F5E3B8", borderRadius: "4px", fontSize: "10.5px", fontFamily: "monospace", color: "#875F1C", marginBottom: "16px" }}>
+<strong style={{ letterSpacing: "0.08em" }}>MOVING OPPORTUNITIES. CREATING VALUE.</strong>
+<span style={{ margin: "0 8px", color: "#CBD5E1" }}>|</span>
 <span style={{ color: "#475569" }}>MUMBAI & NAVI MUMBAI TRADING CORRIDOR</span>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "36px", alignItems: "center" }}>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "32px", alignItems: "center" }}>
 <div>
-<h1 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "36px", fontWeight: 800, color: "#0B1528", lineHeight: 1.25, margin: "0 0 16px 0", letterSpacing: "0.01em" }}>
-Direct Farm-to-Berth Maritime Trade Execution.
+<h1 style={{ fontFamily: "Georgia, serif", fontSize: "28px", fontWeight: 700, color: "#0B1528", lineHeight: 1.35, margin: "0 0 14px 0", letterSpacing: "0.01em" }}>
+Direct Farm-to-Berth Maritime Trade Execution
 </h1>
-<p style={{ fontSize: "15px", lineHeight: "1.65", color: "#475569", margin: "0 0 24px 0" }}>
+<p style={{ fontSize: "14.5px", lineHeight: "1.65", color: "#475569", margin: "0 0 20px 0" }}>
 Direct containerized export shipments of calibrated Indian Basmati rice, high-pungency red chillies, plantation spices, fresh perishables, and cold-chain cargo through Nhava Sheva (JNPT) and Sahar Cargo across the GCC, Africa, and Southeast Asia.
 </p>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "10px", marginBottom: "24px" }}>
-<div style={{ padding: "12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", textTransform: "uppercase" }}>Primary Port</div>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px", marginBottom: "22px" }}>
+<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Primary Port</div>
 <div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>JNPT Nhava Sheva</div>
 </div>
-<div style={{ padding: "12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", textTransform: "uppercase" }}>Express Air</div>
+<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Express Air</div>
 <div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>Sahar & NMIA Cargo</div>
 </div>
-<div style={{ padding: "12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", textTransform: "uppercase" }}>Cold Chain</div>
+<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Cold Chain</div>
 <div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>-18°C to +14°C</div>
 </div>
-<div style={{ padding: "12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", textTransform: "uppercase" }}>Assay Standard</div>
+<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Assay Standard</div>
 <div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>SGS / Bureau Veritas</div>
 </div>
 </div>
-<div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
+<div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
 <a
 href="#catalog"
-style={{ display: "inline-block", padding: "12px 22px", backgroundColor: "#C49A3E", color: "#FFFFFF", fontFamily: "'JetBrains Mono', monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", borderRadius: "4px", boxShadow: "0 2px 6px rgba(196,154,62,0.25)" }}
+style={{ display: "inline-block", padding: "11px 20px", backgroundColor: "#B88A34", color: "#FFFFFF", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", textDecoration: "none", borderRadius: "4px" }}
 >
 Inspect Export Commodities →
 </a>
@@ -414,22 +392,21 @@ Inspect Export Commodities →
 href="https://wa.me/917208666522"
 target="_blank"
 rel="noreferrer"
-style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "12px 22px", backgroundColor: "#0B1528", color: "#E5C378", fontFamily: "'JetBrains Mono', monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", borderRadius: "4px" }}
+style={{ display: "inline-block", padding: "11px 20px", backgroundColor: "#0B1528", color: "#DFC07A", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", textDecoration: "none", borderRadius: "4px" }}
 >
-<span>Trade Desk WhatsApp</span>
+Trade Desk WhatsApp
 </a>
 </div>
 </div>
-{/* Corridor Velocity Panel */}
-<div style={{ backgroundColor: "#060D1D", color: "#CBD5E1", padding: "26px", borderRadius: "8px", border: "1px solid #1E293B", boxShadow: "0 8px 24px rgba(0,0,0,0.14)" }}>
-<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #1E293B", paddingBottom: "14px", marginBottom: "16px" }}>
-<div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-<VaayuBrandLogo style={{ width: "26px", height: "26px" }} />
-<span style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "11.5px", fontWeight: 700, color: "#E5C378", letterSpacing: "0.08em" }}>
+<div style={{ backgroundColor: "#060D1D", color: "#CBD5E1", padding: "24px", borderRadius: "8px", border: "1px solid #1E293B", boxShadow: "0 6px 20px rgba(0,0,0,0.12)" }}>
+<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #1E293B", paddingBottom: "12px", marginBottom: "14px" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
+<VaayuEmblem size={24} />
+<span style={{ fontFamily: "monospace", fontSize: "11px", fontWeight: 700, color: "#DFC07A", letterSpacing: "0.08em" }}>
 CORRIDOR VELOCITY & LOGISTICS
 </span>
 </div>
-<span style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", backgroundColor: "#1E293B", color: "#94A3B8", padding: "2px 8px", borderRadius: "4px" }}>
+<span style={{ fontSize: "9.5px", fontFamily: "monospace", backgroundColor: "#1E293B", color: "#94A3B8", padding: "2px 6px", borderRadius: "3px" }}>
 LIVE BERTH
 </span>
 </div>
@@ -439,43 +416,43 @@ LIVE BERTH
 <div style={{ color: "#FFF", fontWeight: 600 }}>Nhava Sheva → Jebel Ali (Dubai)</div>
 <div style={{ color: "#94A3B8", fontSize: "11px" }}>Direct liner transit • 3 to 4 Voyage Days</div>
 </div>
-<span style={{ color: "#10B981", fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>ACTIVE</span>
+<span style={{ color: "#10B981", fontFamily: "monospace", fontWeight: 700 }}>ACTIVE</span>
 </div>
 <div style={{ padding: "12px", backgroundColor: "#0E182D", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 <div>
 <div style={{ color: "#FFF", fontWeight: 600 }}>Nhava Sheva → West Africa (Lomé / Lagos)</div>
 <div style={{ color: "#94A3B8", fontSize: "11px" }}>Bulk parboiled & agro breakbulk • 22 to 26 Days</div>
 </div>
-<span style={{ color: "#10B981", fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>ACTIVE</span>
+<span style={{ color: "#10B981", fontFamily: "monospace", fontWeight: 700 }}>ACTIVE</span>
 </div>
 <div style={{ padding: "12px", backgroundColor: "#0E182D", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 <div>
 <div style={{ color: "#FFF", fontWeight: 600 }}>Mumbai Air Cargo → GCC Corridor</div>
 <div style={{ color: "#94A3B8", fontSize: "11px" }}>Moringa & fresh perishables • Daily Uplift</div>
 </div>
-<span style={{ color: "#E5C378", fontFamily: "'JetBrains Mono', monospace", fontWeight: 700 }}>EXPRESS</span>
+<span style={{ color: "#DFC07A", fontFamily: "monospace", fontWeight: 700 }}>EXPRESS</span>
 </div>
 </div>
-<div style={{ marginTop: "16px", paddingTop: "14px", borderTop: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "11px", color: "#94A3B8" }}>
+<div style={{ marginTop: "16px", paddingTop: "12px", borderTop: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "11px", color: "#94A3B8" }}>
 <span>Amit Zawarey • Proprietor</span>
-<span style={{ color: "#E5C378", fontFamily: "'JetBrains Mono', monospace" }}>+91 7208666522</span>
+<span style={{ color: "#DFC07A", fontFamily: "monospace" }}>+91 7208666522</span>
 </div>
 </div>
 </div>
 </div>
 </section>
-{/* Commodity Catalog Section */}
-<section id="catalog" style={{ maxWidth: "1280px", margin: "0 auto", padding: "48px 20px" }}>
-<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", marginBottom: "32px" }}>
+{/* 4. COMMODITY CATALOG */}
+<section id="catalog" style={{ maxWidth: "1240px", margin: "0 auto", padding: "40px 16px" }}>
+<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", marginBottom: "28px" }}>
 <div>
-<span style={{ fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", color: "#C49A3E", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+<div style={{ fontSize: "10.5px", fontFamily: "monospace", color: "#B88A34", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
 INSTITUTIONAL GRADE
-</span>
-<h2 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "28px", fontWeight: 800, color: "#0B1528", margin: "4px 0 0 0" }}>
+</div>
+<h2 style={{ fontFamily: "Georgia, serif", fontSize: "26px", fontWeight: 800, color: "#0B1528", margin: "4px 0 0 0" }}>
 Export Commodity Portfolio
 </h2>
-<p style={{ fontSize: "14px", color: "#64748B", margin: "4px 0 0 0" }}>
-Strict laboratory compliance tolerances, Sortex grading, and container stuffing schedules.
+<p style={{ fontSize: "13.5px", color: "#64748B", margin: "4px 0 0 0" }}>
+Laboratory compliance tolerances, Sortex grading, and container stuffing schedules.
 </p>
 </div>
 <div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
@@ -486,16 +463,16 @@ return (
 key={cat}
 onClick={() => setSelectedCategory(cat)}
 style={{
-padding: "8px 14px",
+padding: "7px 13px",
 fontSize: "11px",
-fontFamily: "'JetBrains Mono', monospace",
+fontFamily: "monospace",
 textTransform: "uppercase",
-letterSpacing: "0.05em",
+letterSpacing: "0.04em",
 borderRadius: "4px",
 cursor: "pointer",
 border: active ? "1px solid #0B1528" : "1px solid #CBD5E1",
 backgroundColor: active ? "#0B1528" : "#FFFFFF",
-color: active ? "#E5C378" : "#475569",
+color: active ? "#DFC07A" : "#475569",
 fontWeight: 700
 }}
 >
@@ -505,50 +482,50 @@ fontWeight: 700
 })}
 </div>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }}>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "20px" }}>
 {filteredProducts.map(prod => (
 <div
 key={prod.id}
-style={{ backgroundColor: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "8px", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}
+style={{ backgroundColor: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "6px", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden" }}
 >
 <div>
-<div style={{ height: "130px", backgroundColor: "#060D1D", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1px solid #E2E8F0" }}>
-<div style={{ textAlign: "center", padding: "16px" }}>
-<VaayuBrandLogo style={{ width: "36px", height: "36px" }} />
-<div style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: "#E5C378", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: "6px" }}>
+<div style={{ height: "110px", backgroundColor: "#060D1D", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1px solid #E2E8F0" }}>
+<div style={{ textAlign: "center" }}>
+<VaayuEmblem size={34} />
+<div style={{ fontSize: "9.5px", fontFamily: "monospace", color: "#DFC07A", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: "4px" }}>
 {prod.category}
 </div>
 </div>
-<div style={{ position: "absolute", top: "10px", right: "10px", backgroundColor: "#0B1528", border: "1px solid #1E293B", padding: "2px 8px", borderRadius: "4px", color: "#E5C378", fontSize: "10px", fontFamily: "'JetBrains Mono', monospace" }}>
+<div style={{ position: "absolute", top: "10px", right: "10px", backgroundColor: "#0B1528", border: "1px solid #1E293B", padding: "2px 6px", borderRadius: "3px", color: "#DFC07A", fontSize: "9.5px", fontFamily: "monospace" }}>
 HSN {prod.hsn}
 </div>
 </div>
-<div style={{ padding: "20px" }}>
-<h3 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "17px", fontWeight: 700, color: "#0B1528", margin: "0 0 4px 0" }}>
+<div style={{ padding: "18px" }}>
+<h3 style={{ fontFamily: "Georgia, serif", fontSize: "16px", fontWeight: 700, color: "#0B1528", margin: "0 0 3px 0" }}>
 {prod.title}
 </h3>
-<div style={{ fontSize: "12px", fontStyle: "italic", color: "#64748B", marginBottom: "12px" }}>
+<div style={{ fontSize: "11.5px", fontStyle: "italic", color: "#64748B", marginBottom: "10px" }}>
 {prod.botanical}
 </div>
-<p style={{ fontSize: "13px", color: "#475569", lineHeight: "1.5", margin: "0 0 16px 0" }}>
+<p style={{ fontSize: "13px", color: "#475569", lineHeight: "1.5", margin: "0 0 14px 0" }}>
 {prod.description}
 </p>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", paddingTop: "12px", borderTop: "1px solid #F1F5F9" }}>
-<div style={{ padding: "8px", backgroundColor: "#F8FAFC", borderRadius: "4px" }}>
-<span style={{ color: "#94A3B8", display: "block", fontSize: "9px" }}>MOISTURE</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", fontSize: "11px", fontFamily: "monospace", paddingTop: "10px", borderTop: "1px solid #F1F5F9" }}>
+<div style={{ padding: "7px 10px", backgroundColor: "#F8FAFC", borderRadius: "3px" }}>
+<span style={{ color: "#94A3B8", display: "block", fontSize: "8.5px" }}>MOISTURE</span>
 <strong style={{ color: "#1E293B" }}>{prod.moisture}</strong>
 </div>
-<div style={{ padding: "8px", backgroundColor: "#F8FAFC", borderRadius: "4px" }}>
-<span style={{ color: "#94A3B8", display: "block", fontSize: "9px" }}>PAYLOAD / FCL</span>
+<div style={{ padding: "7px 10px", backgroundColor: "#F8FAFC", borderRadius: "3px" }}>
+<span style={{ color: "#94A3B8", display: "block", fontSize: "8.5px" }}>PAYLOAD / FCL</span>
 <strong style={{ color: "#1E293B" }}>{prod.containerPayload}</strong>
 </div>
 </div>
 </div>
 </div>
-<div style={{ padding: "20px", paddingTop: "0", display: "flex", gap: "10px" }}>
+<div style={{ padding: "18px", paddingTop: "0", display: "flex", gap: "8px" }}>
 <button
 onClick={() => setSelectedProduct(prod)}
-style={{ flex: 1, padding: "10px", backgroundColor: "#F1F5F9", border: "none", borderRadius: "4px", color: "#1E293B", fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
+style={{ flex: 1, padding: "9px", backgroundColor: "#F1F5F9", border: "none", borderRadius: "4px", color: "#1E293B", fontFamily: "monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
 >
 Technical Spec
 </button>
@@ -562,7 +539,7 @@ packagingType: prod.packaging.split("•")[0]
 const el = document.getElementById("proforma");
 if (el) el.scrollIntoView({ behavior: "smooth" });
 }}
-style={{ padding: "10px 16px", backgroundColor: "#0B1528", border: "1px solid rgba(196,154,62,0.35)", borderRadius: "4px", color: "#E5C378", fontFamily: "'JetBrains Mono', monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
+style={{ padding: "9px 14px", backgroundColor: "#0B1528", border: "1px solid rgba(184,138,52,0.35)", borderRadius: "4px", color: "#DFC07A", fontFamily: "monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
 >
 Quote
 </button>
@@ -571,16 +548,16 @@ Quote
 ))}
 </div>
 </section>
-{/* Technical Spec Modal */}
+{/* 5. MODAL */}
 {selectedProduct && (
-<div style={{ position: "fixed", inset: 0, zIndex: 100, backgroundColor: "rgba(6,13,29,0.8)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
-<div style={{ backgroundColor: "#FFFFFF", borderRadius: "8px", maxWidth: "640px", width: "100%", maxHeight: "90vh", overflowY: "auto", border: "1px solid #CBD5E1", boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}>
-<div style={{ padding: "20px 24px", backgroundColor: "#060D1D", color: "#FFF", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-<div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-<VaayuBrandLogo style={{ width: "36px", height: "36px" }} />
+<div style={{ position: "fixed", inset: 0, zIndex: 200, backgroundColor: "rgba(6,13,29,0.85)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
+<div style={{ backgroundColor: "#FFFFFF", borderRadius: "6px", maxWidth: "600px", width: "100%", maxHeight: "90vh", overflowY: "auto", border: "1px solid #CBD5E1", boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}>
+<div style={{ padding: "16px 20px", backgroundColor: "#060D1D", color: "#FFF", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+<div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
+<VaayuEmblem size={32} />
 <div>
-<div style={{ fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: "#E5C378", textTransform: "uppercase" }}>{selectedProduct.category}</div>
-<h3 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "18px", fontWeight: 700, margin: "2px 0 0 0" }}>{selectedProduct.title}</h3>
+<div style={{ fontSize: "9.5px", fontFamily: "monospace", color: "#DFC07A", textTransform: "uppercase" }}>{selectedProduct.category}</div>
+<h3 style={{ fontFamily: "Georgia, serif", fontSize: "17px", fontWeight: 700, margin: "2px 0 0 0" }}>{selectedProduct.title}</h3>
 <div style={{ fontSize: "11px", color: "#94A3B8" }}>{selectedProduct.botanical} • HSN {selectedProduct.hsn}</div>
 </div>
 </div>
@@ -591,37 +568,37 @@ style={{ background: "none", border: "none", color: "#94A3B8", fontSize: "24px",
 ×
 </button>
 </div>
-<div style={{ padding: "24px" }}>
-<p style={{ fontSize: "14px", color: "#475569", lineHeight: "1.6", margin: "0 0 20px 0" }}>
+<div style={{ padding: "20px" }}>
+<p style={{ fontSize: "13.5px", color: "#475569", lineHeight: "1.6", margin: "0 0 16px 0" }}>
 {selectedProduct.description}
 </p>
-<div style={{ border: "1px solid #E2E8F0", borderRadius: "6px", overflow: "hidden", fontSize: "12px" }}>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#64748B" }}>Origin / Mandi</span>
+<div style={{ border: "1px solid #E2E8F0", borderRadius: "4px", overflow: "hidden", fontSize: "12px" }}>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "monospace", color: "#64748B" }}>Origin / Mandi</span>
 <strong>{selectedProduct.origin}</strong>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#64748B" }}>Grain / Pod Length</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "monospace", color: "#64748B" }}>Grain / Pod Length</span>
 <strong>{selectedProduct.grainLength}</strong>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#64748B" }}>Moisture Tolerance</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "monospace", color: "#64748B" }}>Moisture Tolerance</span>
 <strong>{selectedProduct.moisture}</strong>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#64748B" }}>Broken Allowance</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "monospace", color: "#64748B" }}>Broken Allowance</span>
 <strong>{selectedProduct.broken}</strong>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#64748B" }}>Export Packaging</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "monospace", color: "#64748B" }}>Export Packaging</span>
 <strong>{selectedProduct.packaging}</strong>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#FFFFFF" }}>
-<span style={{ fontFamily: "'JetBrains Mono', monospace", color: "#64748B" }}>Inspection Standard</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#FFFFFF" }}>
+<span style={{ fontFamily: "monospace", color: "#64748B" }}>Inspection Standard</span>
 <strong>{selectedProduct.inspectionStandard}</strong>
 </div>
 </div>
-<div style={{ marginTop: "24px" }}>
+<div style={{ marginTop: "20px" }}>
 <button
 onClick={() => {
 setRfqForm(prev => ({
@@ -633,7 +610,7 @@ setSelectedProduct(null);
 const el = document.getElementById("proforma");
 if (el) el.scrollIntoView({ behavior: "smooth" });
 }}
-style={{ width: "100%", padding: "12px", backgroundColor: "#0B1528", color: "#E5C378", fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", border: "1px solid rgba(196,154,62,0.4)", borderRadius: "4px", cursor: "pointer" }}
+style={{ width: "100%", padding: "12px", backgroundColor: "#0B1528", color: "#DFC07A", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", border: "1px solid rgba(184,138,52,0.4)", borderRadius: "4px", cursor: "pointer" }}
 >
 Configure Commercial Quotation →
 </button>
@@ -642,58 +619,58 @@ Configure Commercial Quotation →
 </div>
 </div>
 )}
-{/* RFQ Proforma Generator */}
-<section id="proforma" style={{ backgroundColor: "#060D1D", color: "#FFF", padding: "48px 20px", borderTop: "1px solid #1E293B" }}>
-<div style={{ maxWidth: "960px", margin: "0 auto" }}>
-<div style={{ textAlign: "center", marginBottom: "32px" }}>
-<span style={{ fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", color: "#E5C378", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+{/* 6. RFQ / PROFORMA */}
+<section id="proforma" style={{ backgroundColor: "#060D1D", color: "#FFF", padding: "44px 16px", borderTop: "1px solid #1E293B" }}>
+<div style={{ maxWidth: "900px", margin: "0 auto" }}>
+<div style={{ textAlign: "center", marginBottom: "28px" }}>
+<div style={{ fontSize: "10.5px", fontFamily: "monospace", color: "#DFC07A", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
 IMMEDIATE EXECUTION
-</span>
-<h2 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "30px", fontWeight: 800, margin: "4px 0 8px 0" }}>
+</div>
+<h2 style={{ fontFamily: "Georgia, serif", fontSize: "27px", fontWeight: 800, margin: "4px 0 6px 0" }}>
 Commercial RFQ & Proforma Estimator
 </h2>
-<p style={{ fontSize: "14px", color: "#94A3B8", maxWidth: "600px", margin: "0 auto" }}>
-Submit your required commodity specifications. Inquiries route directly to <span style={{ color: "#E5C378", fontFamily: "'JetBrains Mono', monospace" }}>care@vaayuelixir.com</span> with immediate maritime rate lock.
+<p style={{ fontSize: "13.5px", color: "#94A3B8", maxWidth: "600px", margin: "0 auto" }}>
+Submit your required commodity specifications. Inquiries route directly to <span style={{ color: "#DFC07A", fontFamily: "monospace" }}>care@vaayuelixir.com</span> with immediate maritime rate lock.
 </p>
 </div>
-<div style={{ backgroundColor: "#0B1528", border: "1px solid #1E293B", borderRadius: "8px", padding: "28px" }}>
+<div style={{ backgroundColor: "#0B1528", border: "1px solid #1E293B", borderRadius: "6px", padding: "24px" }}>
 {rfqSuccess ? (
-<div style={{ textAlign: "center", padding: "40px 16px" }}>
-<div style={{ width: "56px", height: "56px", margin: "0 auto 16px auto", borderRadius: "50%", backgroundColor: "rgba(16,185,129,0.2)", color: "#10B981", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "28px", fontWeight: 700 }}>
+<div style={{ textAlign: "center", padding: "36px 12px" }}>
+<div style={{ width: "52px", height: "52px", margin: "0 auto 14px auto", borderRadius: "50%", backgroundColor: "rgba(16,185,129,0.2)", color: "#10B981", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "26px", fontWeight: 700 }}>
 ✓
 </div>
-<h3 style={{ fontFamily: "'Cinzel', Georgia, serif", fontSize: "22px", fontWeight: 700, margin: "0 0 8px 0" }}>Commercial Inquiry Transmitted</h3>
-<p style={{ color: "#94A3B8", fontSize: "14px", maxWidth: "520px", margin: "0 auto 24px auto" }}>
-Your inquiry for <strong style={{ color: "#FFF" }}>{rfqForm.volumeMT} MT of {activeCommodity.title}</strong> has been transmitted to <span style={{ color: "#E5C378", fontFamily: "'JetBrains Mono', monospace" }}>care@vaayuelixir.com</span>.
+<h3 style={{ fontFamily: "Georgia, serif", fontSize: "20px", fontWeight: 700, margin: "0 0 6px 0" }}>Commercial Inquiry Transmitted</h3>
+<p style={{ color: "#94A3B8", fontSize: "13.5px", maxWidth: "500px", margin: "0 auto 20px auto" }}>
+Your inquiry for <strong style={{ color: "#FFF" }}>{rfqForm.volumeMT} MT of {activeCommodity.title}</strong> has been transmitted to <span style={{ color: "#DFC07A", fontFamily: "monospace" }}>care@vaayuelixir.com</span>.
 </p>
-<div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
+<div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap" }}>
 <a
 href={whatsappUrl}
 target="_blank"
 rel="noreferrer"
-style={{ padding: "12px 24px", backgroundColor: "#10B981", color: "#FFF", fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", textDecoration: "none", borderRadius: "4px" }}
+style={{ padding: "11px 20px", backgroundColor: "#10B981", color: "#FFF", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", textDecoration: "none", borderRadius: "4px" }}
 >
 Open Live in WhatsApp Trade Desk →
 </a>
 <button
 onClick={() => setRfqSuccess(false)}
-style={{ padding: "12px 24px", backgroundColor: "#1E293B", color: "#CBD5E1", fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", border: "none", borderRadius: "4px", cursor: "pointer" }}
+style={{ padding: "11px 20px", backgroundColor: "#1E293B", color: "#CBD5E1", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", border: "none", borderRadius: "4px", cursor: "pointer" }}
 >
 Submit Another Inquiry
 </button>
 </div>
 </div>
 ) : (
-<form onSubmit={handleRfqSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
+<form onSubmit={handleRfqSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "16px" }}>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "8px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
 Export Commodity
 </label>
 <select
 value={rfqForm.commodityId}
 onChange={(e) => setRfqForm({ ...rfqForm, commodityId: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px 12px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px 12px", color: "#FFF", fontSize: "13px" }}
 >
 {COMMODITY_CATALOG.map(c => (
 <option key={c.id} value={c.id}>
@@ -703,8 +680,8 @@ style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B",
 </select>
 </div>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "8px" }}>
-Order Volume: <strong style={{ color: "#E5C378" }}>{rfqForm.volumeMT} Metric Tons</strong>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+Order Volume: <strong style={{ color: "#DFC07A" }}>{rfqForm.volumeMT} Metric Tons</strong>
 </label>
 <input
 type="range"
@@ -713,40 +690,40 @@ max="1000"
 step="10"
 value={rfqForm.volumeMT}
 onChange={(e) => setRfqForm({ ...rfqForm, volumeMT: parseInt(e.target.value, 10) })}
-style={{ width: "100%", accentColor: "#C49A3E", cursor: "pointer" }}
+style={{ width: "100%", accentColor: "#B88A34", cursor: "pointer" }}
 />
-<div style={{ display: "flex", justifyContent: "space-between", fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", marginTop: "4px" }}>
+<div style={{ display: "flex", justifyContent: "space-between", fontSize: "9.5px", fontFamily: "monospace", color: "#64748B", marginTop: "4px" }}>
 <span>10 MT (Trial LCL)</span>
 <span>500 MT</span>
 <span>1,000 MT (Charter)</span>
 </div>
 </div>
 </div>
-<div style={{ padding: "14px", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", textAlign: "center" }}>
+<div style={{ padding: "12px", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px", textAlign: "center" }}>
 <div>
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", textTransform: "uppercase" }}>Standard Inspection</div>
-<div style={{ fontSize: "12px", fontWeight: 700, color: "#FFF", marginTop: "2px" }}>{activeCommodity.inspectionStandard}</div>
+<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Standard Inspection</div>
+<div style={{ fontSize: "11.5px", fontWeight: 700, color: "#FFF", marginTop: "2px" }}>{activeCommodity.inspectionStandard}</div>
 </div>
 <div>
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", textTransform: "uppercase" }}>Payload / Container</div>
-<div style={{ fontSize: "12px", fontWeight: 700, color: "#E5C378", marginTop: "2px" }}>{activeCommodity.containerPayload}</div>
+<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Payload / Container</div>
+<div style={{ fontSize: "11.5px", fontWeight: 700, color: "#DFC07A", marginTop: "2px" }}>{activeCommodity.containerPayload}</div>
 </div>
 <div>
-<div style={{ fontSize: "9px", fontFamily: "'JetBrains Mono', monospace", color: "#64748B", textTransform: "uppercase" }}>Estimated Capacity</div>
-<div style={{ fontSize: "12px", fontWeight: 700, color: "#10B981", fontFamily: "'JetBrains Mono', monospace", marginTop: "2px" }}>
+<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Estimated Capacity</div>
+<div style={{ fontSize: "11.5px", fontWeight: 700, color: "#10B981", fontFamily: "monospace", marginTop: "2px" }}>
 ~ {calculatedContainers} Containers (FCL)
 </div>
 </div>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "14px" }}>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
 Incoterm
 </label>
 <select
 value={rfqForm.incoterm}
 onChange={(e) => setRfqForm({ ...rfqForm, incoterm: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
 >
 <option value="CIF">CIF (Cost, Insurance & Freight)</option>
 <option value="FOB">FOB (Nhava Sheva / JNPT Milled Berth)</option>
@@ -755,81 +732,81 @@ style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B",
 </select>
 </div>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
 Discharge Port
 </label>
 <input
 type="text"
 value={rfqForm.destinationPort}
 onChange={(e) => setRfqForm({ ...rfqForm, destinationPort: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
 placeholder="e.g. Jebel Ali, Lomé, Singapore"
 required
 />
 </div>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
 Packaging Requirement
 </label>
 <input
 type="text"
 value={rfqForm.packagingType}
 onChange={(e) => setRfqForm({ ...rfqForm, packagingType: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
 placeholder="e.g. 25kg PP Woven Bags"
 required
 />
 </div>
 </div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "16px" }}>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "14px" }}>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
 Importer / Entity
 </label>
 <input
 type="text"
 value={rfqForm.buyerEntity}
 onChange={(e) => setRfqForm({ ...rfqForm, buyerEntity: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
 placeholder="Company Name"
 required
 />
 </div>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
 Contact Name
 </label>
 <input
 type="text"
 value={rfqForm.contactName}
 onChange={(e) => setRfqForm({ ...rfqForm, contactName: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
 placeholder="Officer Name"
 required
 />
 </div>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
 Corporate Email
 </label>
 <input
 type="email"
 value={rfqForm.email}
 onChange={(e) => setRfqForm({ ...rfqForm, email: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
 placeholder="buyer@domain.com"
 required
 />
 </div>
 <div>
-<label style={{ display: "block", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
 WhatsApp / Phone
 </label>
 <input
 type="text"
 value={rfqForm.phone}
 onChange={(e) => setRfqForm({ ...rfqForm, phone: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
 placeholder="+971..."
 required
 />
@@ -838,7 +815,7 @@ required
 <button
 type="submit"
 disabled={isSubmitting}
-style={{ width: "100%", padding: "16px", backgroundColor: "#C49A3E", color: "#FFFFFF", fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", border: "none", borderRadius: "4px", cursor: isSubmitting ? "not-allowed" : "pointer", boxShadow: "0 4px 12px rgba(196,154,62,0.3)" }}
+style={{ width: "100%", padding: "14px", backgroundColor: "#B88A34", color: "#FFFFFF", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", border: "none", borderRadius: "4px", cursor: isSubmitting ? "not-allowed" : "pointer" }}
 >
 {isSubmitting ? "Transmitting to care@vaayuelixir.com..." : "Dispatch Commercial RFQ to care@vaayuelixir.com & Calculate Berth Schedule →"}
 </button>
@@ -847,18 +824,18 @@ style={{ width: "100%", padding: "16px", backgroundColor: "#C49A3E", color: "#FF
 </div>
 </div>
 </section>
-{/* Footer */}
-<footer style={{ backgroundColor: "#050A14", color: "#94A3B8", padding: "48px 20px 24px 20px", borderTop: "1px solid #1E293B", fontSize: "12px" }}>
-<div style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "32px" }}>
+{/* 7. FOOTER */}
+<footer style={{ backgroundColor: "#050A14", color: "#94A3B8", padding: "40px 16px 20px 16px", borderTop: "1px solid #1E293B", fontSize: "11.5px" }}>
+<div style={{ maxWidth: "1240px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "28px" }}>
 <div>
-<div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
-<VaayuBrandLogo style={{ width: "36px", height: "36px" }} />
+<div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
+<VaayuEmblem size={34} />
 <div>
-<span style={{ fontFamily: "'Cinzel', Georgia, serif", fontWeight: 800, color: "#FFF", fontSize: "18px" }}>VAAYU </span>
-<span style={{ fontFamily: "'Cinzel', Georgia, serif", fontWeight: 800, color: "#C49A3E", fontSize: "18px" }}>ELIXIR</span>
+<span style={{ fontFamily: "Georgia, serif", fontWeight: 800, color: "#FFF", fontSize: "17px" }}>VAAYU </span>
+<span style={{ fontFamily: "Georgia, serif", fontWeight: 800, color: "#DFC07A", fontSize: "17px" }}>ELIXIR</span>
 </div>
 </div>
-<p style={{ color: "#E5C378", fontFamily: "'Cinzel', Georgia, serif", fontSize: "11px", letterSpacing: "0.08em", margin: "0 0 10px 0" }}>
+<p style={{ color: "#DFC07A", fontFamily: "Georgia, serif", fontSize: "10.5px", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>
 "MOVING OPPORTUNITIES. CREATING VALUE."
 </p>
 <p style={{ fontSize: "11px", color: "#64748B", margin: 0, lineHeight: 1.6 }}>
@@ -866,12 +843,12 @@ Global Trade & Strategic Ventures. Direct merchant export operations headquarter
 </p>
 </div>
 <div>
-<div style={{ fontFamily: "'JetBrains Mono', monospace", color: "#FFF", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px", fontWeight: 700 }}>
+<div style={{ fontFamily: "monospace", color: "#FFF", fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "6px", fontWeight: 700 }}>
 LEADERSHIP
 </div>
-<div style={{ color: "#CBD5E1", fontSize: "12px", lineHeight: "1.6" }}>
-<strong style={{ color: "#FFF", fontSize: "14px", display: "block" }}>Amit Zawarey</strong>
-<span style={{ color: "#C49A3E", fontSize: "11px", fontFamily: "'JetBrains Mono', monospace", textTransform: "uppercase", display: "block", marginBottom: "8px" }}>
+<div style={{ color: "#CBD5E1", fontSize: "11.5px", lineHeight: "1.6" }}>
+<strong style={{ color: "#FFF", fontSize: "13px", display: "block" }}>Amit Zawarey</strong>
+<span style={{ color: "#DFC07A", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
 PROPRIETOR
 </span>
 Mumbai & Navi Mumbai, India<br />
@@ -879,20 +856,20 @@ Direct JNPT Nhava Sheva Gateway
 </div>
 </div>
 <div>
-<div style={{ fontFamily: "'JetBrains Mono', monospace", color: "#FFF", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px", fontWeight: 700 }}>
+<div style={{ fontFamily: "monospace", color: "#FFF", fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "6px", fontWeight: 700 }}>
 COMMUNICATION DESK
 </div>
-<div style={{ fontFamily: "'JetBrains Mono', monospace", fontSize: "12px", display: "flex", flexDirection: "column", gap: "6px" }}>
-<div>Email: <a href="mailto:care@vaayuelixir.com" style={{ color: "#E5C378", textDecoration: "none" }}>care@vaayuelixir.com</a></div>
+<div style={{ fontFamily: "monospace", fontSize: "11.5px", display: "flex", flexDirection: "column", gap: "4px" }}>
+<div>Email: <a href="mailto:care@vaayuelixir.com" style={{ color: "#DFC07A", textDecoration: "none" }}>care@vaayuelixir.com</a></div>
 <div>Trade Desk: <a href="tel:+917208666522" style={{ color: "#FFF", textDecoration: "none" }}>+91 7208666522</a></div>
 <div>Web: <a href="https://www.vaayuelixir.com" style={{ color: "#FFF", textDecoration: "none" }}>www.vaayuelixir.com</a></div>
 </div>
 </div>
 <div>
-<div style={{ fontFamily: "'JetBrains Mono', monospace", color: "#FFF", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px", fontWeight: 700 }}>
+<div style={{ fontFamily: "monospace", color: "#FFF", fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "6px", fontWeight: 700 }}>
 VERTICALS
 </div>
-<div style={{ fontSize: "12px", color: "#94A3B8", display: "flex", flexDirection: "column", gap: "4px" }}>
+<div style={{ fontSize: "11.5px", color: "#94A3B8", display: "flex", flexDirection: "column", gap: "3px" }}>
 <div>• TRADE</div>
 <div>• ADVISORY</div>
 <div>• VENTURES</div>
@@ -900,7 +877,7 @@ VERTICALS
 </div>
 </div>
 </div>
-<div style={{ maxWidth: "1280px", margin: "32px auto 0 auto", paddingTop: "20px", borderTop: "1px solid #111E38", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", fontSize: "10px", fontFamily: "'JetBrains Mono', monospace", color: "#475569" }}>
+<div style={{ maxWidth: "1240px", margin: "28px auto 0 auto", paddingTop: "16px", borderTop: "1px solid #111E38", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", fontSize: "9.5px", fontFamily: "monospace", color: "#475569" }}>
 <span>© {new Date().getFullYear()} VAAYU ELIXIR GLOBAL TRADE & STRATEGIC VENTURES.</span>
 <span>INDIA | MIDDLE EAST | AFRICA | EUROPE | ASIA | BEYOND</span>
 </div>
