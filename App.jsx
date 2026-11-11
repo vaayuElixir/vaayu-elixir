@@ -1,68 +1,8 @@
 import React, { useState, useEffect } from 'react';
+import logoImg from './IMG_9377.jpeg';
 
-// Brand Emblem: Exact geometry from official business card
-// (Golden crescent arc + 3 fluid gold & navy wings tapering down)
-const VaayuEmblem = ({ size = 48, className = "" }) => (
-<svg
-width={size}
-height={size}
-viewBox="0 0 120 120"
-fill="none"
-xmlns="http://www.w3.org/2000/svg"
-className={className}
-style={{ flexShrink: 0, display: "block" }}
-
-<defs>
-  <linearGradient id="goldArch" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stopColor="#D4AF37" />
-    <stop offset="50%" stopColor="#B38728" />
-    <stop offset="100%" stopColor="#8C6721" />
-  </linearGradient>
-  <linearGradient id="goldWing" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stopColor="#DFB76C" />
-    <stop offset="60%" stopColor="#C59B27" />
-    <stop offset="100%" stopColor="#9E7818" />
-  </linearGradient>
-  <linearGradient id="navyWingTop" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stopColor="#1E3A5F" />
-    <stop offset="100%" stopColor="#0E1B2E" />
-  </linearGradient>
-  <linearGradient id="navyWingBottom" x1="0%" y1="0%" x2="100%" y2="100%">
-    <stop offset="0%" stopColor="#142642" />
-    <stop offset="100%" stopColor="#070D18" />
-  </linearGradient>
-</defs>
-
-{/* Outer Slender Golden Crescent Arch */}
-<path
-  d="M 68 18 C 96 22 112 48 106 76 C 102 96 85 110 65 112 C 55 113 46 110 40 106 C 49 107 60 104 68 98 C 84 86 94 66 90 46 C 87 31 77 22 68 18 Z"
-  fill="url(#goldArch)"
-/>
-
-{/* Wing Feather 1 (Top Feather - Rich Brushed Gold) */}
-<path
-  d="M 32 38 C 50 36 78 40 98 55 C 80 57 60 55 42 49 C 34 46 29 42 32 38 Z"
-  fill="url(#goldWing)"
-/>
-
-{/* Wing Feather 2 (Upper Middle Feather - Deep Navy) */}
-<path
-  d="M 38 52 C 55 52 75 58 92 70 C 76 71 58 68 44 61 C 38 58 35 55 38 52 Z"
-  fill="url(#navyWingTop)"
-/>
-
-{/* Wing Feather 3 (Lower Middle Feather - Deep Navy) */}
-<path
-  d="M 44 65 C 60 66 75 73 85 84 C 71 83 58 79 48 73 C 43 70 41 67 44 65 Z"
-  fill="url(#navyWingBottom)"
-/>
-
-{/* Swooping Tail Feather Curve (Tapering to Bottom Tip) */}
-<path
-  d="M 52 77 C 62 80 72 87 76 96 C 68 93 60 88 56 83 C 51 86 49 92 53 98 C 56 102 62 105 67 106 C 58 107 50 102 46 94 C 43 88 45 80 52 77 Z"
-  fill="url(#navyWingBottom)"
-/>
-
+// Clean Logo Badge using your authentic uploaded business card artwork
+const VaayuLogo = ({ size = 48 }) => (
 
 // Commodity Portfolio Data
 const COMMODITIES = [
@@ -278,7 +218,7 @@ return (
       
       {/* Logo Mark + Typography */}
       <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
-        <VaayuEmblem size={52} />
+        <VaayuLogo size={48} />
         <div style={{ display: 'flex', flexDirection: 'column' }}>
           <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
             <span style={{ fontSize: '24px', fontWeight: 800, letterSpacing: '0.08em', color: '#0A1526', fontFamily: 'Georgia, serif' }}>VAAYU</span>
@@ -346,7 +286,7 @@ return (
       <div style={{ backgroundColor: '#070E1A', border: '1px solid #1E293B', borderRadius: '8px', padding: '32px', color: '#F8FAFC', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)' }}>
         <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #1E293B', paddingBottom: '16px', marginBottom: '24px' }}>
           <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
-            <VaayuEmblem size={32} />
+            <VaayuLogo size={36} />
             <div>
               <div style={{ fontSize: '14px', fontWeight: 700, color: '#F1F5F9' }}>LOGISTICS VELOCITY</div>
               <div style={{ fontSize: '10px', color: '#94A3B8' }}>JNPT Nhava Sheva & Mumbai Air Cargo</div>
@@ -598,7 +538,7 @@ return (
       
       <div>
         <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
-          <VaayuEmblem size={44} />
+          <VaayuLogo size={40} />
           <div>
             <span style={{ fontSize: '20px', fontWeight: 800, letterSpacing: '0.08em', color: '#F8FAFC', fontFamily: 'Georgia, serif' }}>VAAYU </span>
             <span style={{ fontSize: '20px', fontWeight: 800, letterSpacing: '0.08em', color: '#B38728', fontFamily: 'Georgia, serif' }}>ELIXIR</span>
