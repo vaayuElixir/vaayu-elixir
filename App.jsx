@@ -1,53 +1,64 @@
 import React, { useState, useEffect } from 'react';
-function VaayuEmblem({ size = 46 }) {
+// Perfectly scaled and padded emblem based on your business card
+function VaayuEmblem({ size = 44 }) {
 return (
 <svg
 width={size}
 height={size}
-viewBox="0 0 160 160"
+viewBox="0 0 200 200"
+preserveAspectRatio="xMidYMid meet"
 fill="none"
 xmlns="http://www.w3.org/2000/svg"
 style={{ flexShrink: 0, display: "block" }}
 >
 <defs>
-<linearGradient id="goldArch" x1="20%" y1="0%" x2="90%" y2="100%">
+<linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stopColor="#DFBF77" />
+<stop offset="45%" stopColor="#B88A34" />
+<stop offset="100%" stopColor="#7E5914" />
+</linearGradient>
+<linearGradient id="goldFeatherGrad" x1="0%" y1="0%" x2="100%" y2="80%">
 <stop offset="0%" stopColor="#DFC07A" />
-<stop offset="50%" stopColor="#B88A34" />
+<stop offset="50%" stopColor="#BA8C36" />
 <stop offset="100%" stopColor="#8A631E" />
 </linearGradient>
-<linearGradient id="wingGold" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#E5C785" />
-<stop offset="60%" stopColor="#C2973D" />
-<stop offset="100%" stopColor="#966E22" />
+<linearGradient id="navyFeather1" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stopColor="#1C2E4A" />
+<stop offset="100%" stopColor="#0B1322" />
 </linearGradient>
-<linearGradient id="wingNavyMid" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#1B325A" />
-<stop offset="100%" stopColor="#0B172E" />
+<linearGradient id="navyFeather2" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stopColor="#122038" />
+<stop offset="100%" stopColor="#070D18" />
 </linearGradient>
-<linearGradient id="wingNavyDark" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#0F1C36" />
-<stop offset="100%" stopColor="#040914" />
+<linearGradient id="navyFeather3" x1="0%" y1="0%" x2="100%" y2="100%">
+<stop offset="0%" stopColor="#0D1728" />
+<stop offset="100%" stopColor="#04070D" />
 </linearGradient>
 </defs>
+{/* Outer Slender Golden Crescent Arch */}
 <path 
-d="M 68 18 C 112 18 144 50 144 92 C 144 116 132 136 116 146 C 130 134 138 114 138 92 C 138 54 110 24 70 24 C 55 24 41 29 30 38 C 41 25 54 18 68 18 Z" 
-fill="url(#goldArch)" 
+d="M 95 18 C 145 18 182 56 182 104 C 182 133 166 156 145 168 C 160 154 172 132 172 104 C 172 62 138 28 95 28 C 76 28 58 35 44 46 C 58 29 75 18 95 18 Z" 
+fill="url(#goldArchGrad)" 
 />
+{/* Top Main Wing Feather - Rich Gold */}
 <path 
-d="M 40 50 C 65 48 108 58 132 75 C 104 77 78 70 54 66 C 46 64 38 58 40 50 Z" 
-fill="url(#wingGold)" 
+d="M 52 58 C 82 54 134 66 162 88 C 128 89 96 81 68 76 C 58 74 48 68 52 58 Z" 
+fill="url(#goldFeatherGrad)" 
 />
+{/* Second Wing Feather - Deep Navy */}
 <path 
-d="M 46 72 C 72 70 108 78 126 95 C 98 94 76 87 56 83 C 48 81 44 76 46 72 Z" 
-fill="url(#wingNavyMid)" 
+d="M 58 84 C 88 80 132 91 154 112 C 120 110 94 102 70 97 C 60 94 54 90 58 84 Z" 
+fill="url(#navyFeather1)" 
 />
+{/* Third Wing Feather - Deep Navy */}
 <path 
-d="M 54 94 C 76 92 104 100 116 115 C 94 112 76 106 62 101 C 56 99 52 96 54 94 Z" 
-fill="url(#wingNavyDark)" 
+d="M 68 110 C 94 107 128 116 142 134 C 114 130 92 123 76 118 C 68 115 64 112 68 110 Z" 
+fill="url(#navyFeather2)" 
 />
+{/* Bottom Quill Tail Feather - Deep Navy */}
 <path 
-d="M 66 112 C 80 112 96 119 104 129 C 88 127 75 122 66 117 C 62 115 62 112 66 112 Z" 
-fill="url(#wingNavyDark)" 
+d="M 80 132 C 98 131 118 138 126 149 C 106 146 90 140 80 136 C 75 134 75 132 80 132 Z" 
+fill="url(#navyFeather3)" 
 />
 </svg>
 );
@@ -313,14 +324,17 @@ care@vaayuelixir.com
 {/* 2. NAVIGATION BAR */}
 <nav style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "12px 16px" }}>
 <div style={{ maxWidth: "1240px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
+{/* Logo + Brand Container */}
 <div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-<VaayuEmblem size={48} />
+<div style={{ width: "44px", height: "44px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "visible" }}>
+<VaayuEmblem size={44} />
+</div>
 <div>
 <div style={{ display: "flex", alignItems: "baseline", gap: "6px", lineHeight: 1 }}>
-<span style={{ fontFamily: "Georgia, serif", fontSize: "21px", fontWeight: 800, color: "#0B1528", letterSpacing: "0.08em" }}>
+<span style={{ fontFamily: "Georgia, serif", fontSize: "20px", fontWeight: 800, color: "#0B1528", letterSpacing: "0.08em" }}>
 VAAYU
 </span>
-<span style={{ fontFamily: "Georgia, serif", fontSize: "21px", fontWeight: 800, color: "#B88A34", letterSpacing: "0.08em" }}>
+<span style={{ fontFamily: "Georgia, serif", fontSize: "20px", fontWeight: 800, color: "#B88A34", letterSpacing: "0.08em" }}>
 ELIXIR
 </span>
 </div>
@@ -548,7 +562,7 @@ Quote
 ))}
 </div>
 </section>
-{/* 5. MODAL */}
+{/* 5. SPECIFICATION MODAL */}
 {selectedProduct && (
 <div style={{ position: "fixed", inset: 0, zIndex: 200, backgroundColor: "rgba(6,13,29,0.85)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
 <div style={{ backgroundColor: "#FFFFFF", borderRadius: "6px", maxWidth: "600px", width: "100%", maxHeight: "90vh", overflowY: "auto", border: "1px solid #CBD5E1", boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}>
