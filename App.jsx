@@ -1,66 +1,31 @@
 import React, { useState, useEffect } from 'react';
-// Perfectly scaled and padded emblem based on your business card
-function VaayuEmblem({ size = 44 }) {
+// Displays your uploaded business card artwork with contained aspect ratio
+function VaayuBrandLogo({ size = 48, className = "" }) {
 return (
-<svg
-width={size}
-height={size}
-viewBox="0 0 200 200"
-preserveAspectRatio="xMidYMid meet"
-fill="none"
-xmlns="http://www.w3.org/2000/svg"
-style={{ flexShrink: 0, display: "block" }}
+<div
+style={{
+width: ⁠${size}px⁠,
+height: ⁠${size}px⁠,
+display: "flex",
+alignItems: "center",
+justifyContent: "center",
+overflow: "hidden",
+borderRadius: "6px",
+flexShrink: 0
+}}
+className={className}
 >
-<defs>
-<linearGradient id="goldArchGrad" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#DFBF77" />
-<stop offset="45%" stopColor="#B88A34" />
-<stop offset="100%" stopColor="#7E5914" />
-</linearGradient>
-<linearGradient id="goldFeatherGrad" x1="0%" y1="0%" x2="100%" y2="80%">
-<stop offset="0%" stopColor="#DFC07A" />
-<stop offset="50%" stopColor="#BA8C36" />
-<stop offset="100%" stopColor="#8A631E" />
-</linearGradient>
-<linearGradient id="navyFeather1" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#1C2E4A" />
-<stop offset="100%" stopColor="#0B1322" />
-</linearGradient>
-<linearGradient id="navyFeather2" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#122038" />
-<stop offset="100%" stopColor="#070D18" />
-</linearGradient>
-<linearGradient id="navyFeather3" x1="0%" y1="0%" x2="100%" y2="100%">
-<stop offset="0%" stopColor="#0D1728" />
-<stop offset="100%" stopColor="#04070D" />
-</linearGradient>
-</defs>
-{/* Outer Slender Golden Crescent Arch */}
-<path 
-d="M 95 18 C 145 18 182 56 182 104 C 182 133 166 156 145 168 C 160 154 172 132 172 104 C 172 62 138 28 95 28 C 76 28 58 35 44 46 C 58 29 75 18 95 18 Z" 
-fill="url(#goldArchGrad)" 
+<img
+src="/IMG_9377.jpeg"
+alt="Vaayu Elixir"
+style={{
+width: "100%",
+height: "100%",
+objectFit: "cover",
+display: "block"
+}}
 />
-{/* Top Main Wing Feather - Rich Gold */}
-<path 
-d="M 52 58 C 82 54 134 66 162 88 C 128 89 96 81 68 76 C 58 74 48 68 52 58 Z" 
-fill="url(#goldFeatherGrad)" 
-/>
-{/* Second Wing Feather - Deep Navy */}
-<path 
-d="M 58 84 C 88 80 132 91 154 112 C 120 110 94 102 70 97 C 60 94 54 90 58 84 Z" 
-fill="url(#navyFeather1)" 
-/>
-{/* Third Wing Feather - Deep Navy */}
-<path 
-d="M 68 110 C 94 107 128 116 142 134 C 114 130 92 123 76 118 C 68 115 64 112 68 110 Z" 
-fill="url(#navyFeather2)" 
-/>
-{/* Bottom Quill Tail Feather - Deep Navy */}
-<path 
-d="M 80 132 C 98 131 118 138 126 149 C 106 146 90 140 80 136 C 75 134 75 132 80 132 Z" 
-fill="url(#navyFeather3)" 
-/>
-</svg>
+</div>
 );
 }
 const COMMODITY_CATALOG = [
@@ -307,7 +272,7 @@ return (
 <div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "monospace" }}>
 <span style={{ color: "#DFC07A", fontWeight: 700, display: "flex", alignItems: "center", gap: "6px" }}>
 <span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#10B981", display: "inline-block" }}></span>
-GATEWAY: JNPT NHAVA SHEVA (BMCT / NSICT)
+GATEWAY: JNPT NHAVA SHEVA (BMCT / NSIT)
 </span>
 <span style={{ color: "#334155" }}>|</span>
 <span style={{ color: "#CBD5E1", fontSize: "10px" }}>APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
@@ -325,10 +290,8 @@ care@vaayuelixir.com
 <nav style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "12px 16px" }}>
 <div style={{ maxWidth: "1240px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
 {/* Logo + Brand Container */}
-<div style={{ display: "flex", alignItems: "center", gap: "12px" }}>
-<div style={{ width: "44px", height: "44px", display: "flex", alignItems: "center", justifyContent: "center", overflow: "visible" }}>
-<VaayuEmblem size={44} />
-</div>
+<div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
+<VaayuBrandLogo size={46} />
 <div>
 <div style={{ display: "flex", alignItems: "baseline", gap: "6px", lineHeight: 1 }}>
 <span style={{ fontFamily: "Georgia, serif", fontSize: "20px", fontWeight: 800, color: "#0B1528", letterSpacing: "0.08em" }}>
@@ -338,7 +301,7 @@ VAAYU
 ELIXIR
 </span>
 </div>
-<div style={{ fontSize: "8px", fontWeight: 700, color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase", marginTop: "4px" }}>
+<div style={{ fontSize: "8.5px", fontWeight: 700, color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase", marginTop: "4px" }}>
 GLOBAL TRADE & STRATEGIC VENTURES
 </div>
 </div>
@@ -414,8 +377,8 @@ Trade Desk WhatsApp
 </div>
 <div style={{ backgroundColor: "#060D1D", color: "#CBD5E1", padding: "24px", borderRadius: "8px", border: "1px solid #1E293B", boxShadow: "0 6px 20px rgba(0,0,0,0.12)" }}>
 <div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #1E293B", paddingBottom: "12px", marginBottom: "14px" }}>
-<div style={{ display: "flex", alignItems: "center", gap: "8px" }}>
-<VaayuEmblem size={24} />
+<div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+<VaayuBrandLogo size={28} />
 <span style={{ fontFamily: "monospace", fontSize: "11px", fontWeight: 700, color: "#DFC07A", letterSpacing: "0.08em" }}>
 CORRIDOR VELOCITY & LOGISTICS
 </span>
@@ -505,7 +468,7 @@ style={{ backgroundColor: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: 
 <div>
 <div style={{ height: "110px", backgroundColor: "#060D1D", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1px solid #E2E8F0" }}>
 <div style={{ textAlign: "center" }}>
-<VaayuEmblem size={34} />
+<VaayuBrandLogo size={36} />
 <div style={{ fontSize: "9.5px", fontFamily: "monospace", color: "#DFC07A", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: "4px" }}>
 {prod.category}
 </div>
@@ -567,8 +530,8 @@ Quote
 <div style={{ position: "fixed", inset: 0, zIndex: 200, backgroundColor: "rgba(6,13,29,0.85)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
 <div style={{ backgroundColor: "#FFFFFF", borderRadius: "6px", maxWidth: "600px", width: "100%", maxHeight: "90vh", overflowY: "auto", border: "1px solid #CBD5E1", boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}>
 <div style={{ padding: "16px 20px", backgroundColor: "#060D1D", color: "#FFF", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-<div style={{ display: "flex", gap: "10px", alignItems: "center" }}>
-<VaayuEmblem size={32} />
+<div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+<VaayuBrandLogo size={36} />
 <div>
 <div style={{ fontSize: "9.5px", fontFamily: "monospace", color: "#DFC07A", textTransform: "uppercase" }}>{selectedProduct.category}</div>
 <h3 style={{ fontFamily: "Georgia, serif", fontSize: "17px", fontWeight: 700, margin: "2px 0 0 0" }}>{selectedProduct.title}</h3>
@@ -842,8 +805,8 @@ style={{ width: "100%", padding: "14px", backgroundColor: "#B88A34", color: "#FF
 <footer style={{ backgroundColor: "#050A14", color: "#94A3B8", padding: "40px 16px 20px 16px", borderTop: "1px solid #1E293B", fontSize: "11.5px" }}>
 <div style={{ maxWidth: "1240px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "28px" }}>
 <div>
-<div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "8px" }}>
-<VaayuEmblem size={34} />
+<div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
+<VaayuBrandLogo size={36} />
 <div>
 <span style={{ fontFamily: "Georgia, serif", fontWeight: 800, color: "#FFF", fontSize: "17px" }}>VAAYU </span>
 <span style={{ fontFamily: "Georgia, serif", fontWeight: 800, color: "#DFC07A", fontSize: "17px" }}>ELIXIR</span>
