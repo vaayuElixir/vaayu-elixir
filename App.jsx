@@ -1,57 +1,59 @@
 import React, { useState, useEffect } from 'react';
-// Official Vaayu Elixir Wing & Crescent Emblem (Vector SVG)
-function VaayuLogo({ className = "w-10 h-10" }) {
+// Exact Replica Vector of the Vaayu Elixir Card Logo
+// Golden arch crescent embracing three stylized dynamic wing plumes
+function VaayuBrandLogo({ className = "w-12 h-12" }) {
 return (
 <svg 
 className={className} 
-viewBox="0 0 100 100" 
+viewBox="0 0 120 120" 
 fill="none" 
 xmlns="http://www.w3.org/2000/svg"
-aria-label="VAAYU ELIXIR Logo"
+aria-label="Vaayu Elixir Official Emblem"
 >
 <defs>
-<linearGradient id="goldArch" x1="20" y1="20" x2="90" y2="90" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#DFB76C" />
-<stop offset="50%" stopColor="#C49A45" />
-<stop offset="100%" stopColor="#8A6420" />
+<linearGradient id="goldArchGrad" x1="20" y1="10" x2="105" y2="100" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#E9C880" />
+<stop offset="45%" stopColor="#C4983E" />
+<stop offset="100%" stopColor="#7E5918" />
 </linearGradient>
-<linearGradient id="goldWing" x1="30" y1="25" x2="80" y2="50" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#E5C178" />
-<stop offset="100%" stopColor="#A87928" />
+<linearGradient id="wingGoldTop" x1="35" y1="25" x2="85" y2="45" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#EDD18D" />
+<stop offset="60%" stopColor="#C2963B" />
+<stop offset="100%" stopColor="#8C631B" />
 </linearGradient>
-<linearGradient id="navyWing1" x1="30" y1="35" x2="75" y2="65" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#1E293B" />
-<stop offset="100%" stopColor="#0B132B" />
+<linearGradient id="wingNavyMid" x1="30" y1="40" x2="80" y2="65" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#1E2F52" />
+<stop offset="100%" stopColor="#0B1528" />
 </linearGradient>
-<linearGradient id="navyWing2" x1="35" y1="45" x2="80" y2="75" gradientUnits="userSpaceOnUse">
-<stop offset="0%" stopColor="#2A4365" />
-<stop offset="100%" stopColor="#0F172A" />
+<linearGradient id="wingNavyBot" x1="35" y1="55" x2="75" y2="85" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#2A4374" />
+<stop offset="100%" stopColor="#0A1222" />
 </linearGradient>
 </defs>
-{/* Outer Slender Golden Crescent Arch */}
-<path 
-d="M 48 12 C 68 12, 85 28, 85 48 C 85 58, 80 66, 74 72 C 73 70, 75 62, 75 48 C 75 32, 63 18, 48 16 C 45 16, 43 17, 41 18 C 43 14, 45 12, 48 12 Z" 
-fill="url(#goldArch)" 
+{/* Outer Slender Golden Crescent Ring Enclosing Emblem */}
+<path
+d="M 52 14 C 74 14, 94 28, 98 50 C 101 64, 96 79, 87 90 C 86 87, 88 77, 87 68 C 85 48, 73 28, 52 20 C 47 18, 41 18, 36 20 C 41 16, 46 14, 52 14 Z"
+fill="url(#goldArchGrad)"
 />
-{/* Top Golden Wing Plume */}
-<path 
-d="M 32 30 C 46 30, 68 34, 82 48 C 66 47, 48 43, 38 41 C 34 40, 31 36, 32 30 Z" 
-fill="url(#goldWing)" 
+{/* Feather 1: Upper Gold Wing Swoop */}
+<path
+d="M 34 32 C 50 32, 70 37, 88 50 C 72 49, 52 44, 40 42 C 34 41, 32 37, 34 32 Z"
+fill="url(#wingGoldTop)"
 />
-{/* Middle Deep Navy Wing Plume */}
-<path 
-d="M 34 43 C 48 43, 66 48, 77 60 C 62 58, 46 54, 38 52 C 34 51, 33 47, 34 43 Z" 
-fill="url(#navyWing1)" 
+{/* Feather 2: Middle Navy Wing Swoop */}
+<path
+d="M 33 46 C 49 46, 68 52, 80 65 C 65 62, 48 57, 39 55 C 33 54, 31 50, 33 46 Z"
+fill="url(#wingNavyMid)"
 />
-{/* Lower Sleek Navy Wing Curve */}
-<path 
-d="M 38 53 C 50 54, 64 60, 72 70 C 58 67, 46 64, 41 62 C 37 60, 36 56, 38 53 Z" 
-fill="url(#navyWing2)" 
+{/* Feather 3: Lower Navy Wing Swoop */}
+<path
+d="M 37 59 C 50 60, 66 67, 73 78 C 60 74, 47 70, 41 67 C 36 65, 35 62, 37 59 Z"
+fill="url(#wingNavyBot)"
 />
-{/* Dynamic Swoop Tail */}
-<path 
-d="M 44 63 C 54 65, 62 72, 65 80 C 56 76, 48 72, 45 68 C 43 66, 43 64, 44 63 Z" 
-fill="#1E293B" 
+{/* Downward Tapering Hook Tail */}
+<path
+d="M 45 71 C 55 74, 62 82, 65 91 C 56 87, 49 82, 46 77 C 43 74, 43 72, 45 71 Z"
+fill="#0B1528"
 />
 </svg>
 );
@@ -170,38 +172,6 @@ inspectionStandard: "Spices Board Certificate of Analysis",
 description: "The Queen of Spices. Deep olive-green calyx preservation, robust aromatic pinene and cineole compounds, processed for premium Gulf & Middle East Gahwa."
 },
 {
-id: "spices-cloves-lalpari",
-category: "Whole Spices",
-title: "Whole Lal Pari Cloves (Handpicked)",
-hsn: "0907.10.10",
-botanical: "Syzygium aromaticum",
-origin: "Kanyakumari & Western Ghats Foothills",
-grainLength: "Intact Crown / Head Structure",
-moisture: "Max 11.0%",
-broken: "Headless Cloves < 2.0%",
-purity: "Eugenol Oil Content: Min 17%",
-packaging: "25kg Woven Bags with Moisture Barrier Liner",
-containerPayload: "12.0 MT per 20ft Dry Cargo FCL",
-inspectionStandard: "Pre-Berth Phytosanitary Cleared",
-description: "Natural reddish-brown dried flower buds with unbroken crowns. Rich eugenol content delivering antiseptic spice punch for culinary trade."
-},
-{
-id: "spices-turmeric-curcumin",
-category: "Whole Spices",
-title: "High-Curcumin Turmeric Fingers (Salem / Nizamabad)",
-hsn: "0910.30.20",
-botanical: "Curcuma longa",
-origin: "Salem (Tamil Nadu) & Nizamabad (Telangana)",
-grainLength: "Clean Polished Whole Double Fingers",
-moisture: "Max 10.0%",
-broken: "Bulbs & Broken under 2%",
-purity: "Curcumin Active Range: 3.5% - 5.2% Min",
-packaging: "25kg / 50kg Multi-Wall Jute / PP Bags",
-containerPayload: "18.0 MT per 20ft FCL Container",
-inspectionStandard: "Spices Board Agmark Lab Graded",
-description: "Deep golden-orange core with natural curcumin potency. Clean double-polished finish, minimal chalky defect, primed for pharma and food extraction."
-},
-{
 id: "produce-moringa-drumstick",
 category: "Fresh Produce",
 title: "Fresh Moringa Drumsticks (Export Cut)",
@@ -218,22 +188,6 @@ inspectionStandard: "APEDA Fresh Perishable Export Cleared",
 description: "Tender seed formation with fleshy sweet pulp. Handpicked at sunrise, sorted for diameter uniformity, and cold-chain stabilized for GCC air corridors."
 },
 {
-id: "produce-elephant-yam",
-category: "Fresh Produce",
-title: "Elephant Foot Yam (Suran / Amorphophallus)",
-hsn: "0714.90.90",
-botanical: "Amorphophallus paeoniifolius",
-origin: "AP River Deltas & Maharashtra Mandis",
-grainLength: "1.5 kg to 4.5 kg Cured Solid Corms",
-moisture: "Air-Cured Dry Outer Epidermis",
-broken: "Zero Bruising / Firm Solid Flesh",
-purity: "Surface Cleaned & Anti-Fungal Dust Treated",
-packaging: "10kg / 20kg Ventilated Mesh Jute Sacks",
-containerPayload: "24.0 MT in 40ft High Cube Reefer (+12°C to +14°C)",
-inspectionStandard: "Phytosanitary Clearance Certificate",
-description: "Dense, nutrient-packed starchy tuber with extended ocean shelf-life. Cured under shaded ventilation to eliminate excess surface moisture prior to reefer stuffing."
-},
-{
 id: "poultry-table-eggs",
 category: "Cold Chain & Poultry",
 title: "Grade A Export Table Eggs (Clean White Shell)",
@@ -248,22 +202,6 @@ packaging: "30 Eggs per Tray • 12 Trays per 360-Egg Master Carton",
 containerPayload: "1,312 Cartons (472,320 Eggs) in 40ft Reefer (+4°C)",
 inspectionStandard: "Department of Animal Husbandry & Dairying (DAHD)",
 description: "Salmonella & antibiotic certified clean white shell eggs. Candled and UV disinfected prior to temperature-locked reefer voyages to the Middle East & Africa."
-},
-{
-id: "poultry-frozen-chicken",
-category: "Cold Chain & Poultry",
-title: "Halal Certified Frozen Whole Poultry & Cuts",
-hsn: "0207.12.00",
-botanical: "Gallus domesticus (Commercial Broiler)",
-origin: "Western Maharashtra & Tamil Nadu Abattoirs",
-grainLength: "Whole Carcass: 900g to 1400g Calibrated",
-moisture: "Moisture Retention: Under 4%",
-broken: "Zero Broken Bones / Clean Wing Cut",
-purity: "Halal Hand Slaughtered (Islamic Sharia Compliant)",
-packaging: "Individual Poly Bags in 10kg Master Cartons",
-containerPayload: "26.0 MT in 40ft High Cube Reefer (-18°C Blast Frozen)",
-inspectionStandard: "FSSAI / Halal Trust / EIC Veterinary Health Assayed",
-description: "Blast-frozen to core -18°C within hours of processing. Complete traceability, zero artificial moisture pumping, export packed for commercial food distribution."
 }
 ];
 export default function App() {
@@ -286,8 +224,7 @@ const [rfqSuccess, setRfqSuccess] = useState(false);
 const [deskTimes, setDeskTimes] = useState({
 mumbai: "",
 dubai: "",
-singapore: "",
-rotterdam: ""
+singapore: ""
 });
 useEffect(() => {
 const updateTimes = () => {
@@ -295,8 +232,7 @@ const now = new Date();
 setDeskTimes({
 mumbai: now.toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
 dubai: now.toLocaleTimeString("en-US", { timeZone: "Asia/Dubai", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
-singapore: now.toLocaleTimeString("en-US", { timeZone: "Asia/Singapore", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
-rotterdam: now.toLocaleTimeString("en-US", { timeZone: "Europe/Amsterdam", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
+singapore: now.toLocaleTimeString("en-US", { timeZone: "Asia/Singapore", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
 });
 };
 updateTimes();
@@ -349,70 +285,76 @@ setIsSubmitting(false);
 const whatsappMessage =
 "VAAYU ELIXIR - COMMERCIAL RFQ\n\n" +
 "• Commodity: " + activeCommodity.title + "\n" +
-"• HSN Code: " + activeCommodity.hsn + "\n" +
+"• HSN: " + activeCommodity.hsn + "\n" +
 "• Volume: " + rfqForm.volumeMT + " MT (~" + calculatedContainers + " FCL)\n" +
 "• Incoterm: " + rfqForm.incoterm + " -> " + rfqForm.destinationPort + "\n" +
 "• Packaging: " + rfqForm.packagingType + "\n" +
-"• Buyer: " + (rfqForm.buyerEntity || "Direct Importer") + " (" + rfqForm.contactName + ")\n" +
+"• Buyer Entity: " + (rfqForm.buyerEntity || "Direct Importer") + " (" + rfqForm.contactName + ")\n" +
 "• Email: " + rfqForm.email + "\n" +
-"• Tel: " + rfqForm.phone + "\n\n" +
-"Please dispatch proforma quotation and next berth stuffing schedule.";
+"• WhatsApp: " + rfqForm.phone + "\n\n" +
+"Please provide formal proforma quotation and liner schedule.";
 const whatsappUrl = "https://wa.me/917208666522?text=" + encodeURIComponent(whatsappMessage);
 return (
-<div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
+<div style={{ minHeight: "100vh", backgroundColor: "#F8FAFC", color: "#1E293B", fontFamily: "Inter, sans-serif" }}>
 {/* Top Trade Ticker */}
-<header className="bg-slate-950 text-slate-300 text-xs border-b border-slate-800 sticky top-0 z-50">
-<div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-3">
-<div className="flex items-center gap-3 text-[11px] font-mono tracking-wider">
-<span className="flex items-center gap-1.5 text-amber-400 font-medium">
-<span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
-PORT GATEWAY: JNPT NHAVA SHEVA (BMCT / NSICT)
+<header style={{ backgroundColor: "#070E1E", borderBottom: "1px solid #1E293B", color: "#94A3B8", fontSize: "11px", position: "sticky", top: 0, zIndex: 50 }}>
+<div style={{ maxWidth: "1280px", margin: "0 auto", padding: "8px 16px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "10px" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "12px", fontFamily: "JetBrains Mono, monospace" }}>
+<span style={{ color: "#E2BF7D", fontWeight: 600, display: "flex", alignItems: "center", gap: "6px" }}>
+<span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#10B981", display: "inline-block" }}></span>
+GATEWAY: JNPT NHAVA SHEVA (BMCT / NSICT)
 </span>
-<span className="hidden lg:inline text-slate-600">|</span>
-<span className="hidden lg:inline text-slate-400">APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
+<span style={{ color: "#475569" }}>|</span>
+<span style={{ color: "#CBD5E1" }}>APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
 </div>
-<div className="flex items-center gap-4 font-mono text-[11px]">
-<span className="text-slate-400">BOM: <span className="text-white font-medium">{deskTimes.mumbai || "--:--"}</span></span>
-<span className="text-slate-400">DXB: <span className="text-white font-medium">{deskTimes.dubai || "--:--"}</span></span>
-<span className="hidden sm:inline text-slate-400">SIN: <span className="text-white font-medium">{deskTimes.singapore || "--:--"}</span></span>
-<a 
-href="mailto:care@vaayuelixir.com" 
-className="text-amber-400 hover:text-amber-300 transition-colors font-medium ml-1"
->
+<div style={{ display: "flex", alignItems: "center", gap: "16px", fontFamily: "JetBrains Mono, monospace" }}>
+<span>BOM: <strong style={{ color: "#FFF" }}>{deskTimes.mumbai || "--:--"}</strong></span>
+<span>DXB: <strong style={{ color: "#FFF" }}>{deskTimes.dubai || "--:--"}</strong></span>
+<span style={{ display: "none" }} className="sm:inline">SIN: <strong style={{ color: "#FFF" }}>{deskTimes.singapore || "--:--"}</strong></span>
+<a href="mailto:care@vaayuelixir.com" style={{ color: "#E2BF7D", textDecoration: "none", fontWeight: 600 }}>
 care@vaayuelixir.com
 </a>
 </div>
 </div>
 </header>
 {/* Main Navigation Bar */}
-<nav className="bg-white border-b border-slate-200">
-<div className="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
-<div className="flex items-center gap-3.5">
-<VaayuLogo className="w-12 h-12 flex-shrink-0" />
+<nav style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "14px 16px" }}>
+<div style={{ maxWidth: "1280px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+<VaayuBrandLogo className="w-14 h-14" />
 <div>
-<div className="flex items-baseline gap-1.5">
-<span className="text-xl font-serif font-bold text-slate-950 tracking-wider">VAAYU</span>
-<span className="text-xl font-serif font-bold text-[#B38738] tracking-wider">ELIXIR</span>
+<div style={{ display: "flex", alignItems: "baseline", gap: "8px", lineHeight: "1" }}>
+<span style={{ fontFamily: "Cinzel, serif", fontSize: "24px", fontWeight: 800, color: "#0B1528", letterSpacing: "0.08em" }}>
+VAAYU
+</span>
+<span style={{ fontFamily: "Cinzel, serif", fontSize: "24px", fontWeight: 800, color: "#C19845", letterSpacing: "0.08em" }}>
+ELIXIR
+</span>
 </div>
-<p className="text-[9.5px] font-sans font-semibold text-slate-600 uppercase tracking-[0.2em] -mt-0.5">
+<p style={{ margin: "4px 0 0 0", fontSize: "9.5px", fontWeight: 700, color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase" }}>
 GLOBAL TRADE & STRATEGIC VENTURES
 </p>
 </div>
 </div>
-<div className="flex items-center gap-4">
-<div className="hidden lg:block text-right pr-4 border-r border-slate-200">
-<div className="text-[10px] font-mono text-slate-400 uppercase">TRADE CORRIDOR</div>
-<div className="text-[11px] font-medium text-slate-700">INDIA • MIDDLE EAST • AFRICA • EUROPE • ASIA</div>
+<div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
+<div style={{ textAlign: "right", paddingRight: "16px", borderRight: "1px solid #E2E8F0" }} className="hidden lg:block">
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#94A3B8", letterSpacing: "0.15em", textTransform: "uppercase" }}>
+TRADE CORRIDORS
 </div>
-<a 
-href="#catalog" 
-className="hidden sm:block text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-slate-900 transition-colors"
+<div style={{ fontSize: "11px", fontWeight: 600, color: "#0B1528" }}>
+INDIA • MIDDLE EAST • AFRICA • EUROPE • ASIA
+</div>
+</div>
+<a
+href="#catalog"
+style={{ fontSize: "12px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", letterSpacing: "0.05em", color: "#334155", textDecoration: "none", fontWeight: 600 }}
+className="hidden sm:inline"
 >
 Commodity Vault
 </a>
-<a 
-href="#proforma" 
-className="text-xs font-mono uppercase tracking-wider px-4 py-2.5 bg-slate-950 hover:bg-slate-800 text-amber-400 rounded transition-colors font-medium border border-amber-500/20 shadow-sm"
+<a
+href="#proforma"
+style={{ fontSize: "12px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", letterSpacing: "0.05em", padding: "10px 18px", backgroundColor: "#0B1528", color: "#E2BF7D", borderRadius: "4px", textDecoration: "none", fontWeight: 700, border: "1px solid rgba(193,152,69,0.3)" }}
 >
 Request Proforma
 </a>
@@ -420,42 +362,43 @@ Request Proforma
 </div>
 </nav>
 {/* Hero Section */}
-<section className="bg-white border-b border-slate-200 py-16 px-4">
-<div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
-<div className="lg:col-span-7 space-y-6">
-<div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200/80 rounded text-amber-800 text-xs font-mono tracking-wide">
-<span className="font-semibold text-[#9A7336]">MOVING OPPORTUNITIES. CREATING VALUE.</span>
+<section style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "48px 16px" }}>
+<div style={{ maxWidth: "1280px", margin: "0 auto" }}>
+<div style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "6px 14px", backgroundColor: "#FEF9EE", border: "1px solid #F5E3B8", borderRadius: "4px", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", color: "#8C6721", marginBottom: "20px" }}>
+<span style={{ fontWeight: 700, letterSpacing: "0.1em" }}>MOVING OPPORTUNITIES. CREATING VALUE.</span>
 <span>•</span>
-<span className="text-slate-600">MUMBAI & NAVI MUMBAI</span>
+<span style={{ color: "#475569" }}>MUMBAI & NAVI MUMBAI TRADING CORRIDOR</span>
 </div>
-<h2 className="text-4xl sm:text-5xl font-serif font-bold text-slate-950 leading-tight">
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "40px", alignItems: "center" }}>
+<div>
+<h1 style={{ fontFamily: "Cinzel, serif", fontSize: "38px", fontWeight: 800, color: "#0B1528", lineHeight: 1.2, margin: "0 0 16px 0", letterSpacing: "0.02em" }}>
 Direct Farm-to-Berth Maritime Trade Execution.
-</h2>
-<p className="text-slate-600 text-base sm:text-lg leading-relaxed font-light">
+</h1>
+<p style={{ fontSize: "16px", lineHeight: "1.6", color: "#475569", margin: "0 0 24px 0" }}>
 Direct containerized export shipments of calibrated Indian Basmati rice, high-pungency red chillies, plantation spices, fresh perishables, and cold-chain cargo through Nhava Sheva (JNPT) and Sahar Cargo across the GCC, Africa, and Southeast Asia.
 </p>
-<div className="grid grid-cols-2 sm:grid-cols-4 gap-4 pt-2">
-<div className="p-3 bg-slate-50 border border-slate-200 rounded">
-<div className="text-[10px] font-mono text-slate-500 uppercase">Primary Port</div>
-<div className="font-semibold text-slate-900 text-sm">JNPT Nhava Sheva</div>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(130px, 1fr))", gap: "10px", marginBottom: "24px" }}>
+<div style={{ padding: "10px 12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", textTransform: "uppercase" }}>Primary Port</div>
+<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528" }}>JNPT Nhava Sheva</div>
 </div>
-<div className="p-3 bg-slate-50 border border-slate-200 rounded">
-<div className="text-[10px] font-mono text-slate-500 uppercase">Express Air</div>
-<div className="font-semibold text-slate-900 text-sm">Sahar & NMIA Air Cargo</div>
+<div style={{ padding: "10px 12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", textTransform: "uppercase" }}>Express Air</div>
+<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528" }}>Sahar & NMIA Cargo</div>
 </div>
-<div className="p-3 bg-slate-50 border border-slate-200 rounded">
-<div className="text-[10px] font-mono text-slate-500 uppercase">Cold Chain</div>
-<div className="font-semibold text-slate-900 text-sm">-18°C to +14°C Reefer</div>
+<div style={{ padding: "10px 12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", textTransform: "uppercase" }}>Cold Chain</div>
+<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528" }}>-18°C to +14°C</div>
 </div>
-<div className="p-3 bg-slate-50 border border-slate-200 rounded">
-<div className="text-[10px] font-mono text-slate-500 uppercase">Assay Audit</div>
-<div className="font-semibold text-slate-900 text-sm">SGS / Bureau Veritas</div>
+<div style={{ padding: "10px 12px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", textTransform: "uppercase" }}>Assay Standard</div>
+<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528" }}>SGS / Bureau Veritas</div>
 </div>
 </div>
-<div className="flex flex-wrap gap-3 pt-2">
+<div style={{ display: "flex", flexWrap: "wrap", gap: "12px" }}>
 <a
 href="#catalog"
-className="px-6 py-3 bg-[#9A7336] hover:bg-[#85612A] text-white font-mono text-xs uppercase tracking-widest font-semibold rounded shadow-sm transition-colors"
+style={{ display: "inline-block", padding: "12px 24px", backgroundColor: "#C19845", color: "#FFFFFF", fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", borderRadius: "4px", boxShadow: "0 2px 4px rgba(193,152,69,0.2)" }}
 >
 Inspect Export Commodities →
 </a>
@@ -463,69 +406,90 @@ Inspect Export Commodities →
 href="https://wa.me/917208666522"
 target="_blank"
 rel="noreferrer"
-className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono text-xs uppercase tracking-widest font-semibold rounded border border-slate-300 transition-colors flex items-center gap-2"
+style={{ display: "inline-flex", alignItems: "center", gap: "8px", padding: "12px 24px", backgroundColor: "#0B1528", color: "#E2BF7D", fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", textDecoration: "none", borderRadius: "4px" }}
 >
-<span>Live Trade Desk WhatsApp</span>
+<span>Trade Desk WhatsApp</span>
 </a>
 </div>
 </div>
-{/* Logistics Velocity Panel */}
-<div className="lg:col-span-5 bg-slate-950 text-slate-300 p-6 sm:p-7 rounded-xl border border-slate-800 shadow-xl space-y-5">
-<div className="flex items-center justify-between border-b border-slate-800 pb-3">
-<div className="flex items-center gap-2">
-<VaayuLogo className="w-6 h-6" />
-<span className="font-mono text-xs text-amber-400 font-semibold tracking-wider">CORRIDOR VELOCITY & LOGISTICS</span>
+{/* Corridor Velocity Panel */}
+<div style={{ backgroundColor: "#070E1E", color: "#CBD5E1", padding: "28px", borderRadius: "8px", border: "1px solid #1E293B", boxShadow: "0 8px 24px rgba(0,0,0,0.12)" }}>
+<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #1E293B", paddingBottom: "14px", marginBottom: "16px" }}>
+<div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+<VaayuBrandLogo className="w-7 h-7" />
+<span style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 700, color: "#E2BF7D", letterSpacing: "0.08em" }}>
+CORRIDOR VELOCITY & LOGISTICS
+</span>
 </div>
-<span className="text-[10px] font-mono bg-slate-800 px-2 py-0.5 rounded text-slate-400">LIVE BERTH STATUS</span>
+<span style={{ fontSize: "10px", fontFamily: "JetBrains Mono, monospace", backgroundColor: "#1E293B", color: "#94A3B8", padding: "2px 8px", borderRadius: "4px" }}>
+LIVE BERTH
+</span>
 </div>
-<div className="space-y-3 text-xs">
-<div className="p-3 bg-slate-900/80 rounded border border-slate-800 flex items-start justify-between">
+<div style={{ display: "flex", flexDirection: "column", gap: "10px", fontSize: "12px" }}>
+<div style={{ padding: "12px", backgroundColor: "#0F1A30", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 <div>
-<div className="text-white font-medium">Nhava Sheva → Jebel Ali (Dubai)</div>
-<div className="text-slate-400 text-[11px]">Direct liner transit • 3 to 4 Voyage Days</div>
+<div style={{ color: "#FFF", fontWeight: 600 }}>Nhava Sheva → Jebel Ali (Dubai)</div>
+<div style={{ color: "#94A3B8", fontSize: "11px" }}>Direct liner transit • 3 to 4 Voyage Days</div>
 </div>
-<span className="text-emerald-400 font-mono font-medium">ACTIVE</span>
+<span style={{ color: "#10B981", fontFamily: "JetBrains Mono, monospace", fontWeight: 700 }}>ACTIVE</span>
 </div>
-<div className="p-3 bg-slate-900/80 rounded border border-slate-800 flex items-start justify-between">
+<div style={{ padding: "12px", backgroundColor: "#0F1A30", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 <div>
-<div className="text-white font-medium">Nhava Sheva → West Africa (Lomé / Lagos)</div>
-<div className="text-slate-400 text-[11px]">Bulk parboiled & agro breakbulk • 22 to 26 Days</div>
+<div style={{ color: "#FFF", fontWeight: 600 }}>Nhava Sheva → West Africa (Lomé / Lagos)</div>
+<div style={{ color: "#94A3B8", fontSize: "11px" }}>Bulk parboiled & agro breakbulk • 22 to 26 Days</div>
 </div>
-<span className="text-emerald-400 font-mono font-medium">ACTIVE</span>
+<span style={{ color: "#10B981", fontFamily: "JetBrains Mono, monospace", fontWeight: 700 }}>ACTIVE</span>
 </div>
-<div className="p-3 bg-slate-900/80 rounded border border-slate-800 flex items-start justify-between">
+<div style={{ padding: "12px", backgroundColor: "#0F1A30", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
 <div>
-<div className="text-white font-medium">Mumbai Air Cargo → GCC Corridor</div>
-<div className="text-slate-400 text-[11px]">Moringa, okra & perishables • Same-Day Cargo Intake</div>
+<div style={{ color: "#FFF", fontWeight: 600 }}>Mumbai Air Cargo → GCC Corridor</div>
+<div style={{ color: "#94A3B8", fontSize: "11px" }}>Moringa & fresh perishables • Daily Uplift</div>
 </div>
-<span className="text-amber-400 font-mono font-medium">EXPRESS</span>
+<span style={{ color: "#E2BF7D", fontFamily: "JetBrains Mono, monospace", fontWeight: 700 }}>EXPRESS</span>
 </div>
 </div>
-<div className="pt-2 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
+<div style={{ marginTop: "16px", paddingTop: "14px", borderTop: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "11px", color: "#94A3B8" }}>
 <span>Amit Zawarey • Proprietor</span>
-<span>+91 7208666522</span>
+<span style={{ color: "#E2BF7D", fontFamily: "JetBrains Mono, monospace" }}>+91 7208666522</span>
+</div>
 </div>
 </div>
 </div>
 </section>
 {/* Commodity Catalog Section */}
-<section id="catalog" className="max-w-7xl mx-auto px-4 py-16">
-<div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
+<section id="catalog" style={{ maxWidth: "1280px", margin: "0 auto", padding: "48px 16px" }}>
+<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", marginBottom: "32px" }}>
 <div>
-<span className="text-xs font-mono uppercase tracking-widest text-[#9A7336] font-semibold">Institutional Grade</span>
-<h3 className="text-3xl font-serif font-bold text-slate-950 mt-1">Export Commodity Portfolio</h3>
-<p className="text-slate-600 text-sm mt-1">Strict laboratory compliance tolerances, Sortex grading, and container stuffing schedules.</p>
+<span style={{ fontSize: "11px", fontFamily: "JetBrains Mono, monospace", color: "#C19845", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+INSTITUTIONAL GRADE
+</span>
+<h2 style={{ fontFamily: "Cinzel, serif", fontSize: "28px", fontWeight: 800, color: "#0B1528", margin: "4px 0 0 0" }}>
+Export Commodity Portfolio
+</h2>
+<p style={{ fontSize: "14px", color: "#64748B", margin: "4px 0 0 0" }}>
+Strict laboratory compliance tolerances, Sortex grading, and container stuffing schedules.
+</p>
 </div>
-<div className="flex flex-wrap gap-2">
+<div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
 {categories.map(cat => {
-const btnClass = selectedCategory === cat
-? "px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded transition-colors bg-slate-950 text-white font-semibold"
-: "px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded transition-colors bg-white border border-slate-200 text-slate-600 hover:bg-slate-100";
+const active = selectedCategory === cat;
 return (
 <button
 key={cat}
 onClick={() => setSelectedCategory(cat)}
-className={btnClass}
+style={{
+padding: "8px 14px",
+fontSize: "11px",
+fontFamily: "JetBrains Mono, monospace",
+textTransform: "uppercase",
+letterSpacing: "0.05em",
+borderRadius: "4px",
+cursor: "pointer",
+border: active ? "1px solid #0B1528" : "1px solid #CBD5E1",
+backgroundColor: active ? "#0B1528" : "#FFFFFF",
+color: active ? "#E2BF7D" : "#475569",
+fontWeight: 700
+}}
 >
 {cat}
 </button>
@@ -533,50 +497,50 @@ className={btnClass}
 })}
 </div>
 </div>
-<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "24px" }}>
 {filteredProducts.map(prod => (
-<div 
-key={prod.id} 
-className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
+<div
+key={prod.id}
+style={{ backgroundColor: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "8px", overflow: "hidden", display: "flex", flexDirection: "column", justifyContent: "space-between", boxShadow: "0 1px 3px rgba(0,0,0,0.05)" }}
 >
 <div>
-<div className="relative h-44 bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center overflow-hidden border-b border-slate-200">
-<div className="text-center p-4">
-<div className="w-12 h-12 mx-auto rounded-full bg-slate-900 border border-amber-500/30 flex items-center justify-center mb-2 shadow-inner">
-<VaayuLogo className="w-7 h-7" />
+<div style={{ height: "140px", backgroundColor: "#070E1E", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1px solid #E2E8F0" }}>
+<div style={{ textAlign: "center", padding: "16px" }}>
+<VaayuBrandLogo className="w-10 h-10" />
+<div style={{ fontSize: "10px", fontFamily: "JetBrains Mono, monospace", color: "#E2BF7D", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: "4px" }}>
+{prod.category}
 </div>
-<div className="text-[11px] font-mono text-amber-400 uppercase tracking-widest font-semibold">{prod.category}</div>
-<div className="text-xs text-slate-200 font-serif mt-0.5">{prod.title}</div>
-<div className="text-[10px] font-mono text-slate-500 mt-1">HSN: {prod.hsn} • {prod.origin}</div>
 </div>
-<div className="absolute top-2 right-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-mono text-amber-400 border border-slate-700">
+<div style={{ position: "absolute", top: "10px", right: "10px", backgroundColor: "#0B1528", border: "1px solid #1E293B", padding: "2px 8px", borderRadius: "4px", color: "#E2BF7D", fontSize: "10px", fontFamily: "JetBrains Mono, monospace" }}>
 HSN {prod.hsn}
 </div>
 </div>
-<div className="p-5 space-y-3">
-<div>
-<h4 className="font-serif font-bold text-slate-950 text-lg">{prod.title}</h4>
-<p className="text-xs italic text-slate-500 font-serif">{prod.botanical}</p>
+<div style={{ padding: "20px" }}>
+<h3 style={{ fontFamily: "Cinzel, serif", fontSize: "18px", fontWeight: 700, color: "#0B1528", margin: "0 0 4px 0" }}>
+{prod.title}
+</h3>
+<div style={{ fontSize: "12px", fontStyle: "italic", color: "#64748B", marginBottom: "12px" }}>
+{prod.botanical}
 </div>
-<p className="text-xs text-slate-600 line-clamp-2 leading-relaxed">
+<p style={{ fontSize: "13px", color: "#475569", lineHeight: "1.5", margin: "0 0 16px 0" }}>
 {prod.description}
 </p>
-<div className="grid grid-cols-2 gap-2 text-[11px] font-mono pt-2 border-t border-slate-100">
-<div className="p-2 bg-slate-50 rounded">
-<span className="text-slate-400 block text-[10px]">MOISTURE</span>
-<span className="font-semibold text-slate-800">{prod.moisture}</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", paddingTop: "12px", borderTop: "1px solid #F1F5F9" }}>
+<div style={{ padding: "8px", backgroundColor: "#F8FAFC", borderRadius: "4px" }}>
+<span style={{ color: "#94A3B8", display: "block", fontSize: "9px" }}>MOISTURE</span>
+<strong style={{ color: "#1E293B" }}>{prod.moisture}</strong>
 </div>
-<div className="p-2 bg-slate-50 rounded">
-<span className="text-slate-400 block text-[10px]">CONTAINER PAYLOAD</span>
-<span className="font-semibold text-slate-800">{prod.containerPayload}</span>
-</div>
-</div>
+<div style={{ padding: "8px", backgroundColor: "#F8FAFC", borderRadius: "4px" }}>
+<span style={{ color: "#94A3B8", display: "block", fontSize: "9px" }}>PAYLOAD / FCL</span>
+<strong style={{ color: "#1E293B" }}>{prod.containerPayload}</strong>
 </div>
 </div>
-<div className="p-5 pt-0 flex items-center gap-2">
+</div>
+</div>
+<div style={{ padding: "20px", paddingTop: "0", display: "flex", gap: "10px" }}>
 <button
 onClick={() => setSelectedProduct(prod)}
-className="flex-1 py-2 text-xs font-mono uppercase tracking-wider bg-slate-100 hover:bg-slate-200 text-slate-800 rounded font-semibold transition-colors"
+style={{ flex: 1, padding: "10px", backgroundColor: "#F1F5F9", border: "none", borderRadius: "4px", color: "#1E293B", fontFamily: "JetBrains Mono, monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
 >
 Technical Spec
 </button>
@@ -590,7 +554,7 @@ packagingType: prod.packaging.split("•")[0]
 const el = document.getElementById("proforma");
 if (el) el.scrollIntoView({ behavior: "smooth" });
 }}
-className="py-2 px-3 text-xs font-mono uppercase tracking-wider bg-slate-950 hover:bg-slate-800 text-amber-400 rounded font-semibold transition-colors"
+style={{ padding: "10px 16px", backgroundColor: "#0B1528", border: "1px solid rgba(193,152,69,0.3)", borderRadius: "4px", color: "#E2BF7D", fontFamily: "JetBrains Mono, monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
 >
 Quote
 </button>
@@ -599,65 +563,57 @@ Quote
 ))}
 </div>
 </section>
-{/* Technical Spec Modal (Strict Specs Only - No upload buttons) */}
+{/* Technical Spec Modal */}
 {selectedProduct && (
-<div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
-<div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-300">
-<div className="p-6 bg-slate-950 text-white flex items-start justify-between">
-<div className="flex items-center gap-3">
-<VaayuLogo className="w-8 h-8 flex-shrink-0" />
+<div style={{ position: "fixed", inset: 0, zIndex: 100, backgroundColor: "rgba(7,14,30,0.8)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
+<div style={{ backgroundColor: "#FFFFFF", borderRadius: "8px", maxWidth: "640px", width: "100%", maxHeight: "90vh", overflowY: "auto", border: "1px solid #CBD5E1", boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}>
+<div style={{ padding: "20px 24px", backgroundColor: "#070E1E", color: "#FFF", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
+<div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
+<VaayuBrandLogo className="w-10 h-10" />
 <div>
-<span className="text-xs font-mono text-amber-400 uppercase tracking-widest">{selectedProduct.category}</span>
-<h3 className="text-xl font-serif font-bold text-white mt-0.5">{selectedProduct.title}</h3>
-<p className="text-xs text-slate-400 font-serif italic">{selectedProduct.botanical} • HSN: {selectedProduct.hsn}</p>
+<div style={{ fontSize: "10px", fontFamily: "JetBrains Mono, monospace", color: "#E2BF7D", textTransform: "uppercase" }}>{selectedProduct.category}</div>
+<h3 style={{ fontFamily: "Cinzel, serif", fontSize: "18px", fontWeight: 700, margin: "2px 0 0 0" }}>{selectedProduct.title}</h3>
+<div style={{ fontSize: "11px", color: "#94A3B8" }}>{selectedProduct.botanical} • HSN {selectedProduct.hsn}</div>
 </div>
 </div>
 <button
 onClick={() => setSelectedProduct(null)}
-className="text-slate-400 hover:text-white text-2xl leading-none"
+style={{ background: "none", border: "none", color: "#94A3B8", fontSize: "24px", cursor: "pointer", lineHeight: 1 }}
 >
 ×
 </button>
 </div>
-<div className="p-6 space-y-5">
-<p className="text-sm text-slate-600 leading-relaxed font-light">
+<div style={{ padding: "24px" }}>
+<p style={{ fontSize: "14px", color: "#475569", lineHeight: "1.6", margin: "0 0 20px 0" }}>
 {selectedProduct.description}
 </p>
-<div className="border border-slate-200 rounded overflow-hidden text-xs">
-<div className="grid grid-cols-2 p-2.5 bg-slate-50 border-b border-slate-200">
-<span className="font-mono text-slate-500 uppercase">Procurement Mandi / Origin</span>
-<span className="font-medium text-slate-900">{selectedProduct.origin}</span>
+<div style={{ border: "1px solid #E2E8F0", borderRadius: "6px", overflow: "hidden", fontSize: "12px" }}>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "JetBrains Mono, monospace", color: "#64748B" }}>Origin / Mandi</span>
+<strong>{selectedProduct.origin}</strong>
 </div>
-<div className="grid grid-cols-2 p-2.5 bg-white border-b border-slate-200">
-<span className="font-mono text-slate-500 uppercase">Grain Length / Grading</span>
-<span className="font-medium text-slate-900">{selectedProduct.grainLength}</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "JetBrains Mono, monospace", color: "#64748B" }}>Grain / Pod Length</span>
+<strong>{selectedProduct.grainLength}</strong>
 </div>
-<div className="grid grid-cols-2 p-2.5 bg-slate-50 border-b border-slate-200">
-<span className="font-mono text-slate-500 uppercase">Moisture Allowance</span>
-<span className="font-medium text-slate-900">{selectedProduct.moisture}</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "JetBrains Mono, monospace", color: "#64748B" }}>Moisture Tolerance</span>
+<strong>{selectedProduct.moisture}</strong>
 </div>
-<div className="grid grid-cols-2 p-2.5 bg-white border-b border-slate-200">
-<span className="font-mono text-slate-500 uppercase">Broken / Foreign Matter</span>
-<span className="font-medium text-slate-900">{selectedProduct.broken}</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "JetBrains Mono, monospace", color: "#64748B" }}>Broken Allowance</span>
+<strong>{selectedProduct.broken}</strong>
 </div>
-<div className="grid grid-cols-2 p-2.5 bg-slate-50 border-b border-slate-200">
-<span className="font-mono text-slate-500 uppercase">Chemical / Color / Purity</span>
-<span className="font-medium text-slate-900">{selectedProduct.purity}</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
+<span style={{ fontFamily: "JetBrains Mono, monospace", color: "#64748B" }}>Export Packaging</span>
+<strong>{selectedProduct.packaging}</strong>
 </div>
-<div className="grid grid-cols-2 p-2.5 bg-white border-b border-slate-200">
-<span className="font-mono text-slate-500 uppercase">Standard Export Packaging</span>
-<span className="font-medium text-slate-900">{selectedProduct.packaging}</span>
-</div>
-<div className="grid grid-cols-2 p-2.5 bg-slate-50 border-b border-slate-200">
-<span className="font-mono text-slate-500 uppercase">FCL Container Payload</span>
-<span className="font-medium text-slate-900">{selectedProduct.containerPayload}</span>
-</div>
-<div className="grid grid-cols-2 p-2.5 bg-white">
-<span className="font-mono text-slate-500 uppercase">Mandatory Inspection</span>
-<span className="font-medium text-slate-900">{selectedProduct.inspectionStandard}</span>
+<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "10px 14px", backgroundColor: "#FFFFFF" }}>
+<span style={{ fontFamily: "JetBrains Mono, monospace", color: "#64748B" }}>Inspection Standard</span>
+<strong>{selectedProduct.inspectionStandard}</strong>
 </div>
 </div>
-<div className="flex items-center gap-3 pt-2">
+<div style={{ marginTop: "24px" }}>
 <button
 onClick={() => {
 setRfqForm(prev => ({
@@ -669,7 +625,7 @@ setSelectedProduct(null);
 const el = document.getElementById("proforma");
 if (el) el.scrollIntoView({ behavior: "smooth" });
 }}
-className="flex-1 py-3 bg-slate-950 hover:bg-slate-800 text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold rounded text-center transition-colors"
+style={{ width: "100%", padding: "12px", backgroundColor: "#0B1528", color: "#E2BF7D", fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", border: "1px solid rgba(193,152,69,0.4)", borderRadius: "4px", cursor: "pointer" }}
 >
 Configure Commercial Quotation →
 </button>
@@ -679,53 +635,57 @@ Configure Commercial Quotation →
 </div>
 )}
 {/* RFQ Proforma Generator */}
-<section id="proforma" className="bg-slate-900 text-white py-16 px-4 border-t border-slate-800">
-<div className="max-w-5xl mx-auto">
-<div className="text-center space-y-2 mb-10">
-<span className="text-xs font-mono uppercase tracking-widest text-amber-400 font-semibold">Immediate Execution</span>
-<h3 className="text-3xl font-serif font-bold text-white">Commercial RFQ & Proforma Estimator</h3>
-<p className="text-sm text-slate-400 max-w-xl mx-auto font-light">
-Submit your required commodity specifications. Inquiries route straight to <span className="text-amber-400 font-mono">care@vaayuelixir.com</span> with immediate maritime rate lock.
+<section id="proforma" style={{ backgroundColor: "#070E1E", color: "#FFF", padding: "48px 16px", borderTop: "1px solid #1E293B" }}>
+<div style={{ maxWidth: "960px", margin: "0 auto" }}>
+<div style={{ textAlign: "center", marginBottom: "32px" }}>
+<span style={{ fontSize: "11px", fontFamily: "JetBrains Mono, monospace", color: "#E2BF7D", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
+IMMEDIATE EXECUTION
+</span>
+<h2 style={{ fontFamily: "Cinzel, serif", fontSize: "30px", fontWeight: 800, margin: "4px 0 8px 0" }}>
+Commercial RFQ & Proforma Estimator
+</h2>
+<p style={{ fontSize: "14px", color: "#94A3B8", maxWidth: "600px", margin: "0 auto" }}>
+Submit your required commodity specifications. Inquiries route directly to <span style={{ color: "#E2BF7D", fontFamily: "JetBrains Mono, monospace" }}>care@vaayuelixir.com</span> with immediate maritime rate lock.
 </p>
 </div>
-<div className="bg-slate-950 border border-slate-800 rounded-xl p-6 sm:p-8 shadow-2xl">
+<div style={{ backgroundColor: "#0B1528", border: "1px solid #1E293B", borderRadius: "8px", padding: "28px" }}>
 {rfqSuccess ? (
-<div className="text-center py-12 space-y-5">
-<div className="w-16 h-16 mx-auto rounded-full bg-emerald-500/20 text-emerald-400 flex items-center justify-center text-3xl font-bold">
+<div style={{ textAlign: "center", padding: "40px 16px" }}>
+<div style={{ width: "56px", height: "56px", margin: "0 auto 16px auto", borderRadius: "50%", backgroundColor: "rgba(16,185,129,0.2)", color: "#10B981", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "28px", fontWeight: 700 }}>
 ✓
 </div>
-<h4 className="text-2xl font-serif font-bold text-white">Commercial Inquiry Transmitted</h4>
-<p className="text-slate-300 text-sm max-w-lg mx-auto">
-Your inquiry for <strong className="text-white">{rfqForm.volumeMT} MT of {activeCommodity.title}</strong> has been transmitted to <span className="text-amber-400 font-mono">care@vaayuelixir.com</span>.
+<h3 style={{ fontFamily: "Cinzel, serif", fontSize: "22px", fontWeight: 700, margin: "0 0 8px 0" }}>Commercial Inquiry Transmitted</h3>
+<p style={{ color: "#94A3B8", fontSize: "14px", maxWidth: "520px", margin: "0 auto 24px auto" }}>
+Your inquiry for <strong style={{ color: "#FFF" }}>{rfqForm.volumeMT} MT of {activeCommodity.title}</strong> has been transmitted to <span style={{ color: "#E2BF7D", fontFamily: "JetBrains Mono, monospace" }}>care@vaayuelixir.com</span>.
 </p>
-<div className="pt-4 flex flex-wrap justify-center gap-4">
+<div style={{ display: "flex", justifyContent: "center", gap: "12px", flexWrap: "wrap" }}>
 <a
 href={whatsappUrl}
 target="_blank"
 rel="noreferrer"
-className="px-6 py-3 bg-emerald-600 hover:bg-emerald-700 text-white font-mono text-xs uppercase tracking-widest font-semibold rounded shadow-sm transition-colors"
+style={{ padding: "12px 24px", backgroundColor: "#10B981", color: "#FFF", fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", textDecoration: "none", borderRadius: "4px" }}
 >
 Open Live in WhatsApp Trade Desk →
 </a>
 <button
 onClick={() => setRfqSuccess(false)}
-className="px-6 py-3 bg-slate-800 hover:bg-slate-700 text-slate-300 font-mono text-xs uppercase tracking-widest rounded"
+style={{ padding: "12px 24px", backgroundColor: "#1E293B", color: "#CBD5E1", fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", border: "none", borderRadius: "4px", cursor: "pointer" }}
 >
 Submit Another Inquiry
 </button>
 </div>
 </div>
 ) : (
-<form onSubmit={handleRfqSubmit} className="space-y-6">
-<div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+<form onSubmit={handleRfqSubmit} style={{ display: "flex", flexDirection: "column", gap: "20px" }}>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(280px, 1fr))", gap: "20px" }}>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "8px" }}>
 Export Commodity
 </label>
 <select
 value={rfqForm.commodityId}
 onChange={(e) => setRfqForm({ ...rfqForm, commodityId: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500"
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px 12px", color: "#FFF", fontSize: "13px" }}
 >
 {COMMODITY_CATALOG.map(c => (
 <option key={c.id} value={c.id}>
@@ -735,8 +695,8 @@ className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2.5 text-
 </select>
 </div>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
-Order Volume: <span className="text-amber-400 font-bold">{rfqForm.volumeMT} Metric Tons</span>
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "8px" }}>
+Order Volume: <strong style={{ color: "#E2BF7D" }}>{rfqForm.volumeMT} Metric Tons</strong>
 </label>
 <input
 type="range"
@@ -745,123 +705,123 @@ max="1000"
 step="10"
 value={rfqForm.volumeMT}
 onChange={(e) => setRfqForm({ ...rfqForm, volumeMT: parseInt(e.target.value, 10) })}
-className="w-full accent-[#9A7336] cursor-pointer"
+style={{ width: "100%", accentColor: "#C19845", cursor: "pointer" }}
 />
-<div className="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
-<span>10 MT (Trial LCL / 20ft)</span>
+<div style={{ display: "flex", justifyContent: "space-between", fontSize: "10px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", marginTop: "4px" }}>
+<span>10 MT (Trial LCL)</span>
 <span>500 MT</span>
-<span>1,000 MT (Bulk Charter)</span>
+<span>1,000 MT (Charter)</span>
 </div>
 </div>
 </div>
-<div className="p-4 bg-slate-900 rounded border border-slate-800 grid grid-cols-1 sm:grid-cols-3 gap-4 text-center">
+<div style={{ padding: "14px", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "12px", textAlign: "center" }}>
 <div>
-<div className="text-[10px] font-mono text-slate-400 uppercase">Assayed Standard</div>
-<div className="text-xs font-semibold text-white mt-0.5">{activeCommodity.inspectionStandard}</div>
-</div>
-<div>
-<div className="text-[10px] font-mono text-slate-400 uppercase">Max Payload / FCL</div>
-<div className="text-xs font-semibold text-amber-400 mt-0.5">{activeCommodity.containerPayload}</div>
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", textTransform: "uppercase" }}>Standard Inspection</div>
+<div style={{ fontSize: "12px", fontWeight: 700, color: "#FFF", marginTop: "2px" }}>{activeCommodity.inspectionStandard}</div>
 </div>
 <div>
-<div className="text-[10px] font-mono text-slate-400 uppercase">Estimated Requirement</div>
-<div className="text-xs font-semibold text-emerald-400 mt-0.5 font-mono">
-~ {calculatedContainers} x 20ft/40ft FCL Containers
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", textTransform: "uppercase" }}>Payload / Container</div>
+<div style={{ fontSize: "12px", fontWeight: 700, color: "#E2BF7D", marginTop: "2px" }}>{activeCommodity.containerPayload}</div>
 </div>
-</div>
-</div>
-<div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
-Delivery Incoterm
+<div style={{ fontSize: "9px", fontFamily: "JetBrains Mono, monospace", color: "#64748B", textTransform: "uppercase" }}>Estimated Capacity</div>
+<div style={{ fontSize: "12px", fontWeight: 700, color: "#10B981", fontFamily: "JetBrains Mono, monospace", marginTop: "2px" }}>
+~ {calculatedContainers} Containers (FCL)
+</div>
+</div>
+</div>
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(200px, 1fr))", gap: "16px" }}>
+<div>
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+Incoterm
 </label>
 <select
 value={rfqForm.incoterm}
 onChange={(e) => setRfqForm({ ...rfqForm, incoterm: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500"
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
 >
-<option value="CIF">CIF (Cost, Insurance & Ocean Freight)</option>
+<option value="CIF">CIF (Cost, Insurance & Freight)</option>
 <option value="FOB">FOB (Nhava Sheva / JNPT Milled Berth)</option>
-<option value="CFR">CFR (Cost & Ocean Freight)</option>
-<option value="EXW">EXW (Mandi Mill Warehouse Floor)</option>
+<option value="CFR">CFR (Cost & Freight)</option>
+<option value="EXW">EXW (Mandi Mill Warehouse)</option>
 </select>
 </div>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
 Discharge Port
 </label>
 <input
 type="text"
 value={rfqForm.destinationPort}
 onChange={(e) => setRfqForm({ ...rfqForm, destinationPort: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500"
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
 placeholder="e.g. Jebel Ali, Lomé, Singapore"
 required
 />
 </div>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
-Packaging Spec
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+Packaging Requirement
 </label>
 <input
 type="text"
 value={rfqForm.packagingType}
 onChange={(e) => setRfqForm({ ...rfqForm, packagingType: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2.5 text-sm text-white focus:outline-none focus:border-amber-500"
-placeholder="e.g. 25kg PP Woven Sacks"
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+placeholder="e.g. 25kg PP Woven Bags"
 required
 />
 </div>
 </div>
-<div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
+<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "16px" }}>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
-Importer / Entity Name
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+Importer / Entity
 </label>
 <input
 type="text"
 value={rfqForm.buyerEntity}
 onChange={(e) => setRfqForm({ ...rfqForm, buyerEntity: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500"
-placeholder="Company Ltd."
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+placeholder="Company Name"
 required
 />
 </div>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
-Authorized Officer
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
+Contact Name
 </label>
 <input
 type="text"
 value={rfqForm.contactName}
 onChange={(e) => setRfqForm({ ...rfqForm, contactName: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500"
-placeholder="Contact Name"
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
+placeholder="Officer Name"
 required
 />
 </div>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
 Corporate Email
 </label>
 <input
 type="email"
 value={rfqForm.email}
 onChange={(e) => setRfqForm({ ...rfqForm, email: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500"
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
 placeholder="buyer@domain.com"
 required
 />
 </div>
 <div>
-<label className="block text-xs font-mono uppercase tracking-wider text-slate-400 mb-2">
+<label style={{ display: "block", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
 WhatsApp / Phone
 </label>
 <input
 type="text"
 value={rfqForm.phone}
 onChange={(e) => setRfqForm({ ...rfqForm, phone: e.target.value })}
-className="w-full bg-slate-900 border border-slate-700 rounded px-3 py-2 text-sm text-white focus:outline-none focus:border-amber-500"
+style={{ width: "100%", backgroundColor: "#070E1E", border: "1px solid #1E293B", borderRadius: "4px", padding: "10px", color: "#FFF", fontSize: "13px" }}
 placeholder="+971..."
 required
 />
@@ -870,67 +830,71 @@ required
 <button
 type="submit"
 disabled={isSubmitting}
-className="w-full py-4 bg-[#9A7336] hover:bg-[#85612A] disabled:bg-slate-700 text-white font-mono text-xs font-bold uppercase tracking-widest rounded shadow-lg transition-colors flex items-center justify-center gap-2"
+style={{ width: "100%", padding: "16px", backgroundColor: "#C19845", color: "#FFFFFF", fontFamily: "JetBrains Mono, monospace", fontSize: "12px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.1em", border: "none", borderRadius: "4px", cursor: isSubmitting ? "not-allowed" : "pointer", boxShadow: "0 4px 12px rgba(193,152,69,0.3)" }}
 >
-{isSubmitting ? (
-<span>Routing to care@vaayuelixir.com...</span>
-) : (
-<span>Dispatch Commercial RFQ to care@vaayuelixir.com & Calculate Schedule →</span>
-)}
+{isSubmitting ? "Transmitting to care@vaayuelixir.com..." : "Dispatch Commercial RFQ to care@vaayuelixir.com & Calculate Berth Schedule →"}
 </button>
 </form>
 )}
 </div>
 </div>
 </section>
-{/* Footer with Leadership Information */}
-<footer className="bg-slate-950 text-slate-400 py-12 px-4 border-t border-slate-800 text-xs">
-<div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
-<div className="space-y-3">
-<div className="flex items-center gap-2.5">
-<VaayuLogo className="w-8 h-8 flex-shrink-0" />
+{/* Footer with Authentic Business Card Branding */}
+<footer style={{ backgroundColor: "#050B16", color: "#94A3B8", padding: "48px 16px 24px 16px", borderTop: "1px solid #1E293B", fontSize: "12px" }}>
+<div style={{ maxWidth: "1280px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "32px" }}>
 <div>
-<span className="font-serif font-bold text-white text-base tracking-wider">VAAYU </span>
-<span className="font-serif font-bold text-[#B38738] text-base tracking-wider">ELIXIR</span>
+<div style={{ display: "flex", alignItems: "center", gap: "10px", marginBottom: "10px" }}>
+<VaayuBrandLogo className="w-9 h-9" />
+<div>
+<span style={{ fontFamily: "Cinzel, serif", fontWeight: 800, color: "#FFF", fontSize: "18px" }}>VAAYU </span>
+<span style={{ fontFamily: "Cinzel, serif", fontWeight: 800, color: "#C19845", fontSize: "18px" }}>ELIXIR</span>
 </div>
 </div>
-<p className="text-[11px] text-[#C49A45] font-serif italic tracking-wide">
-"Moving Opportunities. Creating Value."
+<p style={{ color: "#E2BF7D", fontFamily: "Cinzel, serif", fontSize: "11px", letterSpacing: "0.08em", margin: "0 0 10px 0" }}>
+"MOVING OPPORTUNITIES. CREATING VALUE."
 </p>
-<p className="text-[11px] text-slate-500 leading-relaxed">
-Global Trade & Strategic Ventures. Operating merchant export logistics via JNPT Nhava Sheva and Mumbai Air Cargo.
+<p style={{ fontSize: "11px", color: "#64748B", margin: 0, lineHeight: 1.6 }}>
+Global Trade & Strategic Ventures. Direct merchant export operations headquartered in Mumbai & Navi Mumbai with direct berth corridors at JNPT Nhava Sheva.
 </p>
 </div>
 <div>
-<div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Leadership & Administration</div>
-<div className="text-[11px] text-slate-300 leading-relaxed font-sans">
-<span className="font-semibold text-white block text-sm">Amit Zawarey</span>
-<span className="text-[#B38738] text-xs font-mono uppercase tracking-wider block mb-2">Proprietor</span>
-Navi Mumbai & Mumbai Trading Corridor<br />
-Maharashtra, India (Direct JNPT Gateway)
+<div style={{ fontFamily: "JetBrains Mono, monospace", color: "#FFF", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px", fontWeight: 700 }}>
+LEADERSHIP
+</div>
+<div style={{ color: "#CBD5E1", fontSize: "12px", lineHeight: "1.6" }}>
+<strong style={{ color: "#FFF", fontSize: "14px", display: "block" }}>Amit Zawarey</strong>
+<span style={{ color: "#C19845", fontSize: "11px", fontFamily: "JetBrains Mono, monospace", textTransform: "uppercase", display: "block", marginBottom: "8px" }}>
+PROPRIETOR
+</span>
+Mumbai & Navi Mumbai, India<br />
+Direct JNPT Nhava Sheva Gateway
 </div>
 </div>
 <div>
-<div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Direct Communication</div>
-<div className="text-[11px] text-slate-400 space-y-1 font-mono">
-<div>Email: <a href="mailto:care@vaayuelixir.com" className="text-amber-400 hover:underline">care@vaayuelixir.com</a></div>
-<div>Trade Desk: <a href="tel:+917208666522" className="text-slate-200 hover:underline">+91 7208666522</a></div>
-<div>Web: <a href="https://www.vaayuelixir.com" className="text-slate-200 hover:underline">www.vaayuelixir.com</a></div>
+<div style={{ fontFamily: "JetBrains Mono, monospace", color: "#FFF", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px", fontWeight: 700 }}>
+COMMUNICATION DESK
+</div>
+<div style={{ fontFamily: "JetBrains Mono, monospace", fontSize: "12px", display: "flex", flexDirection: "column", gap: "6px" }}>
+<div>Email: <a href="mailto:care@vaayuelixir.com" style={{ color: "#E2BF7D", textDecoration: "none" }}>care@vaayuelixir.com</a></div>
+<div>Trade Desk: <a href="tel:+917208666522" style={{ color: "#FFF", textDecoration: "none" }}>+91 7208666522</a></div>
+<div>Web: <a href="https://www.vaayuelixir.com" style={{ color: "#FFF", textDecoration: "none" }}>www.vaayuelixir.com</a></div>
 </div>
 </div>
 <div>
-<div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Trade Capabilities</div>
-<div className="text-[11px] text-slate-400 space-y-1">
-<div>• Trade Execution (Grains, Spices, Perishables)</div>
-<div>• Export Advisory & Sourcing Logistics</div>
-<div>• Strategic Agro Ventures</div>
-<div>• Global Market Opportunities</div>
+<div style={{ fontFamily: "JetBrains Mono, monospace", color: "#FFF", fontSize: "11px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "8px", fontWeight: 700 }}>
+VERTICALS
+</div>
+<div style={{ fontSize: "12px", color: "#94A3B8", display: "flex", flexDirection: "column", gap: "4px" }}>
+<div>• TRADE</div>
+<div>• ADVISORY</div>
+<div>• VENTURES</div>
+<div>• GLOBAL OPPORTUNITIES</div>
 </div>
 </div>
 </div>
-<div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-slate-900 text-[10px] font-mono text-slate-600 flex flex-wrap justify-between items-center gap-2">
-<span>© {new Date().getFullYear()} Vaayu Elixir Global Trade & Strategic Ventures. All rights reserved.</span>
-<span>India • Middle East • Africa • Europe • Asia • Beyond</span>
+<div style={{ maxWidth: "1280px", margin: "32px auto 0 auto", paddingTop: "20px", borderTop: "1px solid #111E38", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", fontSize: "10px", fontFamily: "JetBrains Mono, monospace", color: "#475569" }}>
+<span>© {new Date().getFullYear()} VAAYU ELIXIR GLOBAL TRADE & STRATEGIC VENTURES.</span>
+<span>INDIA | MIDDLE EAST | AFRICA | EUROPE | ASIA | BEYOND</span>
 </div>
 </footer>
 </div>
