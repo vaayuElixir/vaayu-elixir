@@ -1,4 +1,61 @@
 import React, { useState, useEffect } from 'react';
+// Official Vaayu Elixir Wing & Crescent Emblem (Vector SVG)
+function VaayuLogo({ className = "w-10 h-10" }) {
+return (
+<svg 
+className={className} 
+viewBox="0 0 100 100" 
+fill="none" 
+xmlns="http://www.w3.org/2000/svg"
+aria-label="VAAYU ELIXIR Logo"
+>
+<defs>
+<linearGradient id="goldArch" x1="20" y1="20" x2="90" y2="90" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#DFB76C" />
+<stop offset="50%" stopColor="#C49A45" />
+<stop offset="100%" stopColor="#8A6420" />
+</linearGradient>
+<linearGradient id="goldWing" x1="30" y1="25" x2="80" y2="50" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#E5C178" />
+<stop offset="100%" stopColor="#A87928" />
+</linearGradient>
+<linearGradient id="navyWing1" x1="30" y1="35" x2="75" y2="65" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#1E293B" />
+<stop offset="100%" stopColor="#0B132B" />
+</linearGradient>
+<linearGradient id="navyWing2" x1="35" y1="45" x2="80" y2="75" gradientUnits="userSpaceOnUse">
+<stop offset="0%" stopColor="#2A4365" />
+<stop offset="100%" stopColor="#0F172A" />
+</linearGradient>
+</defs>
+{/* Outer Slender Golden Crescent Arch */}
+<path 
+d="M 48 12 C 68 12, 85 28, 85 48 C 85 58, 80 66, 74 72 C 73 70, 75 62, 75 48 C 75 32, 63 18, 48 16 C 45 16, 43 17, 41 18 C 43 14, 45 12, 48 12 Z" 
+fill="url(#goldArch)" 
+/>
+{/* Top Golden Wing Plume */}
+<path 
+d="M 32 30 C 46 30, 68 34, 82 48 C 66 47, 48 43, 38 41 C 34 40, 31 36, 32 30 Z" 
+fill="url(#goldWing)" 
+/>
+{/* Middle Deep Navy Wing Plume */}
+<path 
+d="M 34 43 C 48 43, 66 48, 77 60 C 62 58, 46 54, 38 52 C 34 51, 33 47, 34 43 Z" 
+fill="url(#navyWing1)" 
+/>
+{/* Lower Sleek Navy Wing Curve */}
+<path 
+d="M 38 53 C 50 54, 64 60, 72 70 C 58 67, 46 64, 41 62 C 37 60, 36 56, 38 53 Z" 
+fill="url(#navyWing2)" 
+/>
+{/* Dynamic Swoop Tail */}
+<path 
+d="M 44 63 C 54 65, 62 72, 65 80 C 56 76, 48 72, 45 68 C 43 66, 43 64, 44 63 Z" 
+fill="#1E293B" 
+/>
+</svg>
+);
+}
 const COMMODITY_CATALOG = [
 {
 id: "rice-1121-steam",
@@ -212,7 +269,6 @@ description: "Blast-frozen to core -18°C within hours of processing. Complete t
 export default function App() {
 const [selectedCategory, setSelectedCategory] = useState("All");
 const [selectedProduct, setSelectedProduct] = useState(null);
-const [customPhotos, setCustomPhotos] = useState({});
 const [rfqForm, setRfqForm] = useState({
 commodityId: "rice-1121-steam",
 volumeMT: 50,
@@ -254,19 +310,6 @@ const filteredProducts = selectedCategory === "All"
 const activeCommodity = COMMODITY_CATALOG.find(c => c.id === rfqForm.commodityId) || COMMODITY_CATALOG[0];
 const payloadPerFcl = parseFloat(activeCommodity.containerPayload) || 25;
 const calculatedContainers = Math.max(1, Math.ceil(rfqForm.volumeMT / payloadPerFcl));
-const handlePhotoUpload = (productId, event) => {
-const file = event.target.files[0];
-if (file) {
-const reader = new FileReader();
-reader.onloadend = () => {
-setCustomPhotos(prev => ({
-...prev,
-[productId]: reader.result
-}));
-};
-reader.readAsDataURL(file);
-}
-};
 const handleRfqSubmit = async (e) => {
 e.preventDefault();
 setIsSubmitting(true);
@@ -317,15 +360,16 @@ const whatsappMessage =
 const whatsappUrl = "https://wa.me/917208666522?text=" + encodeURIComponent(whatsappMessage);
 return (
 <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
-<header className="bg-slate-900 text-slate-300 text-xs border-b border-slate-800 sticky top-0 z-50">
+{/* Top Trade Ticker */}
+<header className="bg-slate-950 text-slate-300 text-xs border-b border-slate-800 sticky top-0 z-50">
 <div className="max-w-7xl mx-auto px-4 py-2 flex flex-wrap items-center justify-between gap-3">
-<div className="flex items-center gap-4 text-[11px] font-mono tracking-wider">
+<div className="flex items-center gap-3 text-[11px] font-mono tracking-wider">
 <span className="flex items-center gap-1.5 text-amber-400 font-medium">
 <span className="w-2 h-2 rounded-full bg-emerald-400 animate-pulse"></span>
 PORT GATEWAY: JNPT NHAVA SHEVA (BMCT / NSICT)
 </span>
-<span className="hidden md:inline text-slate-500">|</span>
-<span className="hidden md:inline text-slate-400">APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
+<span className="hidden lg:inline text-slate-600">|</span>
+<span className="hidden lg:inline text-slate-400">APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
 </div>
 <div className="flex items-center gap-4 font-mono text-[11px]">
 <span className="text-slate-400">BOM: <span className="text-white font-medium">{deskTimes.mumbai || "--:--"}</span></span>
@@ -333,25 +377,33 @@ PORT GATEWAY: JNPT NHAVA SHEVA (BMCT / NSICT)
 <span className="hidden sm:inline text-slate-400">SIN: <span className="text-white font-medium">{deskTimes.singapore || "--:--"}</span></span>
 <a 
 href="mailto:care@vaayuelixir.com" 
-className="text-amber-400 hover:text-amber-300 transition-colors font-medium ml-2"
+className="text-amber-400 hover:text-amber-300 transition-colors font-medium ml-1"
 >
 care@vaayuelixir.com
 </a>
 </div>
 </div>
 </header>
+{/* Main Navigation Bar */}
 <nav className="bg-white border-b border-slate-200">
-<div className="max-w-7xl mx-auto px-4 py-4 flex items-center justify-between">
-<div className="flex items-center gap-3">
-<div className="w-10 h-10 rounded bg-slate-950 flex items-center justify-center text-amber-400 font-serif text-xl font-bold tracking-wider border border-amber-500/30 shadow-sm">
-V
-</div>
+<div className="max-w-7xl mx-auto px-4 py-3.5 flex items-center justify-between">
+<div className="flex items-center gap-3.5">
+<VaayuLogo className="w-12 h-12 flex-shrink-0" />
 <div>
-<h1 className="text-xl font-serif font-bold text-slate-950 tracking-wider">VAAYU ELIXIR</h1>
-<p className="text-[10px] font-mono text-amber-700 uppercase tracking-widest -mt-0.5 font-medium">Global Trade & Strategic Ventures</p>
+<div className="flex items-baseline gap-1.5">
+<span className="text-xl font-serif font-bold text-slate-950 tracking-wider">VAAYU</span>
+<span className="text-xl font-serif font-bold text-[#B38738] tracking-wider">ELIXIR</span>
+</div>
+<p className="text-[9.5px] font-sans font-semibold text-slate-600 uppercase tracking-[0.2em] -mt-0.5">
+GLOBAL TRADE & STRATEGIC VENTURES
+</p>
 </div>
 </div>
 <div className="flex items-center gap-4">
+<div className="hidden lg:block text-right pr-4 border-r border-slate-200">
+<div className="text-[10px] font-mono text-slate-400 uppercase">TRADE CORRIDOR</div>
+<div className="text-[11px] font-medium text-slate-700">INDIA • MIDDLE EAST • AFRICA • EUROPE • ASIA</div>
+</div>
 <a 
 href="#catalog" 
 className="hidden sm:block text-xs font-mono uppercase tracking-wider text-slate-600 hover:text-slate-900 transition-colors"
@@ -360,20 +412,21 @@ Commodity Vault
 </a>
 <a 
 href="#proforma" 
-className="text-xs font-mono uppercase tracking-wider px-4 py-2 bg-slate-950 hover:bg-slate-800 text-amber-400 rounded transition-colors font-medium"
+className="text-xs font-mono uppercase tracking-wider px-4 py-2.5 bg-slate-950 hover:bg-slate-800 text-amber-400 rounded transition-colors font-medium border border-amber-500/20 shadow-sm"
 >
 Request Proforma
 </a>
 </div>
 </div>
 </nav>
+{/* Hero Section */}
 <section className="bg-white border-b border-slate-200 py-16 px-4">
 <div className="max-w-7xl mx-auto grid grid-cols-1 lg:grid-cols-12 gap-10 items-center">
 <div className="lg:col-span-7 space-y-6">
-<div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200 rounded text-amber-800 text-xs font-mono tracking-wide">
-<span>MERCHANT EXPORT HOUSE</span>
+<div className="inline-flex items-center gap-2 px-3 py-1 bg-amber-50 border border-amber-200/80 rounded text-amber-800 text-xs font-mono tracking-wide">
+<span className="font-semibold text-[#9A7336]">MOVING OPPORTUNITIES. CREATING VALUE.</span>
 <span>•</span>
-<span>MUMBAI & NAVI MUMBAI TRADING CORRIDOR</span>
+<span className="text-slate-600">MUMBAI & NAVI MUMBAI</span>
 </div>
 <h2 className="text-4xl sm:text-5xl font-serif font-bold text-slate-950 leading-tight">
 Direct Farm-to-Berth Maritime Trade Execution.
@@ -402,7 +455,7 @@ Direct containerized export shipments of calibrated Indian Basmati rice, high-pu
 <div className="flex flex-wrap gap-3 pt-2">
 <a
 href="#catalog"
-className="px-6 py-3 bg-amber-600 hover:bg-amber-700 text-white font-mono text-xs uppercase tracking-widest font-semibold rounded shadow-sm transition-colors"
+className="px-6 py-3 bg-[#9A7336] hover:bg-[#85612A] text-white font-mono text-xs uppercase tracking-widest font-semibold rounded shadow-sm transition-colors"
 >
 Inspect Export Commodities →
 </a>
@@ -416,27 +469,31 @@ className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono te
 </a>
 </div>
 </div>
-<div className="lg:col-span-5 bg-slate-950 text-slate-300 p-6 rounded-lg border border-slate-800 shadow-xl space-y-5">
+{/* Logistics Velocity Panel */}
+<div className="lg:col-span-5 bg-slate-950 text-slate-300 p-6 sm:p-7 rounded-xl border border-slate-800 shadow-xl space-y-5">
 <div className="flex items-center justify-between border-b border-slate-800 pb-3">
+<div className="flex items-center gap-2">
+<VaayuLogo className="w-6 h-6" />
 <span className="font-mono text-xs text-amber-400 font-semibold tracking-wider">CORRIDOR VELOCITY & LOGISTICS</span>
+</div>
 <span className="text-[10px] font-mono bg-slate-800 px-2 py-0.5 rounded text-slate-400">LIVE BERTH STATUS</span>
 </div>
 <div className="space-y-3 text-xs">
-<div className="p-3 bg-slate-900/80 rounded border border-slate-800/80 flex items-start justify-between">
+<div className="p-3 bg-slate-900/80 rounded border border-slate-800 flex items-start justify-between">
 <div>
 <div className="text-white font-medium">Nhava Sheva → Jebel Ali (Dubai)</div>
 <div className="text-slate-400 text-[11px]">Direct liner transit • 3 to 4 Voyage Days</div>
 </div>
 <span className="text-emerald-400 font-mono font-medium">ACTIVE</span>
 </div>
-<div className="p-3 bg-slate-900/80 rounded border border-slate-800/80 flex items-start justify-between">
+<div className="p-3 bg-slate-900/80 rounded border border-slate-800 flex items-start justify-between">
 <div>
 <div className="text-white font-medium">Nhava Sheva → West Africa (Lomé / Lagos)</div>
 <div className="text-slate-400 text-[11px]">Bulk parboiled & agro breakbulk • 22 to 26 Days</div>
 </div>
 <span className="text-emerald-400 font-mono font-medium">ACTIVE</span>
 </div>
-<div className="p-3 bg-slate-900/80 rounded border border-slate-800/80 flex items-start justify-between">
+<div className="p-3 bg-slate-900/80 rounded border border-slate-800 flex items-start justify-between">
 <div>
 <div className="text-white font-medium">Mumbai Air Cargo → GCC Corridor</div>
 <div className="text-slate-400 text-[11px]">Moringa, okra & perishables • Same-Day Cargo Intake</div>
@@ -445,16 +502,17 @@ className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono te
 </div>
 </div>
 <div className="pt-2 border-t border-slate-800 text-[11px] text-slate-400 flex items-center justify-between">
-<span>IEC: Registered Exporter</span>
-<span>Official: care@vaayuelixir.com</span>
+<span>Amit Zawarey • Proprietor</span>
+<span>+91 7208666522</span>
 </div>
 </div>
 </div>
 </section>
+{/* Commodity Catalog Section */}
 <section id="catalog" className="max-w-7xl mx-auto px-4 py-16">
 <div className="flex flex-col md:flex-row md:items-end justify-between mb-8 gap-4">
 <div>
-<span className="text-xs font-mono uppercase tracking-widest text-amber-700 font-semibold">Institutional Grade</span>
+<span className="text-xs font-mono uppercase tracking-widest text-[#9A7336] font-semibold">Institutional Grade</span>
 <h3 className="text-3xl font-serif font-bold text-slate-950 mt-1">Export Commodity Portfolio</h3>
 <p className="text-slate-600 text-sm mt-1">Strict laboratory compliance tolerances, Sortex grading, and container stuffing schedules.</p>
 </div>
@@ -476,31 +534,21 @@ className={btnClass}
 </div>
 </div>
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
-{filteredProducts.map(prod => {
-const hasCustomPhoto = customPhotos[prod.id];
-return (
+{filteredProducts.map(prod => (
 <div 
 key={prod.id} 
 className="bg-white border border-slate-200 rounded-lg overflow-hidden shadow-sm hover:shadow-md transition-shadow flex flex-col justify-between"
 >
 <div>
-<div className="relative h-44 bg-slate-900 flex items-center justify-center overflow-hidden border-b border-slate-200">
-{hasCustomPhoto ? (
-<img 
-src={hasCustomPhoto} 
-alt={prod.title} 
-className="w-full h-full object-cover" 
-/>
-) : (
+<div className="relative h-44 bg-gradient-to-b from-slate-900 to-slate-950 flex items-center justify-center overflow-hidden border-b border-slate-200">
 <div className="text-center p-4">
-<div className="w-12 h-12 mx-auto rounded-full bg-slate-800 border border-amber-500/40 flex items-center justify-center text-amber-400 font-serif text-lg font-bold mb-2">
-VE
+<div className="w-12 h-12 mx-auto rounded-full bg-slate-900 border border-amber-500/30 flex items-center justify-center mb-2 shadow-inner">
+<VaayuLogo className="w-7 h-7" />
 </div>
 <div className="text-[11px] font-mono text-amber-400 uppercase tracking-widest font-semibold">{prod.category}</div>
-<div className="text-xs text-slate-300 font-serif mt-0.5">{prod.title}</div>
+<div className="text-xs text-slate-200 font-serif mt-0.5">{prod.title}</div>
 <div className="text-[10px] font-mono text-slate-500 mt-1">HSN: {prod.hsn} • {prod.origin}</div>
 </div>
-)}
 <div className="absolute top-2 right-2 bg-slate-950/80 backdrop-blur px-2 py-0.5 rounded text-[10px] font-mono text-amber-400 border border-slate-700">
 HSN {prod.hsn}
 </div>
@@ -548,18 +596,21 @@ Quote
 </button>
 </div>
 </div>
-);
-})}
+))}
 </div>
 </section>
+{/* Technical Spec Modal (Strict Specs Only - No upload buttons) */}
 {selectedProduct && (
 <div className="fixed inset-0 z-50 bg-slate-950/70 backdrop-blur-sm flex items-center justify-center p-4">
 <div className="bg-white rounded-lg shadow-2xl max-w-2xl w-full max-h-[90vh] overflow-y-auto border border-slate-300">
 <div className="p-6 bg-slate-950 text-white flex items-start justify-between">
+<div className="flex items-center gap-3">
+<VaayuLogo className="w-8 h-8 flex-shrink-0" />
 <div>
 <span className="text-xs font-mono text-amber-400 uppercase tracking-widest">{selectedProduct.category}</span>
-<h3 className="text-xl font-serif font-bold text-white mt-1">{selectedProduct.title}</h3>
+<h3 className="text-xl font-serif font-bold text-white mt-0.5">{selectedProduct.title}</h3>
 <p className="text-xs text-slate-400 font-serif italic">{selectedProduct.botanical} • HSN: {selectedProduct.hsn}</p>
+</div>
 </div>
 <button
 onClick={() => setSelectedProduct(null)}
@@ -606,20 +657,6 @@ className="text-slate-400 hover:text-white text-2xl leading-none"
 <span className="font-medium text-slate-900">{selectedProduct.inspectionStandard}</span>
 </div>
 </div>
-<div className="p-4 bg-amber-50/60 border border-amber-200 rounded-lg">
-<label className="block text-xs font-mono uppercase tracking-wider text-amber-900 font-semibold mb-1">
-Upload Authentic Lot / Warehouse Photo
-</label>
-<p className="text-[11px] text-amber-800 mb-2">
-Select a photo of your actual stock or packaged lots directly from your device:
-</p>
-<input
-type="file"
-accept="image/*"
-onChange={(e) => handlePhotoUpload(selectedProduct.id, e)}
-className="text-xs text-slate-600 file:mr-3 file:py-1.5 file:px-3 file:rounded file:border-0 file:text-xs file:font-mono file:font-semibold file:bg-amber-700 file:text-white hover:file:bg-amber-800 cursor-pointer"
-/>
-</div>
 <div className="flex items-center gap-3 pt-2">
 <button
 onClick={() => {
@@ -632,15 +669,16 @@ setSelectedProduct(null);
 const el = document.getElementById("proforma");
 if (el) el.scrollIntoView({ behavior: "smooth" });
 }}
-className="flex-1 py-3 bg-slate-950 hover:bg-slate-800 text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold rounded text-center"
+className="flex-1 py-3 bg-slate-950 hover:bg-slate-800 text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold rounded text-center transition-colors"
 >
-Configure Commercial Quotation
+Configure Commercial Quotation →
 </button>
 </div>
 </div>
 </div>
 </div>
 )}
+{/* RFQ Proforma Generator */}
 <section id="proforma" className="bg-slate-900 text-white py-16 px-4 border-t border-slate-800">
 <div className="max-w-5xl mx-auto">
 <div className="text-center space-y-2 mb-10">
@@ -707,7 +745,7 @@ max="1000"
 step="10"
 value={rfqForm.volumeMT}
 onChange={(e) => setRfqForm({ ...rfqForm, volumeMT: parseInt(e.target.value, 10) })}
-className="w-full accent-amber-500 cursor-pointer"
+className="w-full accent-[#9A7336] cursor-pointer"
 />
 <div className="flex justify-between text-[10px] font-mono text-slate-500 mt-1">
 <span>10 MT (Trial LCL / 20ft)</span>
@@ -832,7 +870,7 @@ required
 <button
 type="submit"
 disabled={isSubmitting}
-className="w-full py-4 bg-amber-600 hover:bg-amber-700 disabled:bg-slate-700 text-white font-mono text-xs font-bold uppercase tracking-widest rounded shadow-lg transition-colors flex items-center justify-center gap-2"
+className="w-full py-4 bg-[#9A7336] hover:bg-[#85612A] disabled:bg-slate-700 text-white font-mono text-xs font-bold uppercase tracking-widest rounded shadow-lg transition-colors flex items-center justify-center gap-2"
 >
 {isSubmitting ? (
 <span>Routing to care@vaayuelixir.com...</span>
@@ -845,46 +883,54 @@ className="w-full py-4 bg-amber-600 hover:bg-amber-700 disabled:bg-slate-700 tex
 </div>
 </div>
 </section>
+{/* Footer with Leadership Information */}
 <footer className="bg-slate-950 text-slate-400 py-12 px-4 border-t border-slate-800 text-xs">
 <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-8">
 <div className="space-y-3">
-<div className="flex items-center gap-2">
-<div className="w-7 h-7 rounded bg-amber-500/20 text-amber-400 border border-amber-500/40 flex items-center justify-center font-serif font-bold">V</div>
-<span className="font-serif font-bold text-white text-sm tracking-wider">VAAYU ELIXIR</span>
+<div className="flex items-center gap-2.5">
+<VaayuLogo className="w-8 h-8 flex-shrink-0" />
+<div>
+<span className="font-serif font-bold text-white text-base tracking-wider">VAAYU </span>
+<span className="font-serif font-bold text-[#B38738] text-base tracking-wider">ELIXIR</span>
 </div>
+</div>
+<p className="text-[11px] text-[#C49A45] font-serif italic tracking-wide">
+"Moving Opportunities. Creating Value."
+</p>
 <p className="text-[11px] text-slate-500 leading-relaxed">
 Global Trade & Strategic Ventures. Operating merchant export logistics via JNPT Nhava Sheva and Mumbai Air Cargo.
 </p>
 </div>
 <div>
-<div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Registered Headquarters</div>
-<div className="text-[11px] text-slate-400 leading-relaxed">
-Navi Mumbai / Panvel Corridor<br />
-Maharashtra, India (Pin 410206)<br />
-Direct JNPT Port Connectivity
+<div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Leadership & Administration</div>
+<div className="text-[11px] text-slate-300 leading-relaxed font-sans">
+<span className="font-semibold text-white block text-sm">Amit Zawarey</span>
+<span className="text-[#B38738] text-xs font-mono uppercase tracking-wider block mb-2">Proprietor</span>
+Navi Mumbai & Mumbai Trading Corridor<br />
+Maharashtra, India (Direct JNPT Gateway)
 </div>
 </div>
 <div>
 <div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Direct Communication</div>
-<div className="text-[11px] text-slate-400 space-y-1">
+<div className="text-[11px] text-slate-400 space-y-1 font-mono">
 <div>Email: <a href="mailto:care@vaayuelixir.com" className="text-amber-400 hover:underline">care@vaayuelixir.com</a></div>
-<div>Trade Desk: <a href="tel:+917208666522" className="text-slate-300 hover:underline">+91 7208666522</a></div>
-<div>Web: <span className="text-slate-300">www.vaayuelixir.com</span></div>
+<div>Trade Desk: <a href="tel:+917208666522" className="text-slate-200 hover:underline">+91 7208666522</a></div>
+<div>Web: <a href="https://www.vaayuelixir.com" className="text-slate-200 hover:underline">www.vaayuelixir.com</a></div>
 </div>
 </div>
 <div>
-<div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Export Compliance</div>
+<div className="font-mono text-white text-[11px] uppercase tracking-wider mb-2 font-semibold">Trade Capabilities</div>
 <div className="text-[11px] text-slate-400 space-y-1">
-<div>APEDA: Agro & Processed Food Authority</div>
-<div>FSSAI: Central Food Safety Certified</div>
-<div>Spices Board of India Registered</div>
-<div>DGFT: Importer Exporter Code (IEC)</div>
+<div>• Trade Execution (Grains, Spices, Perishables)</div>
+<div>• Export Advisory & Sourcing Logistics</div>
+<div>• Strategic Agro Ventures</div>
+<div>• Global Market Opportunities</div>
 </div>
 </div>
 </div>
 <div className="max-w-7xl mx-auto mt-8 pt-6 border-t border-slate-900 text-[10px] font-mono text-slate-600 flex flex-wrap justify-between items-center gap-2">
 <span>© {new Date().getFullYear()} Vaayu Elixir Global Trade & Strategic Ventures. All rights reserved.</span>
-<span>Berth Terminal: JNPT BMCT / NSICT</span>
+<span>India • Middle East • Africa • Europe • Asia • Beyond</span>
 </div>
 </footer>
 </div>
