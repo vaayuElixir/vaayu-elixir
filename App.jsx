@@ -7,7 +7,7 @@ import logoImg from './IMG_9377.jpeg';
 
 // 1) Create a free form at formspree.io, then paste your form ID here.
 //    Until you do, the form falls back to opening the buyer's email app.
-const FORM_ENDPOINT = 'https://formspree.io/f/YOUR_FORM_ID';
+const FORM_ENDPOINT = 'https://formspree.io/f/mbgojywg';
 const FORM_READY = !FORM_ENDPOINT.includes('YOUR_FORM_ID');
 
 const CONTACT = {
