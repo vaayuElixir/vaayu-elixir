@@ -22,11 +22,10 @@ const CONTACT = {
 
 // 2) Fill in your real numbers. DELETE any line for a registration you do not hold.
 const REGISTRATIONS = [
-  { label: 'Importer-Exporter Code (IEC), DGFT', value: '' },
-  { label: 'APEDA RCMC (rice and fresh produce)', value: '' },
-  { label: 'Spices Board RCMC (spices)', value: '' },
-  { label: 'FSSAI license', value: '' },
-  { label: 'GSTIN', value: '' },
+  { label: 'Importer-Exporter Code (IEC), DGFT', value: 'AAIPZ6521H' },
+  { label: 'APEDA RCMC (rice and fresh produce)', value: 'RCMC/APEDA/35225/2026-2027' },
+  { label: 'FSSAI license', value: '11526996001186' },
+  { label: 'GSTIN', value: '27AAIPZ6521H2Z9' },
 ];
 
 /* =====================================================================
