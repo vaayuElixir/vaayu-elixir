@@ -299,9 +299,7 @@ return (
         
         <button 
           onClick={() => { setSelectedCommodity(COMMODITIES[0]); setTradeDeskOpen(true); }}
-          style={{ backgroundColor: '#0A1526', color: '#F8FAFC', padding: '10px 18px', borderRadius: '4px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', border: '1px solid #1E293B', cursor: 'pointer', transition: 'background-color 0.2s' }}
-          onMouseOver={(e) => e.target.style.backgroundColor = '#1E3A5F'}
-          onMouseOut={(e) => e.target.style.backgroundColor = '#0A1526'}
+          style={{ backgroundColor: '#0A1526', color: '#F8FAFC', padding: '10px 18px', borderRadius: '4px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', border: '1px solid #1E293B', cursor: 'pointer' }}
         >
           REQUEST PROFORMA
         </button>
