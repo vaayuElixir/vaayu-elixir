@@ -1,862 +1,649 @@
 import React, { useState, useEffect } from 'react';
-function VaayuBrandLogo({ size = 48, className = "" }) {
-return (
-<div
-style={{
-width: size + "px",
-height: size + "px",
-display: "flex",
-alignItems: "center",
-justifyContent: "center",
-overflow: "hidden",
-borderRadius: "6px",
-flexShrink: 0
-}}
+
+// Brand Emblem: Exact geometry from official business card
+// (Golden crescent arc + 3 fluid gold & navy wings tapering down)
+const VaayuEmblem = ({ size = 48, className = "" }) => (
+<svg
+width={size}
+height={size}
+viewBox="0 0 120 120"
+fill="none"
+xmlns="http://www.w3.org/2000/svg"
 className={className}
->
-<img
-src="/IMG_9377.jpeg"
-alt="Vaayu Elixir"
-style={{
-width: "100%",
-height: "100%",
-objectFit: "cover",
-display: "block"
-}}
+style={{ flexShrink: 0, display: "block" }}
+
+<defs>
+  <linearGradient id="goldArch" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stopColor="#D4AF37" />
+    <stop offset="50%" stopColor="#B38728" />
+    <stop offset="100%" stopColor="#8C6721" />
+  </linearGradient>
+  <linearGradient id="goldWing" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stopColor="#DFB76C" />
+    <stop offset="60%" stopColor="#C59B27" />
+    <stop offset="100%" stopColor="#9E7818" />
+  </linearGradient>
+  <linearGradient id="navyWingTop" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stopColor="#1E3A5F" />
+    <stop offset="100%" stopColor="#0E1B2E" />
+  </linearGradient>
+  <linearGradient id="navyWingBottom" x1="0%" y1="0%" x2="100%" y2="100%">
+    <stop offset="0%" stopColor="#142642" />
+    <stop offset="100%" stopColor="#070D18" />
+  </linearGradient>
+</defs>
+
+{/* Outer Slender Golden Crescent Arch */}
+<path
+  d="M 68 18 C 96 22 112 48 106 76 C 102 96 85 110 65 112 C 55 113 46 110 40 106 C 49 107 60 104 68 98 C 84 86 94 66 90 46 C 87 31 77 22 68 18 Z"
+  fill="url(#goldArch)"
 />
-</div>
-);
-}
-const COMMODITY_CATALOG = [
+
+{/* Wing Feather 1 (Top Feather - Rich Brushed Gold) */}
+<path
+  d="M 32 38 C 50 36 78 40 98 55 C 80 57 60 55 42 49 C 34 46 29 42 32 38 Z"
+  fill="url(#goldWing)"
+/>
+
+{/* Wing Feather 2 (Upper Middle Feather - Deep Navy) */}
+<path
+  d="M 38 52 C 55 52 75 58 92 70 C 76 71 58 68 44 61 C 38 58 35 55 38 52 Z"
+  fill="url(#navyWingTop)"
+/>
+
+{/* Wing Feather 3 (Lower Middle Feather - Deep Navy) */}
+<path
+  d="M 44 65 C 60 66 75 73 85 84 C 71 83 58 79 48 73 C 43 70 41 67 44 65 Z"
+  fill="url(#navyWingBottom)"
+/>
+
+{/* Swooping Tail Feather Curve (Tapering to Bottom Tip) */}
+<path
+  d="M 52 77 C 62 80 72 87 76 96 C 68 93 60 88 56 83 C 51 86 49 92 53 98 C 56 102 62 105 67 106 C 58 107 50 102 46 94 C 43 88 45 80 52 77 Z"
+  fill="url(#navyWingBottom)"
+/>
+
+
+// Commodity Portfolio Data
+const COMMODITIES = [
 {
-id: "rice-1121-steam",
-category: "Grains & Rice",
-title: "1121 Basmati Rice (Steam / Sella)",
-hsn: "1006.30.20",
-botanical: "Oryza sativa var. Basmati 1121",
-origin: "Punjab & Haryana Rice Mandis",
-grainLength: "8.35 mm+ Average Pre-Cooked",
-moisture: "Max 12.5%",
-broken: "Under 1.0% (Optical Sortex 100%)",
-purity: "95% Pure Varietal Admixture",
-packaging: "25kg & 50kg BOPP Laminated Poly Bags",
-containerPayload: "25.0 MT per 20ft Dry Cargo FCL",
-inspectionStandard: "SGS / Bureau Veritas Pre-Berth Assayed",
-description: "Premier culinary-grade aromatic extra-long grain with elongation ratio exceeding 2.2x post-cook. Certified optical Sortex processed for export."
+id: 'basmati-1121',
+category: 'Grains & Rice',
+name: '1121 Basmati Rice (Steam / Sella / Raw)',
+botanical: 'Oryza sativa (Extra Long Grain)',
+hsn: '1006.30.20',
+origin: 'Karnal & Taraori Belt (Haryana / Punjab)',
+grainLength: '8.35 mm - 8.40 mm Average Pre-cooked',
+moisture: 'Max 12.5%',
+broken: 'Under 1.0%',
+purity: '95% Pure Traditional Basmati',
+packaging: '10kg, 20kg, 40kg Non-Woven / BOPP / Jute Bags',
+fclLoad: '25.0 Metric Tons / 20ft FCL',
+inspection: 'SGS / Bureau Veritas Pre-shipment Certificate',
+status: 'In Stock - Ready Berth',
+desc: 'The pinnacle of global aromatic rice. World-renowned 1121 steam and golden sella basmati with extraordinary elongation ratio of 2.5x upon cooking.'
 },
 {
-id: "rice-1509-steam",
-category: "Grains & Rice",
-title: "1509 Basmati Rice (Golden / Steam)",
-hsn: "1006.30.20",
-botanical: "Oryza sativa var. Basmati 1509",
-origin: "Taraori & Karnal Rice Belt",
-grainLength: "8.40 mm+ Pre-Cooked",
-moisture: "Max 12.5%",
-broken: "Under 1.0% Sortex Milled",
-purity: "95% Pure Varietal Admixture",
-packaging: "10kg, 25kg, 50kg Master Bags",
-containerPayload: "25.5 MT per 20ft Dry FCL",
-inspectionStandard: "APEDA / SGS Assayed",
-description: "High-volume commercial Basmati delivering long slender visual appeal, exceptional aroma, and rapid culinary turnaround for catering and retail markets."
+id: 'basmati-1509',
+category: 'Grains & Rice',
+name: '1509 Basmati Rice (Golden Sella / Steam)',
+botanical: 'Oryza sativa (Long Grain)',
+hsn: '1006.30.20',
+origin: 'Western Uttar Pradesh & Punjab Mandis',
+grainLength: '8.40 mm+ Length',
+moisture: 'Max 12.0%',
+broken: 'Under 1.0%',
+purity: '95% Minimum',
+packaging: '25kg / 50kg PP Bags with Inner Liner',
+fclLoad: '25.5 Metric Tons / 20ft FCL',
+inspection: 'APEDA Approved Lab / SGS',
+status: 'Procurement Active',
+desc: 'Cost-effective premium long-grain alternative to 1121. Highly favored across GCC catering, hypermarkets, and West African institutional kitchens.'
 },
 {
-id: "rice-ir64-parboiled",
-category: "Grains & Rice",
-title: "IR64 Non-Basmati Parboiled Rice (5% Broken)",
-hsn: "1006.30.90",
-botanical: "Oryza sativa (Long Grain Indica)",
-origin: "Andhra Pradesh & Chhattisgarh Hubs",
-grainLength: "6.00 mm - 6.20 mm Average",
-moisture: "Max 14.0%",
-broken: "Max 5.0% Optical Sorted",
-purity: "Silky Double Polished",
-packaging: "50kg Strong Jute / PP Woven Export Sacks",
-containerPayload: "26.0 MT per 20ft FCL Container",
-inspectionStandard: "FSSAI / Pre-Shipment Marine Inspection",
-description: "The global workhorse of bulk food security. Heavy grain weight, resilient gelatinization starch profile, optimized for West Africa & GCC port deliveries."
+id: 'ir64-parboiled',
+category: 'Grains & Rice',
+name: 'IR-64 Parboiled Rice (5% Broken)',
+botanical: 'Oryza sativa (Non-Basmati)',
+hsn: '1006.30.10',
+origin: 'Raipur & Kakinada Hinterlands',
+grainLength: '6.0 mm - 6.2 mm',
+moisture: 'Max 13.5%',
+broken: '5.0% Maximum',
+purity: '100% Sortex Cleaned',
+packaging: '50kg Strong White PP Bags',
+fclLoad: '26.0 Metric Tons / 20ft FCL or Breakbulk',
+inspection: 'Export Inspection Council (EIC) / SGS',
+status: 'Bulk Allocation Open',
+desc: 'High-volume institutional staple. Double-steamed parboiled non-basmati rice with low starch discharge, calibrated for West African and Southeast Asian bulk tenders.'
 },
 {
-id: "rice-sona-masoori",
-category: "Grains & Rice",
-title: "Sona Masoori Raw & Steam Rice",
-hsn: "1006.30.90",
-botanical: "Oryza sativa (Medium Grain)",
-origin: "Raichur & Kurnool River Basins",
-grainLength: "5.20 mm Average Medium Slender",
-moisture: "Max 13.0%",
-broken: "Under 1.5%",
-purity: "100% Optical Sortex Sorted",
-packaging: "10kg & 25kg Branded Laminated Pouches",
-containerPayload: "25.0 MT per 20ft FCL",
-inspectionStandard: "APEDA Quality Certificate",
-description: "Low-starch aromatic medium grain. Light and easily digestible staple with steady year-round volume demand across the international Indian diaspora."
+id: 'sona-masoori',
+category: 'Grains & Rice',
+name: 'Sona Masoori Raw & Steam Rice',
+botanical: 'Oryza sativa (Medium Grain)',
+hsn: '1006.30.90',
+origin: 'Raichur & Kurnool River Basins',
+grainLength: '5.20 mm Average Medium Slender',
+moisture: 'Max 13.0%',
+broken: 'Under 1.5%',
+purity: '100% Optical Sortex Sorted',
+packaging: '10kg & 25kg Branded Laminated Pouches',
+fclLoad: '25.0 MT per 20ft FCL',
+inspection: 'APEDA Quality Certificate',
+status: 'Ready for Stuffing',
+desc: 'Low-starch aromatic medium grain. Light and easily digestible staple with steady year-round volume demand across the international Indian diaspora.'
 },
 {
-id: "spices-teja-chilli",
-category: "Whole Spices",
-title: "Teja S17 Dried Red Chilli (Stem & Stemless)",
-hsn: "0904.21.10",
-botanical: "Capsicum annuum var. Teja S17",
-origin: "Guntur & Warangal Spice Corridors",
-grainLength: "6 cm - 8 cm Whole Dried Pods",
-moisture: "Max 10.0% Sun Cured",
-broken: "Under 2.0% Loose Seeds / Foreign Matter",
-purity: "Hot Pungency: 75,000 - 90,000 SHU",
-packaging: "10kg / 25kg Jute Gunny or PP Bags",
-containerPayload: "7.0 MT in 20ft FCL / 14.5 MT in 40ft HC",
-inspectionStandard: "Spices Board India / Agmark Tested",
-description: "Intense fire rating with high natural capsaicin yield. Deep crimson oil extractability, prized worldwide by oleoresin processors and spice blending mills."
+id: 'teja-s17-chilli',
+category: 'Whole Spices',
+name: 'S17 Teja Red Chilli (Stemless / With Stem)',
+botanical: 'Capsicum annuum',
+hsn: '0904.21.10',
+origin: 'Guntur & Khammam Terminal Mandis',
+grainLength: 'SHU Pungency: 75,000 - 100,000 Scoville',
+moisture: 'Max 10.5%',
+broken: 'Under 2% Loose Seeds / Broken',
+purity: 'ASTA Color Value: 50 - 65 ASTA',
+packaging: '25kg Compressed Jute Bales or 10kg Cartons',
+fclLoad: '7.5 MT in 20ft / 14.0 MT in 40ft HC',
+inspection: 'Spices Board India / SGS Aflatoxin Clearance',
+status: 'Export Lot Ready',
+desc: 'Fiery, high-capsaicin Guntur chilli. The global standard for industrial oleoresin extraction, hot sauce manufacturing, and spice grinding plants worldwide.'
 },
 {
-id: "spices-byadgi-chilli",
-category: "Whole Spices",
-title: "Byadgi Deep Red Chilli (High ASTA Color)",
-hsn: "0904.21.10",
-botanical: "Capsicum annuum var. Byadgi",
-origin: "Haveri & Dharwad District (Karnataka)",
-grainLength: "10 cm - 13 cm Wrinkled Pods",
-moisture: "Max 11.0%",
-broken: "Low Broken / Hand Cleaned",
-purity: "Color Value: 140 - 200 ASTA | Low Heat: 15,000 SHU",
-packaging: "5kg, 10kg, 20kg Export Bales & Bags",
-containerPayload: "6.5 MT in 20ft FCL / 14.0 MT in 40ft HC",
-inspectionStandard: "Spices Board India Certified",
-description: "Renowned for characteristic wrinkled skins and high natural oleoresin color tinting with minimal capsaicin bite. Standard for industrial food coloration."
+id: 'byadgi-chilli',
+category: 'Whole Spices',
+name: 'Byadgi 668 & KDL Red Chilli',
+botanical: 'Capsicum annuum var. Byadgi',
+hsn: '0904.21.20',
+origin: 'Haveri & Dharwad Belt, Karnataka',
+grainLength: 'ASTA Color: 120 - 160 ASTA (Deep Ruby)',
+moisture: 'Max 11.0%',
+broken: 'Under 1.5%',
+purity: 'Low Pungency: 15,000 - 25,000 SHU',
+packaging: '4.5kg / 10kg Corrugated Export Cartons',
+fclLoad: '7.0 MT in 20ft / 13.5 MT in 40ft HC',
+inspection: 'Spices Board Certified & Sudan Dye Free',
+status: 'Harvest Lot Active',
+desc: 'World-famous crinkled red chilli prized for its intense natural red pigmentation and mild heat. Indispensable for premium paprika and food colorants.'
 },
 {
-id: "spices-cardamom-alleppey",
-category: "Whole Spices",
-title: "Alleppey Bold Green Cardamom (8mm+)",
-hsn: "0908.31.20",
-botanical: "Elettaria cardamomum",
-origin: "Idukki Western Ghats Plantation Belt",
-grainLength: "8.0 mm - 8.5 mm Bold Calibrated Pods",
-moisture: "Max 10.5%",
-broken: "Zero Splits / 100% Whole Closed Pods",
-purity: "Volatile Oil: Min 3.5% ml/100g",
-packaging: "10kg Vacuum Foil Packs in 5-Ply Master Outer Cartons",
-containerPayload: "Palletized Air Freight / LCL Sea Cargo",
-inspectionStandard: "Spices Board Certificate of Analysis",
-description: "The Queen of Spices. Deep olive-green calyx preservation, robust aromatic pinene and cineole compounds, processed for premium Gulf & Middle East Gahwa."
+id: 'green-cardamom',
+category: 'Whole Spices',
+name: 'Alleppey Green Extra Bold Cardamom (AGEB 8mm+)',
+botanical: 'Elettaria cardamomum',
+hsn: '0908.31.10',
+origin: 'Idukki High Ranges, Kerala',
+grainLength: 'Diameter: 8.0 mm - 8.5 mm Bold Pods',
+moisture: 'Max 10.0%',
+broken: 'Zero Open Pods / 100% Green Husk',
+purity: 'Volatile Oil: Min 3.5% ml/100g',
+packaging: '5kg Master Vacuum Seal Polybags in Heavy Cartons',
+fclLoad: 'Air Cargo LCL / 20ft Containerized',
+inspection: 'Spices Board India Organic & Residue Report',
+status: 'Controlled Atmosphere Lot',
+desc: 'The Queen of Spices. Pristine deep-green sun-shielded cardamom pods with explosive aroma profile and dense seed mass for Middle Eastern royal blends.'
 },
 {
-id: "produce-moringa-drumstick",
-category: "Fresh Produce",
-title: "Fresh Moringa Drumsticks (Export Cut)",
-hsn: "0709.99.90",
-botanical: "Moringa oleifera",
-origin: "Theni & Dindigul Farm Clusters (Tamil Nadu)",
-grainLength: "45 cm - 55 cm Uniform Diameter",
-moisture: "Turgid Farm-Fresh Moisture Retention",
-broken: "Zero Split Ends / No Black Scars",
-purity: "Hand Harvested & Pre-Cooled at 10°C",
-packaging: "5kg CFB Telescopic Ventilated Export Cartons",
-containerPayload: "Sahar / NMIA Express Air Freight & 40ft Reefer",
-inspectionStandard: "APEDA Fresh Perishable Export Cleared",
-description: "Tender seed formation with fleshy sweet pulp. Handpicked at sunrise, sorted for diameter uniformity, and cold-chain stabilized for GCC air corridors."
-},
-{
-id: "poultry-table-eggs",
-category: "Cold Chain & Poultry",
-title: "Grade A Export Table Eggs (Clean White Shell)",
-hsn: "0407.21.00",
-botanical: "Gallus gallus domesticus",
-origin: "Namakkal Poultry Hub (Tamil Nadu)",
-grainLength: "Weight: 50g - 55g per Egg",
-moisture: "Controlled Humidity Storage (75%)",
-broken: "Zero Micro-Hairline Cracks (Candled 100%)",
-purity: "Haugh Units: 72+ (Fresh Thick Albumin)",
-packaging: "30 Eggs per Tray • 12 Trays per 360-Egg Master Carton",
-containerPayload: "1,312 Cartons (472,320 Eggs) in 40ft Reefer (+4°C)",
-inspectionStandard: "Department of Animal Husbandry & Dairying (DAHD)",
-description: "Salmonella & antibiotic certified clean white shell eggs. Candled and UV disinfected prior to temperature-locked reefer voyages to the Middle East & Africa."
+id: 'fresh-moringa',
+category: 'Fresh Produce',
+name: 'Export Grade ODC Moringa Drumsticks & Leaves',
+botanical: 'Moringa oleifera (ODC3 Variety)',
+hsn: '0709.99.90',
+origin: 'Dindigul & Theni Orchards, Tamil Nadu',
+grainLength: 'Length: 45 cm - 60 cm Straight Pods',
+moisture: 'Fresh Harvest Ambient Cold Chain',
+broken: 'Zero Blemishes / Uniform Green Caliber',
+purity: '100% GlobalG.A.P. Farm Sourced',
+packaging: '5kg & 10kg Ventilated Telescopic Cartons',
+fclLoad: 'Daily Air Cargo Uplift via Mumbai Sahar / NMIA',
+inspection: 'APEDA Phytosanitary Clearance Certificate',
+status: 'Daily Air Uplift Active',
+desc: 'Nutrient-rich perennial drumsticks harvested at daybreak, sorted by calibrated thickness, pre-cooled, and air-freighted within 24 hours of cutting.'
 }
 ];
+
 export default function App() {
-const [selectedCategory, setSelectedCategory] = useState("All");
-const [selectedProduct, setSelectedProduct] = useState(null);
-const [rfqForm, setRfqForm] = useState({
-commodityId: "rice-1121-steam",
-volumeMT: 50,
-incoterm: "CIF",
-destinationPort: "Jebel Ali Port (UAE)",
-packagingType: "25kg Woven PP Sacks (Export Grade)",
-buyerEntity: "",
-contactName: "",
-email: "",
-phone: "",
-notes: ""
-});
-const [isSubmitting, setIsSubmitting] = useState(false);
-const [rfqSuccess, setRfqSuccess] = useState(false);
-const [deskTimes, setDeskTimes] = useState({
-mumbai: "",
-dubai: "",
-singapore: ""
-});
+const [activeTab, setActiveTab] = useState('ALL');
+const [selectedCommodity, setSelectedCommodity] = useState(null);
+const [rfqVolume, setRfqVolume] = useState('25');
+const [rfqIncoterm, setRfqIncoterm] = useState('FOB');
+const [rfqPort, setRfqPort] = useState('Jebel Ali, UAE');
+const [tradeDeskOpen, setTradeDeskOpen] = useState(false);
+const [currentTime, setCurrentTime] = useState({ bom: '', dxb: '', sin: '' });
+
+// International Trade Clocks
 useEffect(() => {
 const updateTimes = () => {
 const now = new Date();
-setDeskTimes({
-mumbai: now.toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
-dubai: now.toLocaleTimeString("en-US", { timeZone: "Asia/Dubai", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
-singapore: now.toLocaleTimeString("en-US", { timeZone: "Asia/Singapore", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
+setCurrentTime({
+bom: now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Kolkata', hour12: false }),
+dxb: now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Dubai', hour12: false }),
+sin: now.toLocaleTimeString('en-GB', { timeZone: 'Asia/Singapore', hour12: false }),
 });
 };
 updateTimes();
 const interval = setInterval(updateTimes, 1000);
 return () => clearInterval(interval);
 }, []);
-const categories = ["All", "Grains & Rice", "Whole Spices", "Fresh Produce", "Cold Chain & Poultry"];
-const filteredProducts = selectedCategory === "All"
-? COMMODITY_CATALOG
-: COMMODITY_CATALOG.filter(c => c.category === selectedCategory);
-const activeCommodity = COMMODITY_CATALOG.find(c => c.id === rfqForm.commodityId) || COMMODITY_CATALOG[0];
-const payloadPerFcl = parseFloat(activeCommodity.containerPayload) || 25;
-const calculatedContainers = Math.max(1, Math.ceil(rfqForm.volumeMT / payloadPerFcl));
-const handleRfqSubmit = async (e) => {
-e.preventDefault();
-setIsSubmitting(true);
-const emailSubject = "[TRADE ENQUIRY] " + activeCommodity.title + " - " + rfqForm.volumeMT + " MT (" + rfqForm.incoterm + ")";
-const volumeDescription = rfqForm.volumeMT + " Metric Tons (~" + calculatedContainers + " Container/s)";
-const payload = {
-access_key: "care@vaayuelixir.com",
-subject: emailSubject,
-from_name: "Vaayu Elixir Web Terminal",
-to_email: "care@vaayuelixir.com",
-reply_to: rfqForm.email || undefined,
-commodity: activeCommodity.title,
-hsn_code: activeCommodity.hsn,
-volume: volumeDescription,
-incoterm: rfqForm.incoterm,
-destination_port: rfqForm.destinationPort,
-packaging_required: rfqForm.packagingType,
-buyer_entity: rfqForm.buyerEntity || "Direct Importer",
-authorized_contact: rfqForm.contactName || "Representative",
-buyer_email: rfqForm.email,
-buyer_phone_whatsapp: rfqForm.phone,
-notes_tolerances: rfqForm.notes || "None specified"
-};
-try {
-await fetch("https://api.web3forms.com/submit", {
-method: "POST",
-headers: { "Content-Type": "application/json", Accept: "application/json" },
-body: JSON.stringify(payload)
-});
-setRfqSuccess(true);
-} catch {
-setRfqSuccess(true);
-} finally {
-setIsSubmitting(false);
-}
-};
-const whatsappMessage =
-"VAAYU ELIXIR - COMMERCIAL RFQ\n\n" +
-"• Commodity: " + activeCommodity.title + "\n" +
-"• HSN: " + activeCommodity.hsn + "\n" +
-"• Volume: " + rfqForm.volumeMT + " MT (~" + calculatedContainers + " FCL)\n" +
-"• Incoterm: " + rfqForm.incoterm + " -> " + rfqForm.destinationPort + "\n" +
-"• Packaging: " + rfqForm.packagingType + "\n" +
-"• Buyer Entity: " + (rfqForm.buyerEntity || "Direct Importer") + " (" + rfqForm.contactName + ")\n" +
-"• Email: " + rfqForm.email + "\n" +
-"• WhatsApp: " + rfqForm.phone + "\n\n" +
-"Please provide formal proforma quotation and liner schedule.";
-const whatsappUrl = "https://wa.me/917208666522?text=" + encodeURIComponent(whatsappMessage);
-return (
-<div style={{ minHeight: "100vh", backgroundColor: "#F8FAFC", color: "#1E293B", fontFamily: "'Inter', -apple-system, BlinkMacSystemFont, sans-serif" }}>
-{/* 1. TOP TICKER */}
-<header style={{ backgroundColor: "#060D1D", borderBottom: "1px solid #1E293B", color: "#94A3B8", fontSize: "11px", position: "sticky", top: 0, zIndex: 100 }}>
-<div style={{ maxWidth: "1240px", margin: "0 auto", padding: "8px 16px", display: "flex", flexWrap: "wrap", alignItems: "center", justifyContent: "space-between", gap: "10px" }}>
-<div style={{ display: "flex", alignItems: "center", gap: "10px", fontFamily: "monospace" }}>
-<span style={{ color: "#DFC07A", fontWeight: 700, display: "flex", alignItems: "center", gap: "6px" }}>
-<span style={{ width: "8px", height: "8px", borderRadius: "50%", backgroundColor: "#10B981", display: "inline-block" }}></span>
-GATEWAY: JNPT NHAVA SHEVA (BMCT / NSIT)
-</span>
-<span style={{ color: "#334155" }}>|</span>
-<span style={{ color: "#CBD5E1", fontSize: "10px" }}>APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
-</div>
-<div style={{ display: "flex", alignItems: "center", gap: "16px", fontFamily: "monospace", fontSize: "11px" }}>
-<span>BOM: <strong style={{ color: "#FFF" }}>{deskTimes.mumbai || "--:--"}</strong></span>
-<span>DXB: <strong style={{ color: "#FFF" }}>{deskTimes.dubai || "--:--"}</strong></span>
-<a href="mailto:care@vaayuelixir.com" style={{ color: "#DFC07A", textDecoration: "none", fontWeight: 700 }}>
-care@vaayuelixir.com
-</a>
-</div>
-</div>
-</header>
-{/* 2. NAVIGATION BAR */}
-<nav style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "12px 16px" }}>
-<div style={{ maxWidth: "1240px", margin: "0 auto", display: "flex", alignItems: "center", justifyContent: "space-between", gap: "16px" }}>
-<div style={{ display: "flex", alignItems: "center", gap: "14px" }}>
-<VaayuBrandLogo size={46} />
-<div>
-<div style={{ display: "flex", alignItems: "baseline", gap: "6px", lineHeight: 1 }}>
-<span style={{ fontFamily: "Georgia, serif", fontSize: "20px", fontWeight: 800, color: "#0B1528", letterSpacing: "0.08em" }}>
-VAAYU
-</span>
-<span style={{ fontFamily: "Georgia, serif", fontSize: "20px", fontWeight: 800, color: "#B88A34", letterSpacing: "0.08em" }}>
-ELIXIR
-</span>
-</div>
-<div style={{ fontSize: "8.5px", fontWeight: 700, color: "#475569", letterSpacing: "0.22em", textTransform: "uppercase", marginTop: "4px" }}>
-GLOBAL TRADE & STRATEGIC VENTURES
-</div>
-</div>
-</div>
-<div style={{ display: "flex", alignItems: "center", gap: "16px" }}>
-<div style={{ textAlign: "right" }}>
-<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#94A3B8", letterSpacing: "0.15em", textTransform: "uppercase" }}>
-TRADE CORRIDORS
-</div>
-<div style={{ fontSize: "10.5px", fontWeight: 600, color: "#0B1528" }}>
-INDIA • MIDDLE EAST • AFRICA • EUROPE • ASIA
-</div>
-</div>
-<a
-href="#proforma"
-style={{ fontSize: "11px", fontFamily: "monospace", textTransform: "uppercase", letterSpacing: "0.06em", padding: "9px 16px", backgroundColor: "#0B1528", color: "#DFC07A", borderRadius: "4px", textDecoration: "none", fontWeight: 700, border: "1px solid rgba(184,138,52,0.4)" }}
->
-Request Proforma
-</a>
-</div>
-</div>
-</nav>
-{/* 3. HERO OVERVIEW */}
-<section style={{ backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0", padding: "36px 16px" }}>
-<div style={{ maxWidth: "1240px", margin: "0 auto" }}>
-<div style={{ display: "inline-block", padding: "5px 12px", backgroundColor: "#FEF9EE", border: "1px solid #F5E3B8", borderRadius: "4px", fontSize: "10.5px", fontFamily: "monospace", color: "#875F1C", marginBottom: "16px" }}>
-<strong style={{ letterSpacing: "0.08em" }}>MOVING OPPORTUNITIES. CREATING VALUE.</strong>
-<span style={{ margin: "0 8px", color: "#CBD5E1" }}>|</span>
-<span style={{ color: "#475569" }}>MUMBAI & NAVI MUMBAI TRADING CORRIDOR</span>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "32px", alignItems: "center" }}>
-<div>
-<h1 style={{ fontFamily: "Georgia, serif", fontSize: "28px", fontWeight: 700, color: "#0B1528", lineHeight: 1.35, margin: "0 0 14px 0", letterSpacing: "0.01em" }}>
-Direct Farm-to-Berth Maritime Trade Execution
-</h1>
-<p style={{ fontSize: "14.5px", lineHeight: "1.65", color: "#475569", margin: "0 0 20px 0" }}>
-Direct containerized export shipments of calibrated Indian Basmati rice, high-pungency red chillies, plantation spices, fresh perishables, and cold-chain cargo through Nhava Sheva (JNPT) and Sahar Cargo across the GCC, Africa, and Southeast Asia.
-</p>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(2, 1fr)", gap: "10px", marginBottom: "22px" }}>
-<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Primary Port</div>
-<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>JNPT Nhava Sheva</div>
-</div>
-<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Express Air</div>
-<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>Sahar & NMIA Cargo</div>
-</div>
-<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Cold Chain</div>
-<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>-18°C to +14°C</div>
-</div>
-<div style={{ padding: "10px 14px", backgroundColor: "#F8FAFC", border: "1px solid #E2E8F0", borderRadius: "4px" }}>
-<div style={{ fontSize: "9px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Assay Standard</div>
-<div style={{ fontSize: "13px", fontWeight: 700, color: "#0B1528", marginTop: "2px" }}>SGS / Bureau Veritas</div>
-</div>
-</div>
-<div style={{ display: "flex", gap: "12px", flexWrap: "wrap" }}>
-<a
-href="#catalog"
-style={{ display: "inline-block", padding: "11px 20px", backgroundColor: "#B88A34", color: "#FFFFFF", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", textDecoration: "none", borderRadius: "4px" }}
->
-Inspect Export Commodities →
-</a>
-<a
-href="https://wa.me/917208666522"
-target="_blank"
-rel="noreferrer"
-style={{ display: "inline-block", padding: "11px 20px", backgroundColor: "#0B1528", color: "#DFC07A", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.06em", textDecoration: "none", borderRadius: "4px" }}
->
-Trade Desk WhatsApp
-</a>
-</div>
-</div>
-<div style={{ backgroundColor: "#060D1D", color: "#CBD5E1", padding: "24px", borderRadius: "8px", border: "1px solid #1E293B", boxShadow: "0 6px 20px rgba(0,0,0,0.12)" }}>
-<div style={{ display: "flex", alignItems: "center", justifyContent: "space-between", borderBottom: "1px solid #1E293B", paddingBottom: "12px", marginBottom: "14px" }}>
-<div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-<VaayuBrandLogo size={28} />
-<span style={{ fontFamily: "monospace", fontSize: "11px", fontWeight: 700, color: "#DFC07A", letterSpacing: "0.08em" }}>
-CORRIDOR VELOCITY & LOGISTICS
-</span>
-</div>
-<span style={{ fontSize: "9.5px", fontFamily: "monospace", backgroundColor: "#1E293B", color: "#94A3B8", padding: "2px 6px", borderRadius: "3px" }}>
-LIVE BERTH
-</span>
-</div>
-<div style={{ display: "flex", flexDirection: "column", gap: "10px", fontSize: "12px" }}>
-<div style={{ padding: "12px", backgroundColor: "#0E182D", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-<div>
-<div style={{ color: "#FFF", fontWeight: 600 }}>Nhava Sheva → Jebel Ali (Dubai)</div>
-<div style={{ color: "#94A3B8", fontSize: "11px" }}>Direct liner transit • 3 to 4 Voyage Days</div>
-</div>
-<span style={{ color: "#10B981", fontFamily: "monospace", fontWeight: 700 }}>ACTIVE</span>
-</div>
-<div style={{ padding: "12px", backgroundColor: "#0E182D", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-<div>
-<div style={{ color: "#FFF", fontWeight: 600 }}>Nhava Sheva → West Africa (Lomé / Lagos)</div>
-<div style={{ color: "#94A3B8", fontSize: "11px" }}>Bulk parboiled & agro breakbulk • 22 to 26 Days</div>
-</div>
-<span style={{ color: "#10B981", fontFamily: "monospace", fontWeight: 700 }}>ACTIVE</span>
-</div>
-<div style={{ padding: "12px", backgroundColor: "#0E182D", borderRadius: "4px", border: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center" }}>
-<div>
-<div style={{ color: "#FFF", fontWeight: 600 }}>Mumbai Air Cargo → GCC Corridor</div>
-<div style={{ color: "#94A3B8", fontSize: "11px" }}>Moringa & fresh perishables • Daily Uplift</div>
-</div>
-<span style={{ color: "#DFC07A", fontFamily: "monospace", fontWeight: 700 }}>EXPRESS</span>
-</div>
-</div>
-<div style={{ marginTop: "16px", paddingTop: "12px", borderTop: "1px solid #1E293B", display: "flex", justifyContent: "space-between", alignItems: "center", fontSize: "11px", color: "#94A3B8" }}>
-<span>Amit Zawarey • Proprietor</span>
-<span style={{ color: "#DFC07A", fontFamily: "monospace" }}>+91 7208666522</span>
-</div>
-</div>
-</div>
-</div>
-</section>
-{/* 4. COMMODITY CATALOG */}
-<section id="catalog" style={{ maxWidth: "1240px", margin: "0 auto", padding: "40px 16px" }}>
-<div style={{ display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "flex-end", gap: "16px", marginBottom: "28px" }}>
-<div>
-<div style={{ fontSize: "10.5px", fontFamily: "monospace", color: "#B88A34", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
-INSTITUTIONAL GRADE
-</div>
-<h2 style={{ fontFamily: "Georgia, serif", fontSize: "26px", fontWeight: 800, color: "#0B1528", margin: "4px 0 0 0" }}>
-Export Commodity Portfolio
-</h2>
-<p style={{ fontSize: "13.5px", color: "#64748B", margin: "4px 0 0 0" }}>
-Laboratory compliance tolerances, Sortex grading, and container stuffing schedules.
-</p>
-</div>
-<div style={{ display: "flex", flexWrap: "wrap", gap: "8px" }}>
-{categories.map(cat => {
-const active = selectedCategory === cat;
-return (
-<button
-key={cat}
-onClick={() => setSelectedCategory(cat)}
-style={{
-padding: "7px 13px",
-fontSize: "11px",
-fontFamily: "monospace",
-textTransform: "uppercase",
-letterSpacing: "0.04em",
-borderRadius: "4px",
-cursor: "pointer",
-border: active ? "1px solid #0B1528" : "1px solid #CBD5E1",
-backgroundColor: active ? "#0B1528" : "#FFFFFF",
-color: active ? "#DFC07A" : "#475569",
-fontWeight: 700
-}}
->
-{cat}
-</button>
+
+const filteredCommodities = activeTab === 'ALL'
+? COMMODITIES
+: COMMODITIES.filter(c => c.category.toUpperCase() === activeTab);
+
+const handleWhatsAppInquiry = (commodityName = 'Portfolio Inquiry') => {
+const message = encodeURIComponent(
+Hello Amit,\n\nI am reaching out via Vaayu Elixir Trade Desk regarding:\n*Commodity:* ${commodityName}\n*Volume:* ${rfqVolume} MT\n*Delivery Terms:* ${rfqIncoterm} (${rfqPort})\n\nPlease share current FOB Nhava Sheva / CIF indicative pricing and lab analysis.
 );
-})}
-</div>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(320px, 1fr))", gap: "20px" }}>
-{filteredProducts.map(prod => (
-<div
-key={prod.id}
-style={{ backgroundColor: "#FFFFFF", border: "1px solid #E2E8F0", borderRadius: "6px", display: "flex", flexDirection: "column", justifyContent: "space-between", overflow: "hidden" }}
->
-<div>
-<div style={{ height: "110px", backgroundColor: "#060D1D", display: "flex", alignItems: "center", justifyContent: "center", position: "relative", borderBottom: "1px solid #E2E8F0" }}>
-<div style={{ textAlign: "center" }}>
-<VaayuBrandLogo size={36} />
-<div style={{ fontSize: "9.5px", fontFamily: "monospace", color: "#DFC07A", textTransform: "uppercase", letterSpacing: "0.15em", marginTop: "4px" }}>
-{prod.category}
-</div>
-</div>
-<div style={{ position: "absolute", top: "10px", right: "10px", backgroundColor: "#0B1528", border: "1px solid #1E293B", padding: "2px 6px", borderRadius: "3px", color: "#DFC07A", fontSize: "9.5px", fontFamily: "monospace" }}>
-HSN {prod.hsn}
-</div>
-</div>
-<div style={{ padding: "18px" }}>
-<h3 style={{ fontFamily: "Georgia, serif", fontSize: "16px", fontWeight: 700, color: "#0B1528", margin: "0 0 3px 0" }}>
-{prod.title}
-</h3>
-<div style={{ fontSize: "11.5px", fontStyle: "italic", color: "#64748B", marginBottom: "10px" }}>
-{prod.botanical}
-</div>
-<p style={{ fontSize: "13px", color: "#475569", lineHeight: "1.5", margin: "0 0 14px 0" }}>
-{prod.description}
-</p>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", gap: "8px", fontSize: "11px", fontFamily: "monospace", paddingTop: "10px", borderTop: "1px solid #F1F5F9" }}>
-<div style={{ padding: "7px 10px", backgroundColor: "#F8FAFC", borderRadius: "3px" }}>
-<span style={{ color: "#94A3B8", display: "block", fontSize: "8.5px" }}>MOISTURE</span>
-<strong style={{ color: "#1E293B" }}>{prod.moisture}</strong>
-</div>
-<div style={{ padding: "7px 10px", backgroundColor: "#F8FAFC", borderRadius: "3px" }}>
-<span style={{ color: "#94A3B8", display: "block", fontSize: "8.5px" }}>PAYLOAD / FCL</span>
-<strong style={{ color: "#1E293B" }}>{prod.containerPayload}</strong>
-</div>
-</div>
-</div>
-</div>
-<div style={{ padding: "18px", paddingTop: "0", display: "flex", gap: "8px" }}>
-<button
-onClick={() => setSelectedProduct(prod)}
-style={{ flex: 1, padding: "9px", backgroundColor: "#F1F5F9", border: "none", borderRadius: "4px", color: "#1E293B", fontFamily: "monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
->
-Technical Spec
-</button>
-<button
-onClick={() => {
-setRfqForm(prev => ({
-...prev,
-commodityId: prod.id,
-packagingType: prod.packaging.split("•")[0]
-}));
-const el = document.getElementById("proforma");
-if (el) el.scrollIntoView({ behavior: "smooth" });
-}}
-style={{ padding: "9px 14px", backgroundColor: "#0B1528", border: "1px solid rgba(184,138,52,0.35)", borderRadius: "4px", color: "#DFC07A", fontFamily: "monospace", fontSize: "11px", fontWeight: 700, textTransform: "uppercase", cursor: "pointer" }}
->
-Quote
-</button>
-</div>
-</div>
-))}
-</div>
-</section>
-{/* 5. SPECIFICATION MODAL */}
-{selectedProduct && (
-<div style={{ position: "fixed", inset: 0, zIndex: 200, backgroundColor: "rgba(6,13,29,0.85)", display: "flex", alignItems: "center", justifyContent: "center", padding: "16px" }}>
-<div style={{ backgroundColor: "#FFFFFF", borderRadius: "6px", maxWidth: "600px", width: "100%", maxHeight: "90vh", overflowY: "auto", border: "1px solid #CBD5E1", boxShadow: "0 20px 40px rgba(0,0,0,0.3)" }}>
-<div style={{ padding: "16px 20px", backgroundColor: "#060D1D", color: "#FFF", display: "flex", justifyContent: "space-between", alignItems: "flex-start" }}>
-<div style={{ display: "flex", gap: "12px", alignItems: "center" }}>
-<VaayuBrandLogo size={36} />
-<div>
-<div style={{ fontSize: "9.5px", fontFamily: "monospace", color: "#DFC07A", textTransform: "uppercase" }}>{selectedProduct.category}</div>
-<h3 style={{ fontFamily: "Georgia, serif", fontSize: "17px", fontWeight: 700, margin: "2px 0 0 0" }}>{selectedProduct.title}</h3>
-<div style={{ fontSize: "11px", color: "#94A3B8" }}>{selectedProduct.botanical} • HSN {selectedProduct.hsn}</div>
-</div>
-</div>
-<button
-onClick={() => setSelectedProduct(null)}
-style={{ background: "none", border: "none", color: "#94A3B8", fontSize: "24px", cursor: "pointer", lineHeight: 1 }}
->
-×
-</button>
-</div>
-<div style={{ padding: "20px" }}>
-<p style={{ fontSize: "13.5px", color: "#475569", lineHeight: "1.6", margin: "0 0 16px 0" }}>
-{selectedProduct.description}
-</p>
-<div style={{ border: "1px solid #E2E8F0", borderRadius: "4px", overflow: "hidden", fontSize: "12px" }}>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "monospace", color: "#64748B" }}>Origin / Mandi</span>
-<strong>{selectedProduct.origin}</strong>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "monospace", color: "#64748B" }}>Grain / Pod Length</span>
-<strong>{selectedProduct.grainLength}</strong>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "monospace", color: "#64748B" }}>Moisture Tolerance</span>
-<strong>{selectedProduct.moisture}</strong>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#FFFFFF", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "monospace", color: "#64748B" }}>Broken Allowance</span>
-<strong>{selectedProduct.broken}</strong>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#F8FAFC", borderBottom: "1px solid #E2E8F0" }}>
-<span style={{ fontFamily: "monospace", color: "#64748B" }}>Export Packaging</span>
-<strong>{selectedProduct.packaging}</strong>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "1fr 1fr", padding: "9px 12px", backgroundColor: "#FFFFFF" }}>
-<span style={{ fontFamily: "monospace", color: "#64748B" }}>Inspection Standard</span>
-<strong>{selectedProduct.inspectionStandard}</strong>
-</div>
-</div>
-<div style={{ marginTop: "20px" }}>
-<button
-onClick={() => {
-setRfqForm(prev => ({
-...prev,
-commodityId: selectedProduct.id,
-packagingType: selectedProduct.packaging.split("•")[0]
-}));
-setSelectedProduct(null);
-const el = document.getElementById("proforma");
-if (el) el.scrollIntoView({ behavior: "smooth" });
-}}
-style={{ width: "100%", padding: "12px", backgroundColor: "#0B1528", color: "#DFC07A", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", border: "1px solid rgba(184,138,52,0.4)", borderRadius: "4px", cursor: "pointer" }}
->
-Configure Commercial Quotation →
-</button>
-</div>
-</div>
-</div>
-</div>
-)}
-{/* 6. RFQ / PROFORMA */}
-<section id="proforma" style={{ backgroundColor: "#060D1D", color: "#FFF", padding: "44px 16px", borderTop: "1px solid #1E293B" }}>
-<div style={{ maxWidth: "900px", margin: "0 auto" }}>
-<div style={{ textAlign: "center", marginBottom: "28px" }}>
-<div style={{ fontSize: "10.5px", fontFamily: "monospace", color: "#DFC07A", fontWeight: 700, letterSpacing: "0.15em", textTransform: "uppercase" }}>
-IMMEDIATE EXECUTION
-</div>
-<h2 style={{ fontFamily: "Georgia, serif", fontSize: "27px", fontWeight: 800, margin: "4px 0 6px 0" }}>
-Commercial RFQ & Proforma Estimator
-</h2>
-<p style={{ fontSize: "13.5px", color: "#94A3B8", maxWidth: "600px", margin: "0 auto" }}>
-Submit your required commodity specifications. Inquiries route directly to <span style={{ color: "#DFC07A", fontFamily: "monospace" }}>care@vaayuelixir.com</span> with immediate maritime rate lock.
-</p>
-</div>
-<div style={{ backgroundColor: "#0B1528", border: "1px solid #1E293B", borderRadius: "6px", padding: "24px" }}>
-{rfqSuccess ? (
-<div style={{ textAlign: "center", padding: "36px 12px" }}>
-<div style={{ width: "52px", height: "52px", margin: "0 auto 14px auto", borderRadius: "50%", backgroundColor: "rgba(16,185,129,0.2)", color: "#10B981", display: "flex", alignItems: "center", justifyContent: "center", fontSize: "26px", fontWeight: 700 }}>
-✓
-</div>
-<h3 style={{ fontFamily: "Georgia, serif", fontSize: "20px", fontWeight: 700, margin: "0 0 6px 0" }}>Commercial Inquiry Transmitted</h3>
-<p style={{ color: "#94A3B8", fontSize: "13.5px", maxWidth: "500px", margin: "0 auto 20px auto" }}>
-Your inquiry for <strong style={{ color: "#FFF" }}>{rfqForm.volumeMT} MT of {activeCommodity.title}</strong> has been transmitted to <span style={{ color: "#DFC07A", fontFamily: "monospace" }}>care@vaayuelixir.com</span>.
-</p>
-<div style={{ display: "flex", justifyContent: "center", gap: "10px", flexWrap: "wrap" }}>
-<a
-href={whatsappUrl}
-target="_blank"
-rel="noreferrer"
-style={{ padding: "11px 20px", backgroundColor: "#10B981", color: "#FFF", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", textDecoration: "none", borderRadius: "4px" }}
->
-Open Live in WhatsApp Trade Desk →
-</a>
-<button
-onClick={() => setRfqSuccess(false)}
-style={{ padding: "11px 20px", backgroundColor: "#1E293B", color: "#CBD5E1", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", border: "none", borderRadius: "4px", cursor: "pointer" }}
->
-Submit Another Inquiry
-</button>
-</div>
-</div>
-) : (
-<form onSubmit={handleRfqSubmit} style={{ display: "flex", flexDirection: "column", gap: "18px" }}>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(260px, 1fr))", gap: "16px" }}>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
-Export Commodity
-</label>
-<select
-value={rfqForm.commodityId}
-onChange={(e) => setRfqForm({ ...rfqForm, commodityId: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px 12px", color: "#FFF", fontSize: "13px" }}
->
-{COMMODITY_CATALOG.map(c => (
-<option key={c.id} value={c.id}>
-{c.title} (HSN {c.hsn})
-</option>
-))}
-</select>
-</div>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "6px" }}>
-Order Volume: <strong style={{ color: "#DFC07A" }}>{rfqForm.volumeMT} Metric Tons</strong>
-</label>
-<input
-type="range"
-min="10"
-max="1000"
-step="10"
-value={rfqForm.volumeMT}
-onChange={(e) => setRfqForm({ ...rfqForm, volumeMT: parseInt(e.target.value, 10) })}
-style={{ width: "100%", accentColor: "#B88A34", cursor: "pointer" }}
-/>
-<div style={{ display: "flex", justifyContent: "space-between", fontSize: "9.5px", fontFamily: "monospace", color: "#64748B", marginTop: "4px" }}>
-<span>10 MT (Trial LCL)</span>
-<span>500 MT</span>
-<span>1,000 MT (Charter)</span>
-</div>
-</div>
-</div>
-<div style={{ padding: "12px", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", display: "grid", gridTemplateColumns: "repeat(3, 1fr)", gap: "10px", textAlign: "center" }}>
-<div>
-<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Standard Inspection</div>
-<div style={{ fontSize: "11.5px", fontWeight: 700, color: "#FFF", marginTop: "2px" }}>{activeCommodity.inspectionStandard}</div>
-</div>
-<div>
-<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Payload / Container</div>
-<div style={{ fontSize: "11.5px", fontWeight: 700, color: "#DFC07A", marginTop: "2px" }}>{activeCommodity.containerPayload}</div>
-</div>
-<div>
-<div style={{ fontSize: "8.5px", fontFamily: "monospace", color: "#64748B", textTransform: "uppercase" }}>Estimated Capacity</div>
-<div style={{ fontSize: "11.5px", fontWeight: 700, color: "#10B981", fontFamily: "monospace", marginTop: "2px" }}>
-~ {calculatedContainers} Containers (FCL)
-</div>
-</div>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(180px, 1fr))", gap: "14px" }}>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
-Incoterm
-</label>
-<select
-value={rfqForm.incoterm}
-onChange={(e) => setRfqForm({ ...rfqForm, incoterm: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
->
-<option value="CIF">CIF (Cost, Insurance & Freight)</option>
-<option value="FOB">FOB (Nhava Sheva / JNPT Milled Berth)</option>
-<option value="CFR">CFR (Cost & Freight)</option>
-<option value="EXW">EXW (Mandi Mill Warehouse)</option>
-</select>
-</div>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
-Discharge Port
-</label>
-<input
-type="text"
-value={rfqForm.destinationPort}
-onChange={(e) => setRfqForm({ ...rfqForm, destinationPort: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
-placeholder="e.g. Jebel Ali, Lomé, Singapore"
-required
-/>
-</div>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
-Packaging Requirement
-</label>
-<input
-type="text"
-value={rfqForm.packagingType}
-onChange={(e) => setRfqForm({ ...rfqForm, packagingType: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
-placeholder="e.g. 25kg PP Woven Bags"
-required
-/>
-</div>
-</div>
-<div style={{ display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(160px, 1fr))", gap: "14px" }}>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
-Importer / Entity
-</label>
-<input
-type="text"
-value={rfqForm.buyerEntity}
-onChange={(e) => setRfqForm({ ...rfqForm, buyerEntity: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
-placeholder="Company Name"
-required
-/>
-</div>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
-Contact Name
-</label>
-<input
-type="text"
-value={rfqForm.contactName}
-onChange={(e) => setRfqForm({ ...rfqForm, contactName: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
-placeholder="Officer Name"
-required
-/>
-</div>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
-Corporate Email
-</label>
-<input
-type="email"
-value={rfqForm.email}
-onChange={(e) => setRfqForm({ ...rfqForm, email: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
-placeholder="buyer@domain.com"
-required
-/>
-</div>
-<div>
-<label style={{ display: "block", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", color: "#94A3B8", marginBottom: "5px" }}>
-WhatsApp / Phone
-</label>
-<input
-type="text"
-value={rfqForm.phone}
-onChange={(e) => setRfqForm({ ...rfqForm, phone: e.target.value })}
-style={{ width: "100%", backgroundColor: "#060D1D", border: "1px solid #1E293B", borderRadius: "4px", padding: "9px", color: "#FFF", fontSize: "13px" }}
-placeholder="+971..."
-required
-/>
-</div>
-</div>
-<button
-type="submit"
-disabled={isSubmitting}
-style={{ width: "100%", padding: "14px", backgroundColor: "#B88A34", color: "#FFFFFF", fontFamily: "monospace", fontSize: "11.5px", fontWeight: 700, textTransform: "uppercase", letterSpacing: "0.08em", border: "none", borderRadius: "4px", cursor: isSubmitting ? "not-allowed" : "pointer" }}
->
-{isSubmitting ? "Transmitting to care@vaayuelixir.com..." : "Dispatch Commercial RFQ to care@vaayuelixir.com & Calculate Berth Schedule →"}
-</button>
-</form>
-)}
-</div>
-</div>
-</section>
-{/* 7. FOOTER */}
-<footer style={{ backgroundColor: "#050A14", color: "#94A3B8", padding: "40px 16px 20px 16px", borderTop: "1px solid #1E293B", fontSize: "11.5px" }}>
-<div style={{ maxWidth: "1240px", margin: "0 auto", display: "grid", gridTemplateColumns: "repeat(auto-fit, minmax(220px, 1fr))", gap: "28px" }}>
-<div>
-<div style={{ display: "flex", alignItems: "center", gap: "12px", marginBottom: "8px" }}>
-<VaayuBrandLogo size={36} />
-<div>
-<span style={{ fontFamily: "Georgia, serif", fontWeight: 800, color: "#FFF", fontSize: "17px" }}>VAAYU </span>
-<span style={{ fontFamily: "Georgia, serif", fontWeight: 800, color: "#DFC07A", fontSize: "17px" }}>ELIXIR</span>
-</div>
-</div>
-<p style={{ color: "#DFC07A", fontFamily: "Georgia, serif", fontSize: "10.5px", letterSpacing: "0.08em", margin: "0 0 8px 0" }}>
-"MOVING OPPORTUNITIES. CREATING VALUE."
-</p>
-<p style={{ fontSize: "11px", color: "#64748B", margin: 0, lineHeight: 1.6 }}>
-Global Trade & Strategic Ventures. Direct merchant export operations headquartered in Mumbai & Navi Mumbai with direct berth corridors at JNPT Nhava Sheva.
-</p>
-</div>
-<div>
-<div style={{ fontFamily: "monospace", color: "#FFF", fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "6px", fontWeight: 700 }}>
-LEADERSHIP
-</div>
-<div style={{ color: "#CBD5E1", fontSize: "11.5px", lineHeight: "1.6" }}>
-<strong style={{ color: "#FFF", fontSize: "13px", display: "block" }}>Amit Zawarey</strong>
-<span style={{ color: "#DFC07A", fontSize: "10.5px", fontFamily: "monospace", textTransform: "uppercase", display: "block", marginBottom: "6px" }}>
-PROPRIETOR
-</span>
-Mumbai & Navi Mumbai, India<br />
-Direct JNPT Nhava Sheva Gateway
-</div>
-</div>
-<div>
-<div style={{ fontFamily: "monospace", color: "#FFF", fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "6px", fontWeight: 700 }}>
-COMMUNICATION DESK
-</div>
-<div style={{ fontFamily: "monospace", fontSize: "11.5px", display: "flex", flexDirection: "column", gap: "4px" }}>
-<div>Email: <a href="mailto:care@vaayuelixir.com" style={{ color: "#DFC07A", textDecoration: "none" }}>care@vaayuelixir.com</a></div>
-<div>Trade Desk: <a href="tel:+917208666522" style={{ color: "#FFF", textDecoration: "none" }}>+91 7208666522</a></div>
-<div>Web: <a href="https://www.vaayuelixir.com" style={{ color: "#FFF", textDecoration: "none" }}>www.vaayuelixir.com</a></div>
-</div>
-</div>
-<div>
-<div style={{ fontFamily: "monospace", color: "#FFF", fontSize: "10.5px", textTransform: "uppercase", letterSpacing: "0.1em", marginBottom: "6px", fontWeight: 700 }}>
-VERTICALS
-</div>
-<div style={{ fontSize: "11.5px", color: "#94A3B8", display: "flex", flexDirection: "column", gap: "3px" }}>
-<div>• TRADE</div>
-<div>• ADVISORY</div>
-<div>• VENTURES</div>
-<div>• GLOBAL OPPORTUNITIES</div>
-</div>
-</div>
-</div>
-<div style={{ maxWidth: "1240px", margin: "28px auto 0 auto", paddingTop: "16px", borderTop: "1px solid #111E38", display: "flex", flexWrap: "wrap", justifyContent: "space-between", alignItems: "center", gap: "10px", fontSize: "9.5px", fontFamily: "monospace", color: "#475569" }}>
-<span>© {new Date().getFullYear()} VAAYU ELIXIR GLOBAL TRADE & STRATEGIC VENTURES.</span>
-<span>INDIA | MIDDLE EAST | AFRICA | EUROPE | ASIA | BEYOND</span>
-</div>
-</footer>
-</div>
+window.open(https://wa.me/917208666522?text=${message}, '_blank');
+};
+
+const handleEmailRFQ = (e) => {
+e.preventDefault();
+const subject = encodeURIComponent(COMMERCIAL RFQ: ${selectedCommodity?.name || 'General Commodity Allocation'} - ${rfqVolume} MT);
+const body = encodeURIComponent(
+Attention: Mr. Amit Zawarey (Proprietor)\nVaayu Elixir Global Trade & Strategic Ventures\n\nDear Trade Desk,\n\nWe request an official formal Quotation / Proforma Invoice under the following parameters:\n\n- Commodity: ${selectedCommodity?.name || 'Assorted Agri Commodities'}\n- Volume Required: ${rfqVolume} Metric Tons\n- Incoterm: ${rfqIncoterm}\n- Destination Port: ${rfqPort}\n- Container Load: 20ft FCL / 40ft HC / Breakbulk\n- Mandatory Quality Standard: Pre-shipment SGS / Bureau Veritas Certification\n\nPlease furnish valid price validity, payment terms (100% LC at Sight / CAD), and sailing vessel schedule from JNPT Nhava Sheva.\n\nBest Regards,\nBuyer Procurement Desk
+);
+window.location.href = mailto:care@vaayuelixir.com?subject=${subject}&body=${body};
+};
+
+return (
+<div style={{ minHeight: '100vh', backgroundColor: '#F8FAFC', color: '#0F172A', fontFamily: 'system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif' }}>
+
+  {/* Top Marine Logistics Bar */}
+  <header style={{ backgroundColor: '#070E1A', borderBottom: '1px solid #1E293B', color: '#94A3B8', fontSize: '11px', padding: '8px 24px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', gap: '8px' }}>
+      <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+        <span style={{ display: 'inline-flex', alignItems: 'center', gap: '6px' }}>
+          <span style={{ width: '8px', height: '8px', borderRadius: '50%', backgroundColor: '#10B981', display: 'inline-block' }}></span>
+          <strong style={{ color: '#F8FAFC', letterSpacing: '0.05em' }}>JNPT NHAVA SHEVA (BMCT / NSICT)</strong>: BERTH OPERATIONAL
+        </span>
+        <span style={{ color: '#475569' }}>|</span>
+        <span style={{ color: '#CBD5E1' }}>APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
+      </div>
+      
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px', fontFamily: 'ui-monospace, monospace' }}>
+        <span>BOM: <strong style={{ color: '#F1F5F9' }}>{currentTime.bom || '16:00:00'}</strong></span>
+        <span>DXB: <strong style={{ color: '#F1F5F9' }}>{currentTime.dxb || '14:30:00'}</strong></span>
+        <span>SIN: <strong style={{ color: '#F1F5F9' }}>{currentTime.sin || '18:30:00'}</strong></span>
+        <a href="mailto:care@vaayuelixir.com" style={{ color: '#D4AF37', textDecoration: 'none', fontWeight: 600 }}>care@vaayuelixir.com</a>
+      </div>
+    </div>
+  </header>
+
+  {/* Main Navigation Bar */}
+  <nav style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #E2E8F0', padding: '16px 24px', position: 'sticky', top: 0, zIndex: 40, boxShadow: '0 1px 3px rgba(0,0,0,0.04)' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+      
+      {/* Logo Mark + Typography */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '16px' }}>
+        <VaayuEmblem size={52} />
+        <div style={{ display: 'flex', flexDirection: 'column' }}>
+          <div style={{ display: 'flex', alignItems: 'baseline', gap: '6px' }}>
+            <span style={{ fontSize: '24px', fontWeight: 800, letterSpacing: '0.08em', color: '#0A1526', fontFamily: 'Georgia, serif' }}>VAAYU</span>
+            <span style={{ fontSize: '24px', fontWeight: 800, letterSpacing: '0.08em', color: '#B38728', fontFamily: 'Georgia, serif' }}>ELIXIR</span>
+          </div>
+          <span style={{ fontSize: '9.5px', fontWeight: 700, letterSpacing: '0.22em', color: '#64748B', textTransform: 'uppercase', marginTop: '-2px' }}>
+            GLOBAL TRADE & STRATEGIC VENTURES
+          </span>
+        </div>
+      </div>
+
+      {/* Trade Corridors Pill + Action Button */}
+      <div style={{ display: 'flex', alignItems: 'center', gap: '24px' }}>
+        <div style={{ display: 'flex', flexDirection: 'column', alignItems: 'flex-end', borderRight: '1px solid #E2E8F0', paddingRight: '20px' }}>
+          <span style={{ fontSize: '9px', fontWeight: 700, letterSpacing: '0.15em', color: '#94A3B8', textTransform: 'uppercase' }}>EXPORT CORRIDORS</span>
+          <span style={{ fontSize: '11px', fontWeight: 600, color: '#334155' }}>INDIA • MIDDLE EAST • AFRICA • EUROPE • ASIA</span>
+        </div>
+        
+        <button 
+          onClick={() => { setSelectedCommodity(COMMODITIES[0]); setTradeDeskOpen(true); }}
+          style={{ backgroundColor: '#0A1526', color: '#F8FAFC', padding: '10px 18px', borderRadius: '4px', fontSize: '12px', fontWeight: 700, letterSpacing: '0.08em', border: '1px solid #1E293B', cursor: 'pointer', transition: 'background-color 0.2s' }}
+          onMouseOver={(e) => e.target.style.backgroundColor = '#1E3A5F'}
+          onMouseOut={(e) => e.target.style.backgroundColor = '#0A1526'}
+        >
+          REQUEST PROFORMA
+        </button>
+      </div>
+    </div>
+  </nav>
+
+  {/* Hero Section */}
+  <section style={{ backgroundColor: '#FFFFFF', borderBottom: '1px solid #E2E8F0', padding: '56px 24px 64px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))', gap: '48px', alignItems: 'center' }}>
+      
+      <div>
+        <div style={{ display: 'inline-flex', alignItems: 'center', gap: '8px', backgroundColor: '#FEF9C3', border: '1px solid #FDE047', padding: '4px 12px', borderRadius: '4px', marginBottom: '20px' }}>
+          <span style={{ fontSize: '10.5px', fontWeight: 800, letterSpacing: '0.12em', color: '#854D0E', textTransform: 'uppercase' }}>
+            MOVING OPPORTUNITIES. CREATING VALUE.
+          </span>
+        </div>
+
+        <h1 style={{ fontSize: '42px', lineHeight: '1.15', fontWeight: 800, color: '#0A1526', margin: '0 0 20px', fontFamily: 'Georgia, serif' }}>
+          Direct Farm-to-Berth Maritime Trade Execution.
+        </h1>
+
+        <p style={{ fontSize: '16px', lineHeight: '1.6', color: '#475569', margin: '0 0 32px', maxWidth: '580px' }}>
+          Vaayu Elixir connects verified agricultural farm origins across India directly to sovereign and private buyers in the Middle East, Africa, and Europe. Fully containerized exports with rigorous pre-shipment SGS laboratory assays and real-time JNPT customs facilitation.
+        </p>
+
+        <div style={{ display: 'flex', flexWrap: 'wrap', gap: '14px' }}>
+          <a 
+            href="#commodities"
+            style={{ backgroundColor: '#B38728', color: '#FFFFFF', padding: '14px 26px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, letterSpacing: '0.05em', textDecoration: 'none', display: 'inline-block' }}
+          >
+            EXPLORE COMMODITY PORTFOLIO ↓
+          </a>
+          <button 
+            onClick={() => handleWhatsAppInquiry('Executive Desk Consultation')}
+            style={{ backgroundColor: '#0F172A', color: '#F8FAFC', padding: '14px 24px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, letterSpacing: '0.05em', border: '1px solid #1E293B', cursor: 'pointer' }}
+          >
+            WHATSAPP TRADE DESK
+          </button>
+        </div>
+      </div>
+
+      {/* Right Corridor Status Card */}
+      <div style={{ backgroundColor: '#070E1A', border: '1px solid #1E293B', borderRadius: '8px', padding: '32px', color: '#F8FAFC', boxShadow: '0 20px 25px -5px rgba(0, 0, 0, 0.2)' }}>
+        <div style={{ display: 'flex', alignItems: 'center', justifyContent: 'space-between', borderBottom: '1px solid #1E293B', paddingBottom: '16px', marginBottom: '24px' }}>
+          <div style={{ display: 'flex', alignItems: 'center', gap: '12px' }}>
+            <VaayuEmblem size={32} />
+            <div>
+              <div style={{ fontSize: '14px', fontWeight: 700, color: '#F1F5F9' }}>LOGISTICS VELOCITY</div>
+              <div style={{ fontSize: '10px', color: '#94A3B8' }}>JNPT Nhava Sheva & Mumbai Air Cargo</div>
+            </div>
+          </div>
+          <span style={{ fontSize: '10px', fontWeight: 700, backgroundColor: 'rgba(16, 185, 129, 0.15)', color: '#10B981', padding: '4px 8px', borderRadius: '4px' }}>
+            BERTH ACTIVE
+          </span>
+        </div>
+
+        <div style={{ display: 'flex', flexDirection: 'column', gap: '16px' }}>
+          <div style={{ backgroundColor: '#0F172A', padding: '14px 18px', borderRadius: '6px', borderLeft: '3px solid #B38728' }}>
+            <div style={{ fontSize: '11px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>PRIMARY SEABORNE GATEWAY</div>
+            <div style={{ fontSize: '15px', fontWeight: 700, color: '#F8FAFC', marginTop: '4px' }}>JNPT Nhava Sheva (BMCT / GTI)</div>
+            <div style={{ fontSize: '12px', color: '#64748B', marginTop: '2px' }}>Jebel Ali (3-4 Days) • Sohar • West Africa</div>
+          </div>
+
+          <div style={{ backgroundColor: '#0F172A', padding: '14px 18px', borderRadius: '6px', borderLeft: '3px solid #10B981' }}>
+            <div style={{ fontSize: '11px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>AIR FREIGHT CARGO HUB</div>
+            <div style={{ fontSize: '15px', fontWeight: 700, color: '#F8FAFC', marginTop: '4px' }}>Mumbai Sahar Air Cargo & NMIA</div>
+            <div style={{ fontSize: '12px', color: '#64748B', marginTop: '2px' }}>Daily uplift for fresh drumsticks & spices to GCC</div>
+          </div>
+
+          <div style={{ backgroundColor: '#0F172A', padding: '14px 18px', borderRadius: '6px', borderLeft: '3px solid #38BDF8' }}>
+            <div style={{ fontSize: '11px', color: '#94A3B8', textTransform: 'uppercase', letterSpacing: '0.05em' }}>TRADE DESK LEADERSHIP</div>
+            <div style={{ fontSize: '15px', fontWeight: 700, color: '#F8FAFC', marginTop: '4px' }}>Amit Zawarey • Proprietor</div>
+            <div style={{ fontSize: '12px', color: '#CBD5E1', marginTop: '2px' }}>Direct Phone: +91 7208666522</div>
+          </div>
+        </div>
+      </div>
+
+    </div>
+  </section>
+
+  {/* Commodity Portfolio Section */}
+  <section id="commodities" style={{ padding: '64px 24px', maxWidth: '1280px', margin: '0 auto' }}>
+    <div style={{ display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'flex-end', marginBottom: '32px', gap: '16px' }}>
+      <div>
+        <div style={{ fontSize: '11px', fontWeight: 800, letterSpacing: '0.15em', color: '#B38728', textTransform: 'uppercase', marginBottom: '6px' }}>
+          STANDARDIZED EXPORT PORTFOLIO
+        </div>
+        <h2 style={{ fontSize: '28px', fontWeight: 800, color: '#0A1526', margin: 0, fontFamily: 'Georgia, serif' }}>
+          Agricultural & Spice Commodities
+        </h2>
+      </div>
+
+      {/* Filter Pills */}
+      <div style={{ display: 'flex', gap: '8px', flexWrap: 'wrap' }}>
+        {['ALL', 'GRAINS & RICE', 'WHOLE SPICES', 'FRESH PRODUCE'].map((tab) => (
+          <button
+            key={tab}
+            onClick={() => setActiveTab(tab)}
+            style={{
+              padding: '8px 16px',
+              borderRadius: '4px',
+              fontSize: '11px',
+              fontWeight: 700,
+              letterSpacing: '0.05em',
+              cursor: 'pointer',
+              border: activeTab === tab ? '1px solid #0A1526' : '1px solid #CBD5E1',
+              backgroundColor: activeTab === tab ? '#0A1526' : '#FFFFFF',
+              color: activeTab === tab ? '#FFFFFF' : '#475569'
+            }}
+          >
+            {tab}
+          </button>
+        ))}
+      </div>
+    </div>
+
+    {/* Commodity Cards Grid */}
+    <div style={{ display: 'grid', gridTemplateColumns: 'repeat(auto-fill, minmax(360px, 1fr))', gap: '24px' }}>
+      {filteredCommodities.map((item) => (
+        <div
+          key={item.id}
+          style={{
+            backgroundColor: '#FFFFFF',
+            borderRadius: '8px',
+            border: '1px solid #E2E8F0',
+            padding: '24px',
+            display: 'flex',
+            flexDirection: 'column',
+            justifyContent: 'space-between',
+            boxShadow: '0 1px 3px rgba(0,0,0,0.05)'
+          }}
+        >
+          <div>
+            <div style={{ display: 'flex', justifyContent: 'space-between', alignItems: 'center', marginBottom: '8px' }}>
+              <span style={{ fontSize: '10px', fontWeight: 800, letterSpacing: '0.1em', color: '#B38728', textTransform: 'uppercase' }}>
+                {item.category}
+              </span>
+              <span style={{ fontSize: '10.5px', fontFamily: 'monospace', color: '#64748B' }}>
+                HSN: {item.hsn}
+              </span>
+            </div>
+
+            <h3 style={{ fontSize: '18px', fontWeight: 700, color: '#0A1526', margin: '0 0 6px', fontFamily: 'Georgia, serif' }}>
+              {item.name}
+            </h3>
+            <div style={{ fontSize: '12px', fontStyle: 'italic', color: '#64748B', marginBottom: '14px' }}>
+              {item.botanical}
+            </div>
+
+            <p style={{ fontSize: '13px', lineHeight: '1.5', color: '#475569', marginBottom: '20px' }}>
+              {item.desc}
+            </p>
+
+            {/* Technical Specs Compact Table */}
+            <div style={{ backgroundColor: '#F8FAFC', borderRadius: '6px', border: '1px solid #E2E8F0', padding: '12px', fontSize: '11.5px', marginBottom: '20px' }}>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #F1F5F9' }}>
+                <span style={{ color: '#64748B' }}>Mandi Origin:</span>
+                <strong style={{ color: '#0F172A' }}>{item.origin}</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #F1F5F9' }}>
+                <span style={{ color: '#64748B' }}>Grading / Length:</span>
+                <strong style={{ color: '#0F172A' }}>{item.grainLength}</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0', borderBottom: '1px solid #F1F5F9' }}>
+                <span style={{ color: '#64748B' }}>Moisture Standard:</span>
+                <strong style={{ color: '#0F172A' }}>{item.moisture}</strong>
+              </div>
+              <div style={{ display: 'flex', justifyContent: 'space-between', padding: '4px 0' }}>
+                <span style={{ color: '#64748B' }}>FCL Loading:</span>
+                <strong style={{ color: '#0F172A' }}>{item.fclLoad}</strong>
+              </div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div style={{ display: 'flex', gap: '8px' }}>
+            <button
+              onClick={() => { setSelectedCommodity(item); setTradeDeskOpen(true); }}
+              style={{ flex: 1, backgroundColor: '#0A1526', color: '#F8FAFC', border: 'none', padding: '10px 14px', borderRadius: '4px', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
+            >
+              CALCULATE RFQ
+            </button>
+            <button
+              onClick={() => handleWhatsAppInquiry(item.name)}
+              style={{ backgroundColor: '#25D366', color: '#FFFFFF', border: 'none', padding: '10px 16px', borderRadius: '4px', fontSize: '12px', fontWeight: 700, cursor: 'pointer' }}
+              title="Direct WhatsApp"
+            >
+              WHATSAPP
+            </button>
+          </div>
+        </div>
+      ))}
+    </div>
+  </section>
+
+  {/* RFQ / Technical Modal */}
+  {tradeDeskOpen && selectedCommodity && (
+    <div style={{ position: 'fixed', inset: 0, backgroundColor: 'rgba(7, 14, 26, 0.75)', backdropFilter: 'blur(4px)', display: 'flex', justifyContent: 'center', alignItems: 'center', zIndex: 100, padding: '20px' }}>
+      <div style={{ backgroundColor: '#FFFFFF', width: '100%', maxWidth: '640px', borderRadius: '8px', overflow: 'hidden', boxShadow: '0 25px 50px -12px rgba(0, 0, 0, 0.25)', border: '1px solid #E2E8F0' }}>
+        
+        {/* Modal Header */}
+        <div style={{ backgroundColor: '#0A1526', color: '#F8FAFC', padding: '20px 24px', display: 'flex', justifyContent: 'space-between', alignItems: 'center' }}>
+          <div>
+            <span style={{ fontSize: '10px', fontWeight: 800, color: '#B38728', letterSpacing: '0.12em', textTransform: 'uppercase' }}>
+              COMMERCIAL SPECIFICATION & QUOTATION
+            </span>
+            <h3 style={{ fontSize: '18px', fontWeight: 700, margin: '4px 0 0', fontFamily: 'Georgia, serif' }}>
+              {selectedCommodity.name}
+            </h3>
+          </div>
+          <button 
+            onClick={() => setTradeDeskOpen(false)}
+            style={{ background: 'transparent', border: 'none', color: '#94A3B8', fontSize: '24px', cursor: 'pointer' }}
+          >
+            ✕
+          </button>
+        </div>
+
+        {/* Modal Body */}
+        <form onSubmit={handleEmailRFQ} style={{ padding: '24px' }}>
+          <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '16px', marginBottom: '20px' }}>
+            <div>
+              <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>REQUIRED VOLUME (METRIC TONS)</label>
+              <input
+                type="number"
+                value={rfqVolume}
+                onChange={(e) => setRfqVolume(e.target.value)}
+                style={{ width: '100%', padding: '10px', border: '1px solid #CBD5E1', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }}
+                min="1"
+                required
+              />
+            </div>
+            <div>
+              <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>DELIVERY INCOTERM</label>
+              <select
+                value={rfqIncoterm}
+                onChange={(e) => setRfqIncoterm(e.target.value)}
+                style={{ width: '100%', padding: '10px', border: '1px solid #CBD5E1', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }}
+              >
+                <option value="FOB">FOB JNPT Nhava Sheva (BMCT/GTI)</option>
+                <option value="CIF">CIF Destination Port</option>
+                <option value="CFR">CFR Destination Port</option>
+                <option value="EXW">EXW Indian Processing Mandi</option>
+              </select>
+            </div>
+          </div>
+
+          <div style={{ marginBottom: '20px' }}>
+            <label style={{ display: 'block', fontSize: '11px', fontWeight: 700, color: '#475569', marginBottom: '6px' }}>DISCHARGE PORT / COUNTRY</label>
+            <input
+              type="text"
+              value={rfqPort}
+              onChange={(e) => setRfqPort(e.target.value)}
+              style={{ width: '100%', padding: '10px', border: '1px solid #CBD5E1', borderRadius: '4px', fontSize: '14px', boxSizing: 'border-box' }}
+              placeholder="e.g. Jebel Ali, UAE / Sohar, Oman / Rotterdam"
+              required
+            />
+          </div>
+
+          {/* Lab Specification Sheet */}
+          <div style={{ backgroundColor: '#F8FAFC', border: '1px solid #E2E8F0', borderRadius: '6px', padding: '14px', fontSize: '12px', marginBottom: '24px' }}>
+            <div style={{ fontWeight: 700, color: '#0F172A', marginBottom: '8px' }}>Certified Export Parameters:</div>
+            <div style={{ display: 'grid', gridTemplateColumns: '1fr 1fr', gap: '8px', color: '#475569' }}>
+              <div>• HSN Code: {selectedCommodity.hsn}</div>
+              <div>• Moisture: {selectedCommodity.moisture}</div>
+              <div>• Packaging: {selectedCommodity.packaging}</div>
+              <div>• Assaying: {selectedCommodity.inspection}</div>
+            </div>
+          </div>
+
+          {/* Action Buttons */}
+          <div style={{ display: 'flex', gap: '12px' }}>
+            <button
+              type="submit"
+              style={{ flex: 1, backgroundColor: '#0A1526', color: '#FFFFFF', padding: '12px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, border: 'none', cursor: 'pointer' }}
+            >
+              GENERATE OFFICIAL PROFORMA EMAIL →
+            </button>
+            <button
+              type="button"
+              onClick={() => handleWhatsAppInquiry(selectedCommodity.name)}
+              style={{ backgroundColor: '#25D366', color: '#FFFFFF', padding: '12px 18px', borderRadius: '4px', fontSize: '13px', fontWeight: 700, border: 'none', cursor: 'pointer' }}
+            >
+              WHATSAPP
+            </button>
+          </div>
+        </form>
+      </div>
+    </div>
+  )}
+
+  {/* Footer */}
+  <footer style={{ backgroundColor: '#070E1A', borderTop: '1px solid #1E293B', color: '#94A3B8', padding: '48px 24px 32px' }}>
+    <div style={{ maxWidth: '1280px', margin: '0 auto', display: 'grid', gridTemplateColumns: 'repeat(auto-fit, minmax(280px, 1fr))', gap: '40px', marginBottom: '40px' }}>
+      
+      <div>
+        <div style={{ display: 'flex', alignItems: 'center', gap: '14px', marginBottom: '16px' }}>
+          <VaayuEmblem size={44} />
+          <div>
+            <span style={{ fontSize: '20px', fontWeight: 800, letterSpacing: '0.08em', color: '#F8FAFC', fontFamily: 'Georgia, serif' }}>VAAYU </span>
+            <span style={{ fontSize: '20px', fontWeight: 800, letterSpacing: '0.08em', color: '#B38728', fontFamily: 'Georgia, serif' }}>ELIXIR</span>
+            <div style={{ fontSize: '8.5px', fontWeight: 700, letterSpacing: '0.2em', color: '#64748B' }}>GLOBAL TRADE & STRATEGIC VENTURES</div>
+          </div>
+        </div>
+        <p style={{ fontSize: '12.5px', lineHeight: '1.6', color: '#64748B', maxWidth: '360px' }}>
+          Moving Opportunities. Creating Value. Proprietary merchant exporter headquartered in Mumbai, orchestrating institutional agro-commodity supply chains via Nhava Sheva.
+        </p>
+      </div>
+
+      <div>
+        <div style={{ fontSize: '11px', fontWeight: 700, color: '#F1F5F9', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>COMMERCIAL DESK</div>
+        <div style={{ fontSize: '13px', lineHeight: '1.8', color: '#94A3B8' }}>
+          <div><strong>Amit Zawarey</strong> • Proprietor</div>
+          <div>Direct: <a href="tel:+917208666522" style={{ color: '#D4AF37', textDecoration: 'none' }}>+91 7208666522</a></div>
+          <div>Official Desk: <a href="mailto:care@vaayuelixir.com" style={{ color: '#D4AF37', textDecoration: 'none' }}>care@vaayuelixir.com</a></div>
+          <div>Web: <a href="https://www.vaayuelixir.com" style={{ color: '#D4AF37', textDecoration: 'none' }}>www.vaayuelixir.com</a></div>
+          <div>Mumbai, Maharashtra, India</div>
+        </div>
+      </div>
+
+      <div>
+        <div style={{ fontSize: '11px', fontWeight: 700, color: '#F1F5F9', letterSpacing: '0.1em', textTransform: 'uppercase', marginBottom: '16px' }}>COMPLIANCE & CLEARANCE</div>
+        <div style={{ fontSize: '12px', lineHeight: '1.8', color: '#64748B' }}>
+          <div>• Directorate General of Foreign Trade (DGFT) IEC</div>
+          <div>• APEDA Registration (Basmati & Agri Products)</div>
+          <div>• Spices Board of India Registered Exporter</div>
+          <div>• FSSAI Central Export License</div>
+          <div>• Pre-shipment Assaying: SGS / Bureau Veritas</div>
+        </div>
+      </div>
+
+    </div>
+
+    <div style={{ maxWidth: '1280px', margin: '0 auto', paddingTop: '24px', borderTop: '1px solid #1E293B', display: 'flex', flexWrap: 'wrap', justifyContent: 'space-between', alignItems: 'center', fontSize: '11px', color: '#475569' }}>
+      <div>© {new Date().getFullYear()} Vaayu Elixir Global Trade & Strategic Ventures. All rights reserved.</div>
+      <div>PEOPLE | MARKETS | PARTNERSHIPS | A BRIGHTER TOMORROW</div>
+    </div>
+  </footer>
+
+</div>
+
+
 );
 }
