@@ -1,254 +1,254 @@
 import React, { useState, useEffect } from 'react';
 const COMMODITY_CATALOG = [
 {
-id: 'rice-1121-steam',
-category: 'Grains & Rice',
-title: '1121 Basmati Rice (Steam / Sella)',
-hsn: '1006.30.20',
-botanical: 'Oryza sativa var. Basmati 1121',
-origin: 'Punjab / Haryana Mandis (India)',
-grainLength: '8.35 mm+ Average Pre-Cooked',
-moisture: 'Max 12.5%',
-broken: 'Under 1.0% (Optical Sortex 100%)',
-purity: '95% Pure Varietal Admixture Max 5%',
-packaging: '25kg / 50kg BOPP & Non-Woven Laminated Poly Bags',
-containerPayload: '25.0 MT per 20ft Dry Cargo FCL',
-inspectionStandard: 'SGS / Bureau Veritas Pre-Berth Assayed',
-description: 'Premier culinary-grade aromatic extra-long grain with elongation ratio exceeding 2.2x post-cook. Certified optical Sortex processed for export.'
+id: "rice-1121-steam",
+category: "Grains & Rice",
+title: "1121 Basmati Rice (Steam / Sella)",
+hsn: "1006.30.20",
+botanical: "Oryza sativa var. Basmati 1121",
+origin: "Punjab / Haryana Mandis (India)",
+grainLength: "8.35 mm+ Average Pre-Cooked",
+moisture: "Max 12.5%",
+broken: "Under 1.0% (Optical Sortex 100%)",
+purity: "95% Pure Varietal Admixture Max 5%",
+packaging: "25kg / 50kg BOPP & Non-Woven Laminated Poly Bags",
+containerPayload: "25.0 MT per 20ft Dry Cargo FCL",
+inspectionStandard: "SGS / Bureau Veritas Pre-Berth Assayed",
+description: "Premier culinary-grade aromatic extra-long grain with elongation ratio exceeding 2.2x post-cook. Certified optical Sortex processed for export."
 },
 {
-id: 'rice-1509-steam',
-category: 'Grains & Rice',
-title: '1509 Basmati Rice (Golden / Steam)',
-hsn: '1006.30.20',
-botanical: 'Oryza sativa var. Basmati 1509',
-origin: 'Taraori & Karnal Rice Belt (India)',
-grainLength: '8.40 mm+ Pre-Cooked',
-moisture: 'Max 12.5%',
-broken: 'Under 1.0% Sortex Milled',
-purity: '95% Pure Varietal Admixture',
-packaging: '10kg, 25kg, 50kg Master Bags',
-containerPayload: '25.5 MT per 20ft Dry FCL',
-inspectionStandard: 'APEDA / SGS Assayed',
-description: 'High-volume commercial Basmati delivering long slender visual appeal, exceptional aroma, and rapid culinary turnaround for catering and retail markets.'
+id: "rice-1509-steam",
+category: "Grains & Rice",
+title: "1509 Basmati Rice (Golden / Steam)",
+hsn: "1006.30.20",
+botanical: "Oryza sativa var. Basmati 1509",
+origin: "Taraori & Karnal Rice Belt (India)",
+grainLength: "8.40 mm+ Pre-Cooked",
+moisture: "Max 12.5%",
+broken: "Under 1.0% Sortex Milled",
+purity: "95% Pure Varietal Admixture",
+packaging: "10kg, 25kg, 50kg Master Bags",
+containerPayload: "25.5 MT per 20ft Dry FCL",
+inspectionStandard: "APEDA / SGS Assayed",
+description: "High-volume commercial Basmati delivering long slender visual appeal, exceptional aroma, and rapid culinary turnaround for catering and retail markets."
 },
 {
-id: 'rice-ir64-parboiled',
-category: 'Grains & Rice',
-title: 'IR64 Non-Basmati Parboiled Rice (5% Broken)',
-hsn: '1006.30.90',
-botanical: 'Oryza sativa (Long Grain Indica)',
-origin: 'Andhra Pradesh & Chhattisgarh Hubs',
-grainLength: '6.00 mm - 6.20 mm Average',
-moisture: 'Max 14.0%',
-broken: 'Max 5.0% Optical Sorted',
-purity: 'Silky Double Polished',
-packaging: '50kg Strong Jute / PP Woven Export Sacks',
-containerPayload: '26.0 MT per 20ft FCL Container',
-inspectionStandard: 'FSSAI / Pre-Shipment Marine Inspection',
-description: 'The global workhorse of bulk food security. Heavy grain weight, resilient gelatinization starch profile, optimized for West Africa & GCC port deliveries.'
+id: "rice-ir64-parboiled",
+category: "Grains & Rice",
+title: "IR64 Non-Basmati Parboiled Rice (5% Broken)",
+hsn: "1006.30.90",
+botanical: "Oryza sativa (Long Grain Indica)",
+origin: "Andhra Pradesh & Chhattisgarh Hubs",
+grainLength: "6.00 mm - 6.20 mm Average",
+moisture: "Max 14.0%",
+broken: "Max 5.0% Optical Sorted",
+purity: "Silky Double Polished",
+packaging: "50kg Strong Jute / PP Woven Export Sacks",
+containerPayload: "26.0 MT per 20ft FCL Container",
+inspectionStandard: "FSSAI / Pre-Shipment Marine Inspection",
+description: "The global workhorse of bulk food security. Heavy grain weight, resilient gelatinization starch profile, optimized for West Africa & GCC port deliveries."
 },
 {
-id: 'rice-sona-masoori',
-category: 'Grains & Rice',
-title: 'Sona Masoori Raw & Steam Rice',
-hsn: '1006.30.90',
-botanical: 'Oryza sativa (Medium Grain)',
-origin: 'Raichur & Kurnool River Basins',
-grainLength: '5.20 mm Average Medium Slender',
-moisture: 'Max 13.0%',
-broken: 'Under 1.5%',
-purity: '100% Optical Sortex Sorted',
-packaging: '10kg & 25kg Branded Laminated Pouches',
-containerPayload: '25.0 MT per 20ft FCL',
-inspectionStandard: 'APEDA Quality Certificate',
-description: 'Low-starch aromatic medium grain. Light and easily digestible staple with steady year-round volume demand across the international Indian diaspora.'
+id: "rice-sona-masoori",
+category: "Grains & Rice",
+title: "Sona Masoori Raw & Steam Rice",
+hsn: "1006.30.90",
+botanical: "Oryza sativa (Medium Grain)",
+origin: "Raichur & Kurnool River Basins",
+grainLength: "5.20 mm Average Medium Slender",
+moisture: "Max 13.0%",
+broken: "Under 1.5%",
+purity: "100% Optical Sortex Sorted",
+packaging: "10kg & 25kg Branded Laminated Pouches",
+containerPayload: "25.0 MT per 20ft FCL",
+inspectionStandard: "APEDA Quality Certificate",
+description: "Low-starch aromatic medium grain. Light and easily digestible staple with steady year-round volume demand across the international Indian diaspora."
 },
 {
-id: 'spices-teja-chilli',
-category: 'Whole Spices',
-title: 'Teja S17 Dried Red Chilli (Stem & Stemless)',
-hsn: '0904.21.10',
-botanical: 'Capsicum annuum var. Teja S17',
-origin: 'Guntur & Warangal Spice Corridors',
-grainLength: '6 cm - 8 cm Whole Dried Pods',
-moisture: 'Max 10.0% Sun Cured',
-broken: 'Under 2.0% Loose Seeds / Foreign Matter',
-purity: 'Hot Pungency: 75,000 - 90,000 SHU',
-packaging: '10kg / 25kg Jute Gunny or PP Bags with Master Poly Liner',
-containerPayload: '7.0 MT in 20ft FCL / 14.5 MT in 40ft HC',
-inspectionStandard: 'Spices Board India / Agmark Tested',
-description: 'Intense fire rating with high natural capsaicin yield. Deep crimson oil extractability, prized worldwide by oleoresin processors and spice blending mills.'
+id: "spices-teja-chilli",
+category: "Whole Spices",
+title: "Teja S17 Dried Red Chilli (Stem & Stemless)",
+hsn: "0904.21.10",
+botanical: "Capsicum annuum var. Teja S17",
+origin: "Guntur & Warangal Spice Corridors",
+grainLength: "6 cm - 8 cm Whole Dried Pods",
+moisture: "Max 10.0% Sun Cured",
+broken: "Under 2.0% Loose Seeds / Foreign Matter",
+purity: "Hot Pungency: 75,000 - 90,000 SHU",
+packaging: "10kg / 25kg Jute Gunny or PP Bags with Master Poly Liner",
+containerPayload: "7.0 MT in 20ft FCL / 14.5 MT in 40ft HC",
+inspectionStandard: "Spices Board India / Agmark Tested",
+description: "Intense fire rating with high natural capsaicin yield. Deep crimson oil extractability, prized worldwide by oleoresin processors and spice blending mills."
 },
 {
-id: 'spices-byadgi-chilli',
-category: 'Whole Spices',
-title: 'Byadgi Deep Red Chilli (High ASTA Color)',
-hsn: '0904.21.10',
-botanical: 'Capsicum annuum var. Byadgi',
-origin: 'Haveri & Dharwad District (Karnataka)',
-grainLength: '10 cm - 13 cm Wrinkled Pods',
-moisture: 'Max 11.0%',
-broken: 'Low Broken / Hand Cleaned',
-purity: 'Color Value: 140 - 200 ASTA | Low Heat: 15,000 SHU',
-packaging: '5kg, 10kg, 20kg Export Bales & Bags',
-containerPayload: '6.5 MT in 20ft FCL / 14.0 MT in 40ft HC',
-inspectionStandard: 'Spices Board India Certified',
-description: 'Renowned for characteristic wrinkled skins and high natural oleoresin color tinting with minimal capsaicin bite. Standard for industrial food coloration.'
+id: "spices-byadgi-chilli",
+category: "Whole Spices",
+title: "Byadgi Deep Red Chilli (High ASTA Color)",
+hsn: "0904.21.10",
+botanical: "Capsicum annuum var. Byadgi",
+origin: "Haveri & Dharwad District (Karnataka)",
+grainLength: "10 cm - 13 cm Wrinkled Pods",
+moisture: "Max 11.0%",
+broken: "Low Broken / Hand Cleaned",
+purity: "Color Value: 140 - 200 ASTA | Low Heat: 15,000 SHU",
+packaging: "5kg, 10kg, 20kg Export Bales & Bags",
+containerPayload: "6.5 MT in 20ft FCL / 14.0 MT in 40ft HC",
+inspectionStandard: "Spices Board India Certified",
+description: "Renowned for characteristic wrinkled skins and high natural oleoresin color tinting with minimal capsaicin bite. Standard for industrial food coloration."
 },
 {
-id: 'spices-cardamom-alleppey',
-category: 'Whole Spices',
-title: 'Alleppey Bold Green Cardamom (8mm+)',
-hsn: '0908.31.20',
-botanical: 'Elettaria cardamomum',
-origin: 'Idukki Western Ghats Plantation Belt',
-grainLength: '8.0 mm - 8.5 mm Bold Calibrated Pods',
-moisture: 'Max 10.5%',
-broken: 'Zero Splits / 100% Whole Closed Pods',
-purity: 'Volatile Oil: Min 3.5% ml/100g',
-packaging: '10kg Vacuum Foil Packs in 5-Ply Master Outer Cartons',
-containerPayload: 'Palletized Air Freight / LCL Sea Cargo',
-inspectionStandard: 'Spices Board Certificate of Analysis',
-description: 'The Queen of Spices. Deep olive-green calyx preservation, robust aromatic pinene and cineole compounds, processed for premium Gulf & Middle East Gahwa.'
+id: "spices-cardamom-alleppey",
+category: "Whole Spices",
+title: "Alleppey Bold Green Cardamom (8mm+)",
+hsn: "0908.31.20",
+botanical: "Elettaria cardamomum",
+origin: "Idukki Western Ghats Plantation Belt",
+grainLength: "8.0 mm - 8.5 mm Bold Calibrated Pods",
+moisture: "Max 10.5%",
+broken: "Zero Splits / 100% Whole Closed Pods",
+purity: "Volatile Oil: Min 3.5% ml/100g",
+packaging: "10kg Vacuum Foil Packs in 5-Ply Master Outer Cartons",
+containerPayload: "Palletized Air Freight / LCL Sea Cargo",
+inspectionStandard: "Spices Board Certificate of Analysis",
+description: "The Queen of Spices. Deep olive-green calyx preservation, robust aromatic pinene and cineole compounds, processed for premium Gulf & Middle East Gahwa."
 },
 {
-id: 'spices-cloves-lalpari',
-category: 'Whole Spices',
-title: 'Whole Lal Pari Cloves (Handpicked)',
-hsn: '0907.10.10',
-botanical: 'Syzygium aromaticum',
-origin: 'Kanyakumari & Western Ghats Foothills',
-grainLength: 'Intact Crown / Head Structure',
-moisture: 'Max 11.0%',
-broken: 'Headless Cloves < 2.0%',
-purity: 'Eugenol Oil Content: Min 17%',
-packaging: '25kg Woven Bags with Moisture Barrier Liner',
-containerPayload: '12.0 MT per 20ft Dry Cargo FCL',
-inspectionStandard: 'Pre-Berth Phytosanitary Cleared',
-description: 'Natural reddish-brown dried flower buds with unbroken crowns. Rich eugenol content delivering antiseptic spice punch for culinary trade.'
+id: "spices-cloves-lalpari",
+category: "Whole Spices",
+title: "Whole Lal Pari Cloves (Handpicked)",
+hsn: "0907.10.10",
+botanical: "Syzygium aromaticum",
+origin: "Kanyakumari & Western Ghats Foothills",
+grainLength: "Intact Crown / Head Structure",
+moisture: "Max 11.0%",
+broken: "Headless Cloves < 2.0%",
+purity: "Eugenol Oil Content: Min 17%",
+packaging: "25kg Woven Bags with Moisture Barrier Liner",
+containerPayload: "12.0 MT per 20ft Dry Cargo FCL",
+inspectionStandard: "Pre-Berth Phytosanitary Cleared",
+description: "Natural reddish-brown dried flower buds with unbroken crowns. Rich eugenol content delivering antiseptic spice punch for culinary trade."
 },
 {
-id: 'spices-turmeric-curcumin',
-category: 'Whole Spices',
-title: 'High-Curcumin Turmeric Fingers (Salem / Nizamabad)',
-hsn: '0910.30.20',
-botanical: 'Curcuma longa',
-origin: 'Salem (Tamil Nadu) & Nizamabad (Telangana)',
-grainLength: 'Clean Polished Whole Double Fingers',
-moisture: 'Max 10.0%',
-broken: 'Bulbs & Broken under 2%',
-purity: 'Curcumin Active Range: 3.5% - 5.2% Min',
-packaging: '25kg / 50kg Multi-Wall Jute / PP Bags',
-containerPayload: '18.0 MT per 20ft FCL Container',
-inspectionStandard: 'Spices Board Agmark Lab Graded',
-description: 'Deep golden-orange core with natural curcumin potency. Clean double-polished finish, minimal chalky defect, primed for pharma and food extraction.'
+id: "spices-turmeric-curcumin",
+category: "Whole Spices",
+title: "High-Curcumin Turmeric Fingers (Salem / Nizamabad)",
+hsn: "0910.30.20",
+botanical: "Curcuma longa",
+origin: "Salem (Tamil Nadu) & Nizamabad (Telangana)",
+grainLength: "Clean Polished Whole Double Fingers",
+moisture: "Max 10.0%",
+broken: "Bulbs & Broken under 2%",
+purity: "Curcumin Active Range: 3.5% - 5.2% Min",
+packaging: "25kg / 50kg Multi-Wall Jute / PP Bags",
+containerPayload: "18.0 MT per 20ft FCL Container",
+inspectionStandard: "Spices Board Agmark Lab Graded",
+description: "Deep golden-orange core with natural curcumin potency. Clean double-polished finish, minimal chalky defect, primed for pharma and food extraction."
 },
 {
-id: 'produce-moringa-drumstick',
-category: 'Fresh Produce',
-title: 'Fresh Moringa Drumsticks (Export Cut)',
-hsn: '0709.99.90',
-botanical: 'Moringa oleifera',
-origin: 'Theni & Dindigul Farm Clusters (Tamil Nadu)',
-grainLength: '45 cm - 55 cm Uniform Diameter',
-moisture: 'Turgid Farm-Fresh Moisture Retention',
-broken: 'Zero Split Ends / No Black Scars',
-purity: 'Hand Harvested & Pre-Cooled at 10°C',
-packaging: '5kg CFB Telescopic Ventilated Export Cartons',
-containerPayload: 'Sahar / NMIA Express Air Freight & 40ft Reefer',
-inspectionStandard: 'APEDA Fresh Perishable Export Cleared',
-description: 'Tender seed formation with fleshy sweet pulp. Handpicked at sunrise, sorted for diameter uniformity, and cold-chain stabilized for GCC air corridors.'
+id: "produce-moringa-drumstick",
+category: "Fresh Produce",
+title: "Fresh Moringa Drumsticks (Export Cut)",
+hsn: "0709.99.90",
+botanical: "Moringa oleifera",
+origin: "Theni & Dindigul Farm Clusters (Tamil Nadu)",
+grainLength: "45 cm - 55 cm Uniform Diameter",
+moisture: "Turgid Farm-Fresh Moisture Retention",
+broken: "Zero Split Ends / No Black Scars",
+purity: "Hand Harvested & Pre-Cooled at 10°C",
+packaging: "5kg CFB Telescopic Ventilated Export Cartons",
+containerPayload: "Sahar / NMIA Express Air Freight & 40ft Reefer",
+inspectionStandard: "APEDA Fresh Perishable Export Cleared",
+description: "Tender seed formation with fleshy sweet pulp. Handpicked at sunrise, sorted for diameter uniformity, and cold-chain stabilized for GCC air corridors."
 },
 {
-id: 'produce-elephant-yam',
-category: 'Fresh Produce',
-title: 'Elephant Foot Yam (Suran / Amorphophallus)',
-hsn: '0714.90.90',
-botanical: 'Amorphophallus paeoniifolius',
-origin: 'AP River Deltas & Maharashtra Mandis',
-grainLength: '1.5 kg to 4.5 kg Cured Solid Corms',
-moisture: 'Air-Cured Dry Outer Epidermis',
-broken: 'Zero Bruising / Firm Solid Flesh',
-purity: 'Surface Cleaned & Anti-Fungal Dust Treated',
-packaging: '10kg / 20kg Ventilated Mesh Jute Sacks',
-containerPayload: '24.0 MT in 40ft High Cube Reefer (+12°C to +14°C)',
-inspectionStandard: 'Phytosanitary Clearance Certificate',
-description: 'Dense, nutrient-packed starchy tuber with extended ocean shelf-life. Cured under shaded ventilation to eliminate excess surface moisture prior to reefer stuffing.'
+id: "produce-elephant-yam",
+category: "Fresh Produce",
+title: "Elephant Foot Yam (Suran / Amorphophallus)",
+hsn: "0714.90.90",
+botanical: "Amorphophallus paeoniifolius",
+origin: "AP River Deltas & Maharashtra Mandis",
+grainLength: "1.5 kg to 4.5 kg Cured Solid Corms",
+moisture: "Air-Cured Dry Outer Epidermis",
+broken: "Zero Bruising / Firm Solid Flesh",
+purity: "Surface Cleaned & Anti-Fungal Dust Treated",
+packaging: "10kg / 20kg Ventilated Mesh Jute Sacks",
+containerPayload: "24.0 MT in 40ft High Cube Reefer (+12°C to +14°C)",
+inspectionStandard: "Phytosanitary Clearance Certificate",
+description: "Dense, nutrient-packed starchy tuber with extended ocean shelf-life. Cured under shaded ventilation to eliminate excess surface moisture prior to reefer stuffing."
 },
 {
-id: 'poultry-table-eggs',
-category: 'Cold Chain & Poultry',
-title: 'Grade A Export Table Eggs (Clean White Shell)',
-hsn: '0407.21.00',
-botanical: 'Gallus gallus domesticus',
-origin: 'Namakkal Poultry Hub (Tamil Nadu)',
-grainLength: 'Weight: 50g - 55g per Egg',
-moisture: 'Controlled Humidity Storage (75%)',
-broken: 'Zero Micro-Hairline Cracks (Candled 100%)',
-purity: 'Haugh Units: 72+ (Fresh Thick Albumin)',
-packaging: '30 Eggs per Tray • 12 Trays per 360-Egg Master Carton',
-containerPayload: '1,312 Cartons (472,320 Eggs) in 40ft Reefer (+4°C)',
-inspectionStandard: 'Department of Animal Husbandry & Dairying (DAHD)',
-description: 'Salmonella & antibiotic certified clean white shell eggs. Candled and UV disinfected prior to temperature-locked reefer voyages to the Middle East & Africa.'
+id: "poultry-table-eggs",
+category: "Cold Chain & Poultry",
+title: "Grade A Export Table Eggs (Clean White Shell)",
+hsn: "0407.21.00",
+botanical: "Gallus gallus domesticus",
+origin: "Namakkal Poultry Hub (Tamil Nadu)",
+grainLength: "Weight: 50g - 55g per Egg",
+moisture: "Controlled Humidity Storage (75%)",
+broken: "Zero Micro-Hairline Cracks (Candled 100%)",
+purity: "Haugh Units: 72+ (Fresh Thick Albumin)",
+packaging: "30 Eggs per Tray • 12 Trays per 360-Egg Master Carton",
+containerPayload: "1,312 Cartons (472,320 Eggs) in 40ft Reefer (+4°C)",
+inspectionStandard: "Department of Animal Husbandry & Dairying (DAHD)",
+description: "Salmonella & antibiotic certified clean white shell eggs. Candled and UV disinfected prior to temperature-locked reefer voyages to the Middle East & Africa."
 },
 {
-id: 'poultry-frozen-chicken',
-category: 'Cold Chain & Poultry',
-title: 'Halal Certified Frozen Whole Poultry & Cuts',
-hsn: '0207.12.00',
-botanical: 'Gallus domesticus (Commercial Broiler)',
-origin: 'Western Maharashtra & Tamil Nadu Abattoirs',
-grainLength: 'Whole Carcass: 900g to 1400g Calibrated',
-moisture: 'Moisture Retention: Under 4%',
-broken: 'Zero Broken Bones / Clean Wing Cut',
-purity: 'Halal Hand Slaughtered (Islamic Sharia Compliant)',
-packaging: 'Individual Poly Bags in 10kg Master Cartons',
-containerPayload: '26.0 MT in 40ft High Cube Reefer (-18°C Blast Frozen)',
-inspectionStandard: 'FSSAI / Halal Trust / EIC Veterinary Health Assayed',
-description: 'Blast-frozen to core -18°C within hours of processing. Complete traceability, zero artificial moisture pumping, export packed for commercial food distribution.'
+id: "poultry-frozen-chicken",
+category: "Cold Chain & Poultry",
+title: "Halal Certified Frozen Whole Poultry & Cuts",
+hsn: "0207.12.00",
+botanical: "Gallus domesticus (Commercial Broiler)",
+origin: "Western Maharashtra & Tamil Nadu Abattoirs",
+grainLength: "Whole Carcass: 900g to 1400g Calibrated",
+moisture: "Moisture Retention: Under 4%",
+broken: "Zero Broken Bones / Clean Wing Cut",
+purity: "Halal Hand Slaughtered (Islamic Sharia Compliant)",
+packaging: "Individual Poly Bags in 10kg Master Cartons",
+containerPayload: "26.0 MT in 40ft High Cube Reefer (-18°C Blast Frozen)",
+inspectionStandard: "FSSAI / Halal Trust / EIC Veterinary Health Assayed",
+description: "Blast-frozen to core -18°C within hours of processing. Complete traceability, zero artificial moisture pumping, export packed for commercial food distribution."
 }
 ];
 export default function App() {
-const [selectedCategory, setSelectedCategory] = useState('All');
+const [selectedCategory, setSelectedCategory] = useState("All");
 const [selectedProduct, setSelectedProduct] = useState(null);
 const [customPhotos, setCustomPhotos] = useState({});
 const [rfqForm, setRfqForm] = useState({
-commodityId: 'rice-1121-steam',
+commodityId: "rice-1121-steam",
 volumeMT: 50,
-incoterm: 'CIF',
-destinationPort: 'Jebel Ali Port (UAE)',
-packagingType: '25kg Woven PP Sacks (Export Grade)',
-buyerEntity: '',
-contactName: '',
-email: '',
-phone: '',
-notes: ''
+incoterm: "CIF",
+destinationPort: "Jebel Ali Port (UAE)",
+packagingType: "25kg Woven PP Sacks (Export Grade)",
+buyerEntity: "",
+contactName: "",
+email: "",
+phone: "",
+notes: ""
 });
 const [isSubmitting, setIsSubmitting] = useState(false);
 const [rfqSuccess, setRfqSuccess] = useState(false);
 const [deskTimes, setDeskTimes] = useState({
-mumbai: '',
-dubai: '',
-singapore: '',
-rotterdam: ''
+mumbai: "",
+dubai: "",
+singapore: "",
+rotterdam: ""
 });
 useEffect(() => {
 const updateTimes = () => {
 const now = new Date();
 setDeskTimes({
-mumbai: now.toLocaleTimeString('en-US', { timeZone: 'Asia/Kolkata', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }),
-dubai: now.toLocaleTimeString('en-US', { timeZone: 'Asia/Dubai', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }),
-singapore: now.toLocaleTimeString('en-US', { timeZone: 'Asia/Singapore', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false }),
-rotterdam: now.toLocaleTimeString('en-US', { timeZone: 'Europe/Amsterdam', hour: '2-digit', minute: '2-digit', second: '2-digit', hour12: false })
+mumbai: now.toLocaleTimeString("en-US", { timeZone: "Asia/Kolkata", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
+dubai: now.toLocaleTimeString("en-US", { timeZone: "Asia/Dubai", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
+singapore: now.toLocaleTimeString("en-US", { timeZone: "Asia/Singapore", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false }),
+rotterdam: now.toLocaleTimeString("en-US", { timeZone: "Europe/Amsterdam", hour: "2-digit", minute: "2-digit", second: "2-digit", hour12: false })
 });
 };
 updateTimes();
 const interval = setInterval(updateTimes, 1000);
 return () => clearInterval(interval);
 }, []);
-const categories = ['All', 'Grains & Rice', 'Whole Spices', 'Fresh Produce', 'Cold Chain & Poultry'];
-const filteredProducts = selectedCategory === 'All'
+const categories = ["All", "Grains & Rice", "Whole Spices", "Fresh Produce", "Cold Chain & Poultry"];
+const filteredProducts = selectedCategory === "All"
 ? COMMODITY_CATALOG
 : COMMODITY_CATALOG.filter(c => c.category === selectedCategory);
 const activeCommodity = COMMODITY_CATALOG.find(c => c.id === rfqForm.commodityId) || COMMODITY_CATALOG[0];
@@ -270,13 +270,13 @@ reader.readAsDataURL(file);
 const handleRfqSubmit = async (e) => {
 e.preventDefault();
 setIsSubmitting(true);
-const emailSubject = '[TRADE ENQUIRY] ' + activeCommodity.title + ' - ' + rfqForm.volumeMT + ' MT (' + rfqForm.incoterm + ')';
-const volumeDescription = rfqForm.volumeMT + ' Metric Tons (~' + calculatedContainers + ' Container/s)';
+const emailSubject = "[TRADE ENQUIRY] " + activeCommodity.title + " - " + rfqForm.volumeMT + " MT (" + rfqForm.incoterm + ")";
+const volumeDescription = rfqForm.volumeMT + " Metric Tons (~" + calculatedContainers + " Container/s)";
 const payload = {
-access_key: 'care@vaayuelixir.com',
+access_key: "care@vaayuelixir.com",
 subject: emailSubject,
-from_name: 'Vaayu Elixir Web Terminal',
-to_email: 'care@vaayuelixir.com',
+from_name: "Vaayu Elixir Web Terminal",
+to_email: "care@vaayuelixir.com",
 reply_to: rfqForm.email || undefined,
 commodity: activeCommodity.title,
 hsn_code: activeCommodity.hsn,
@@ -284,16 +284,16 @@ volume: volumeDescription,
 incoterm: rfqForm.incoterm,
 destination_port: rfqForm.destinationPort,
 packaging_required: rfqForm.packagingType,
-buyer_entity: rfqForm.buyerEntity || 'Direct Importer',
-authorized_contact: rfqForm.contactName || 'Representative',
+buyer_entity: rfqForm.buyerEntity || "Direct Importer",
+authorized_contact: rfqForm.contactName || "Representative",
 buyer_email: rfqForm.email,
 buyer_phone_whatsapp: rfqForm.phone,
-notes_tolerances: rfqForm.notes || 'None specified'
+notes_tolerances: rfqForm.notes || "None specified"
 };
 try {
-await fetch('https://api.web3forms.com/submit', {
-method: 'POST',
-headers: { 'Content-Type': 'application/json', Accept: 'application/json' },
+await fetch("https://api.web3forms.com/submit", {
+method: "POST",
+headers: { "Content-Type": "application/json", Accept: "application/json" },
 body: JSON.stringify(payload)
 });
 setRfqSuccess(true);
@@ -304,17 +304,17 @@ setIsSubmitting(false);
 }
 };
 const whatsappMessage =
-'VAAYU ELIXIR - COMMERCIAL RFQ\n\n' +
-'• Commodity: ' + activeCommodity.title + '\n' +
-'• HSN Code: ' + activeCommodity.hsn + '\n' +
-'• Volume: ' + rfqForm.volumeMT + ' MT (~' + calculatedContainers + ' FCL)\n' +
-'• Incoterm: ' + rfqForm.incoterm + ' -> ' + rfqForm.destinationPort + '\n' +
-'• Packaging: ' + rfqForm.packagingType + '\n' +
-'• Buyer: ' + (rfqForm.buyerEntity || 'Direct Importer') + ' (' + rfqForm.contactName + ')\n' +
-'• Email: ' + rfqForm.email + '\n' +
-'• Tel: ' + rfqForm.phone + '\n\n' +
-'Please dispatch proforma quotation and next berth stuffing schedule.';
-const whatsappUrl = 'https://wa.me/917208666522?text=' + encodeURIComponent(whatsappMessage);
+"VAAYU ELIXIR - COMMERCIAL RFQ\n\n" +
+"• Commodity: " + activeCommodity.title + "\n" +
+"• HSN Code: " + activeCommodity.hsn + "\n" +
+"• Volume: " + rfqForm.volumeMT + " MT (~" + calculatedContainers + " FCL)\n" +
+"• Incoterm: " + rfqForm.incoterm + " -> " + rfqForm.destinationPort + "\n" +
+"• Packaging: " + rfqForm.packagingType + "\n" +
+"• Buyer: " + (rfqForm.buyerEntity || "Direct Importer") + " (" + rfqForm.contactName + ")\n" +
+"• Email: " + rfqForm.email + "\n" +
+"• Tel: " + rfqForm.phone + "\n\n" +
+"Please dispatch proforma quotation and next berth stuffing schedule.";
+const whatsappUrl = "https://wa.me/917208666522?text=" + encodeURIComponent(whatsappMessage);
 return (
 <div className="min-h-screen bg-slate-50 text-slate-800 font-sans">
 <header className="bg-slate-900 text-slate-300 text-xs border-b border-slate-800 sticky top-0 z-50">
@@ -328,9 +328,9 @@ PORT GATEWAY: JNPT NHAVA SHEVA (BMCT / NSICT)
 <span className="hidden md:inline text-slate-400">APEDA • FSSAI • SPICES BOARD • IEC REGISTERED</span>
 </div>
 <div className="flex items-center gap-4 font-mono text-[11px]">
-<span className="text-slate-400">BOM: <span className="text-white font-medium">{deskTimes.mumbai || '--:--'}</span></span>
-<span className="text-slate-400">DXB: <span className="text-white font-medium">{deskTimes.dubai || '--:--'}</span></span>
-<span className="hidden sm:inline text-slate-400">SIN: <span className="text-white font-medium">{deskTimes.singapore || '--:--'}</span></span>
+<span className="text-slate-400">BOM: <span className="text-white font-medium">{deskTimes.mumbai || "--:--"}</span></span>
+<span className="text-slate-400">DXB: <span className="text-white font-medium">{deskTimes.dubai || "--:--"}</span></span>
+<span className="hidden sm:inline text-slate-400">SIN: <span className="text-white font-medium">{deskTimes.singapore || "--:--"}</span></span>
 <a 
 href="mailto:care@vaayuelixir.com" 
 className="text-amber-400 hover:text-amber-300 transition-colors font-medium ml-2"
@@ -459,15 +459,20 @@ className="px-6 py-3 bg-slate-100 hover:bg-slate-200 text-slate-800 font-mono te
 <p className="text-slate-600 text-sm mt-1">Strict laboratory compliance tolerances, Sortex grading, and container stuffing schedules.</p>
 </div>
 <div className="flex flex-wrap gap-2">
-{categories.map(cat => (
+{categories.map(cat => {
+const btnClass = selectedCategory === cat
+? "px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded transition-colors bg-slate-950 text-white font-semibold"
+: "px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded transition-colors bg-white border border-slate-200 text-slate-600 hover:bg-slate-100";
+return (
 <button
 key={cat}
 onClick={() => setSelectedCategory(cat)}
-className={⁠px-3 py-1.5 text-xs font-mono uppercase tracking-wider rounded transition-colors ${ selectedCategory === cat ? 'bg-slate-950 text-white font-semibold' : 'bg-white border border-slate-200 text-slate-600 hover:bg-slate-100' }⁠}
+className={btnClass}
 >
 {cat}
 </button>
-))}
+);
+})}
 </div>
 </div>
 <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
@@ -532,10 +537,10 @@ onClick={() => {
 setRfqForm(prev => ({
 ...prev,
 commodityId: prod.id,
-packagingType: prod.packaging.split('•')[0]
+packagingType: prod.packaging.split("•")[0]
 }));
-const el = document.getElementById('proforma');
-if (el) el.scrollIntoView({ behavior: 'smooth' });
+const el = document.getElementById("proforma");
+if (el) el.scrollIntoView({ behavior: "smooth" });
 }}
 className="py-2 px-3 text-xs font-mono uppercase tracking-wider bg-slate-950 hover:bg-slate-800 text-amber-400 rounded font-semibold transition-colors"
 >
@@ -621,11 +626,11 @@ onClick={() => {
 setRfqForm(prev => ({
 ...prev,
 commodityId: selectedProduct.id,
-packagingType: selectedProduct.packaging.split('•')[0]
+packagingType: selectedProduct.packaging.split("•")[0]
 }));
 setSelectedProduct(null);
-const el = document.getElementById('proforma');
-if (el) el.scrollIntoView({ behavior: 'smooth' });
+const el = document.getElementById("proforma");
+if (el) el.scrollIntoView({ behavior: "smooth" });
 }}
 className="flex-1 py-3 bg-slate-950 hover:bg-slate-800 text-amber-400 font-mono text-xs uppercase tracking-widest font-semibold rounded text-center"
 >
