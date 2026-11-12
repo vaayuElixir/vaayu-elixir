@@ -1,5 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import logoImg from './IMG_9377.jpeg';
+import { COMMODITIES } from './products.js';
+import { Link } from 'react-router-dom';
 
 /* =====================================================================
    EDIT THESE FIRST
@@ -34,299 +36,6 @@ const REGISTRATIONS = [
    what you can actually commit to. HS codes are 6-digit; confirm the
    8-digit Indian ITC-HS code with your CHA.
    ===================================================================== */
-const COMMODITIES = [
-  {
-    id: 'basmati-1121',
-    category: 'Grains & Rice',
-    name: '1121 Basmati Rice (Steam / Sella / Raw)',
-    botanical: 'Oryza sativa (Extra-Long Grain Basmati)',
-    hs: '1006.30',
-    origin: 'Haryana & Punjab (Karnal, Taraori belt)',
-    mode: 'Sea: 20ft / 40ft dry FCL',
-    season: 'Year-round (new crop from Oct-Nov)',
-    moq: '1 x 20ft FCL (about 25 MT)',
-    markets: 'GCC, Europe, USA, Africa',
-    desc: 'Extra-long grain aromatic basmati with strong elongation on cooking. Supplied as steam, golden sella or raw white for retail packing, catering and food-service buyers.',
-    specs: [
-      ['Grain length', 'Min 8.35 mm average, pre-cooked'],
-      ['Moisture', 'Max 12.5%'],
-      ['Broken', 'Max 1.0%'],
-      ['Basmati purity', 'As per buyer spec; DNA test on request'],
-      ['Processing types', 'Steam / Golden Sella / Raw white'],
-    ],
-    packaging: '10 / 20 / 40 kg non-woven, BOPP or jute bags; private label on request',
-    loading: 'Approx. 25 MT per 20ft FCL',
-    testing: 'Third-party pre-shipment inspection (SGS / Bureau Veritas / Intertek) on request',
-  },
-  {
-    id: 'basmati-1509',
-    category: 'Grains & Rice',
-    name: '1509 Basmati Rice (Golden Sella / Steam)',
-    botanical: 'Oryza sativa (Long Grain Basmati)',
-    hs: '1006.30',
-    origin: 'Punjab & Western Uttar Pradesh',
-    mode: 'Sea: 20ft / 40ft dry FCL',
-    season: 'Year-round (new crop from Oct-Nov)',
-    moq: '1 x 20ft FCL (about 25 MT)',
-    markets: 'GCC, West Africa, Europe',
-    desc: 'Long-grain basmati positioned as a cost-effective alternative to 1121. Popular with GCC catering, hypermarket and West African institutional buyers.',
-    specs: [
-      ['Grain length', 'Approx. 8.40 mm+, pre-cooked'],
-      ['Moisture', 'Max 12.0%'],
-      ['Broken', 'Max 1.0%'],
-      ['Basmati purity', 'As per buyer spec; DNA test on request'],
-      ['Processing types', 'Golden Sella / Steam'],
-    ],
-    packaging: '25 / 50 kg PP bags with inner liner; private label on request',
-    loading: 'Approx. 25 MT per 20ft FCL',
-    testing: 'Third-party pre-shipment inspection (SGS / Bureau Veritas / Intertek) on request',
-  },
-  {
-    id: 'ir64-parboiled',
-    category: 'Grains & Rice',
-    name: 'IR-64 Parboiled Rice (5% Broken)',
-    botanical: 'Oryza sativa (Non-Basmati)',
-    hs: '1006.30',
-    origin: 'Chhattisgarh & Andhra Pradesh (Raipur, Kakinada belt)',
-    mode: 'Sea: FCL or breakbulk',
-    season: 'Year-round',
-    moq: '1 x 20ft FCL (about 26 MT)',
-    markets: 'West Africa, East Africa, Southeast Asia',
-    desc: 'High-volume parboiled non-basmati staple with low starch release, suited to institutional and bulk-tender buyers in Africa and Asia.',
-    specs: [
-      ['Grain length', '6.0 - 6.2 mm'],
-      ['Broken', 'Max 5.0%'],
-      ['Moisture', 'Max 13.5%'],
-      ['Cleaning', 'Sortex cleaned'],
-    ],
-    packaging: '50 kg PP bags; private label on request',
-    loading: 'Approx. 26 MT per 20ft FCL',
-    testing: 'Third-party pre-shipment inspection (SGS / Bureau Veritas / Intertek) on request',
-  },
-  {
-    id: 'sona-masoori',
-    category: 'Grains & Rice',
-    name: 'Sona Masoori Raw & Steam Rice',
-    botanical: 'Oryza sativa (Medium Grain)',
-    hs: '1006.30',
-    origin: 'Andhra Pradesh, Telangana & Karnataka (Kurnool, Raichur)',
-    mode: 'Sea: 20ft / 40ft dry FCL',
-    season: 'Year-round',
-    moq: '1 x 20ft FCL (about 25 MT)',
-    markets: 'USA, UK, GCC (Indian diaspora retail)',
-    desc: 'Light, medium-grain, low-starch rice with steady year-round demand from diaspora retail and wholesale channels. Available in bulk and branded retail packs.',
-    specs: [
-      ['Grain length', 'Approx. 5.2 mm, medium slender'],
-      ['Moisture', 'Max 13.0%'],
-      ['Broken', 'Max 1.5%'],
-      ['Cleaning', 'Optical sortex'],
-    ],
-    packaging: '1 - 10 kg retail pouches; 25 / 50 kg bags',
-    loading: 'Approx. 25 MT per 20ft FCL',
-    testing: 'Third-party inspection and lab analysis on request',
-  },
-  {
-    id: 'teja-s17-chilli',
-    category: 'Whole Spices',
-    name: 'S17 Teja Red Chilli (Stemless / With Stem)',
-    botanical: 'Capsicum annuum',
-    hs: '0904.21',
-    origin: 'Guntur & Khammam (Andhra Pradesh / Telangana)',
-    mode: 'Sea: 20ft / 40ft HC dry',
-    season: 'New crop Feb-May; year-round from cold storage',
-    moq: '1 x 20ft FCL (about 7.5 MT)',
-    markets: 'Southeast Asia, China, GCC, Europe',
-    desc: 'High-pungency Guntur chilli used for oleoresin extraction, hot sauce, chilli powder and spice-grinding plants. Available stemless or with stem.',
-    specs: [
-      ['Pungency', '75,000 - 100,000 SHU (indicative; lot-wise report)'],
-      ['Colour value', 'ASTA 50 - 65'],
-      ['Moisture', 'Max 10.5%'],
-      ['Defects', 'Loose seeds / broken under 2%'],
-    ],
-    packaging: '25 kg compressed bales or 10 kg cartons',
-    loading: 'Approx. 7.5 MT per 20ft / 14 MT per 40ft HC',
-    testing: 'Lab analysis on request: aflatoxin, Sudan dyes, pesticide residues, ETO (as per destination)',
-  },
-  {
-    id: 'byadgi-chilli',
-    category: 'Whole Spices',
-    name: 'Byadgi 668 & KDL Red Chilli',
-    botanical: 'Capsicum annuum var. Byadgi',
-    hs: '0904.21',
-    origin: 'Haveri & Dharwad belt, Karnataka',
-    mode: 'Sea: 20ft / 40ft HC dry',
-    season: 'New crop Feb-Apr; year-round from cold storage',
-    moq: '1 x 20ft FCL (about 7 MT)',
-    markets: 'Europe, USA, GCC, Southeast Asia',
-    desc: 'Crinkled, deep-red chilli prized for natural colour and mild heat. Preferred by paprika, oleoresin and food-colour manufacturers.',
-    specs: [
-      ['Colour value', 'ASTA 120 - 160 (deep red)'],
-      ['Pungency', '15,000 - 25,000 SHU (low)'],
-      ['Moisture', 'Max 11.0%'],
-      ['Defects', 'Under 1.5%'],
-    ],
-    packaging: '4.5 kg / 10 kg corrugated export cartons',
-    loading: 'Approx. 7 MT per 20ft / 13.5 MT per 40ft HC',
-    testing: 'Lab analysis on request: Sudan dyes, aflatoxin, pesticide residues (as per destination)',
-  },
-  {
-    id: 'green-cardamom',
-    category: 'Whole Spices',
-    name: 'Alleppey Green Extra Bold Cardamom (AGEB 8mm+)',
-    botanical: 'Elettaria cardamomum',
-    hs: '0908.31',
-    origin: 'Idukki high ranges, Kerala',
-    mode: 'Air cargo / 20ft container',
-    season: 'Harvest Aug-Jan; year-round supply from stock',
-    moq: '100 kg (air) / full container',
-    markets: 'GCC, Europe, Middle East',
-    desc: 'Deep-green bold cardamom pods with strong aroma and dense seed content, used in Middle Eastern coffee, spice blends and confectionery.',
-    specs: [
-      ['Pod size', '8.0 - 8.5 mm, extra bold'],
-      ['Colour', 'Green, intact husk'],
-      ['Moisture', 'Max 10.0%'],
-      ['Volatile oil', 'Min 3.5% (ml/100 g)'],
-    ],
-    packaging: '5 kg vacuum-sealed polybags in master cartons',
-    loading: 'Air cargo LCL or 20ft container',
-    testing: 'Pesticide residue analysis report on request',
-  },
-  {
-    id: 'fresh-moringa',
-    category: 'Fresh Produce',
-    name: 'Export Grade ODC-3 Moringa Drumsticks',
-    botanical: 'Moringa oleifera (ODC-3 variety)',
-    hs: '0709.99',
-    origin: 'Dindigul & Theni, Tamil Nadu',
-    mode: 'Air cargo from Mumbai',
-    season: 'Year-round with seasonal peaks',
-    moq: '500 kg per air shipment',
-    markets: 'GCC, UK, Europe',
-    desc: 'Straight, uniform drumsticks sorted by thickness, pre-cooled and packed in ventilated cartons for air dispatch to ethnic retail and wholesale buyers.',
-    specs: [
-      ['Variety', 'ODC-3'],
-      ['Pod length', '45 - 60 cm, straight'],
-      ['Grading', 'Uniform thickness, blemish-free'],
-      ['Handling', 'Pre-cooled, ventilated packing'],
-    ],
-    packaging: '5 kg & 10 kg ventilated cartons',
-    loading: 'Air cargo; quantity per AWB',
-    testing: 'Phytosanitary certificate (Indian plant quarantine) and residue reports as required by destination',
-  },
-  {
-    id: 'red-onion',
-    category: 'Fresh Produce',
-    name: 'Indian Red Onion (Nashik)',
-    botanical: 'Allium cepa',
-    hs: '0703.10',
-    origin: 'Nashik (Lasalgaon belt), Maharashtra',
-    mode: 'Sea: ventilated 20ft / 40ft container',
-    season: 'Rabi stock Mar-Oct; Kharif crop from Oct-Nov (subject to export policy)',
-    moq: '1 x 20ft FCL (about 24 MT)',
-    markets: 'GCC, Sri Lanka, Southeast Asia',
-    desc: 'Firm, well-cured red onions with deep skin colour and good storage life, graded by diameter for wholesale, retail and institutional buyers.',
-    specs: [
-      ['Size', '40 - 55 mm / 55 mm+ (as per buyer)'],
-      ['Skin colour', 'Deep red to purplish-red'],
-      ['Condition', 'Dry, well-cured, firm; free from sprouting and rot'],
-      ['Grading', 'Machine graded by diameter'],
-    ],
-    packaging: 'Red mesh bags, 10 / 25 / 50 kg',
-    loading: 'Approx. 24 - 26 MT per 20ft ventilated container',
-    testing: 'Phytosanitary certificate; residue testing as per destination. Export subject to prevailing DGFT policy',
-  },
-  {
-    id: 'g4-green-chilli',
-    category: 'Fresh Produce',
-    name: 'G4 Green Chilli',
-    botanical: 'Capsicum annuum (G4 variety)',
-    hs: '0709.60',
-    origin: 'Guntur & Prakasam, Andhra Pradesh',
-    mode: 'Air cargo / 40ft reefer (7-10 °C)',
-    season: 'Year-round, subject to crop cycle',
-    moq: '500 kg (air) / 1 x 40ft reefer',
-    markets: 'GCC, UK, Europe, Southeast Asia',
-    desc: 'Long, glossy green chilli with consistent heat, sorted and cold-chain packed for supermarket, ethnic retail and food-processing buyers.',
-    specs: [
-      ['Variety', 'G4 (long green)'],
-      ['Length', '8 - 12 cm'],
-      ['Pungency', 'Medium to hot (lot-wise)'],
-      ['Appearance', 'Bright green, firm, stem attached'],
-      ['Cold chain', '7 - 10 °C'],
-    ],
-    packaging: '3 kg, 5 kg & 10 kg ventilated cartons',
-    loading: 'Air: per AWB. Reefer: per carton count',
-    testing: 'Phytosanitary certificate; pesticide residue testing against destination MRLs',
-  },
-  {
-    id: 'g9-banana',
-    category: 'Fresh Produce',
-    name: 'G9 Cavendish Banana',
-    botanical: 'Musa acuminata (Cavendish, Grand Naine G9)',
-    hs: '0803.90',
-    origin: 'Jalgaon (Maharashtra), Tamil Nadu & Andhra Pradesh',
-    mode: 'Sea: 40ft reefer (13-14 °C)',
-    season: 'Year-round',
-    moq: '1 x 40ft reefer',
-    markets: 'GCC, Middle East',
-    desc: 'Export-grade green Cavendish bananas, harvested at export maturity, hand-graded and packed in telescopic cartons for ripening at destination.',
-    specs: [
-      ['Variety', 'Grand Naine (G9)'],
-      ['Maturity', 'Green, export maturity (about 75 - 80%)'],
-      ['Finger length', '18 - 22 cm (as per buyer spec)'],
-      ['Ripening', 'Ethylene ripening at destination'],
-      ['Reefer setpoint', '13 - 14 °C'],
-    ],
-    packaging: '13 kg telescopic cartons, palletised',
-    loading: 'Approx. 1,000 - 1,080 cartons (13 - 14 MT) per 40ft reefer',
-    testing: 'Phytosanitary certificate; residue testing as per destination',
-  },
-  {
-    id: 'pomegranate',
-    category: 'Fresh Produce',
-    name: 'Bhagwa Pomegranate',
-    botanical: 'Punica granatum (Bhagwa)',
-    hs: '0810.90',
-    origin: 'Solapur, Sangli & Nashik, Maharashtra',
-    mode: 'Sea: reefer (5-6 °C) / Air cargo',
-    season: 'Peak Sep-Feb; cold-stored fruit later (indicative)',
-    moq: '1 x 40ft reefer / 500 kg (air)',
-    markets: 'GCC, UK, Europe, Southeast Asia',
-    desc: 'Saffron-red skinned Bhagwa pomegranates with deep-red arils, sorted by weight and blemish-free for premium retail and juice-trade buyers.',
-    specs: [
-      ['Variety', 'Bhagwa (red skin, deep-red arils)'],
-      ['Size grades', '250-300 g / 300-350 g / 350-400 g / 400 g+'],
-      ['Condition', 'Firm, uniform colour, sorted and graded'],
-      ['Storage', 'Cold storage at about 5 - 6 °C'],
-    ],
-    packaging: '4 - 5 kg food-grade telescopic cartons',
-    loading: 'Approx. 12 MT per 40ft reefer',
-    testing: 'Phytosanitary certificate; APEDA AnarNet traceability for EU-bound lots where applicable; residue testing per destination',
-  },
-  {
-    id: 'semi-husked-coconut',
-    category: 'Fresh Produce',
-    name: 'Semi-Husked Coconut',
-    botanical: 'Cocos nucifera',
-    hs: '0801.19',
-    origin: 'Pollachi (Tamil Nadu), Kerala & Karnataka',
-    mode: 'Sea: ventilated 20ft / 40ft container',
-    season: 'Year-round',
-    moq: '1 x 20ft FCL',
-    markets: 'GCC, Europe, Southeast Asia',
-    desc: 'Mature, heavy coconuts with partial husk removal, graded by weight for retail, wholesale and food-service buyers.',
-    specs: [
-      ['Type', 'Semi-husked mature coconut'],
-      ['Maturity', 'About 10 - 12 months, full of water'],
-      ['Condition', 'Heavy; no cracks, mould or germination'],
-      ['Size grading', 'By nut weight (grade confirmed at quotation)'],
-    ],
-    packaging: 'Mesh bags (25 / 50 pcs) or cartons',
-    loading: 'Per container as per size grade; confirmed on proforma',
-    testing: 'Phytosanitary certificate; fumigation certificate if required',
-  },
-];
-
 const TABS = ['ALL', 'GRAINS & RICE', 'WHOLE SPICES', 'FRESH PRODUCE'];
 
 const PROCESS = [
@@ -420,6 +129,9 @@ section[id]{scroll-margin-top:84px}
 .cat{font-weight:800;letter-spacing:.1em;color:var(--gold);text-transform:uppercase}
 .hs{font-family:ui-monospace,monospace;color:var(--muted)}
 .card h3{font-family:Georgia,serif;font-size:18px;margin:0 0 4px;color:var(--navy)}
+.product-title-link{color:inherit;text-decoration:none}.product-title-link:hover{text-decoration:underline;text-decoration-color:var(--gold)}
+.product-breadcrumb{font-size:13px;color:var(--muted);margin-bottom:20px}.product-breadcrumb a{color:var(--gold);text-decoration:none}
+.product-detail{max-width:900px;margin:0 auto}.product-detail h1{font-family:Georgia,serif;color:var(--navy);font-size:clamp(30px,5vw,44px);line-height:1.15;margin:0 0 14px}.product-detail .lead{max-width:none}.product-detail h2{font-family:Georgia,serif;color:var(--navy);font-size:24px;margin:28px 0 12px}.product-links{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:12px}.product-links a{padding:14px;border:1px solid var(--line);background:#fff;border-radius:6px;color:var(--navy);text-decoration:none;font-weight:650}.product-links a:hover{border-color:var(--gold)}
 .bot{font-size:12.5px;font-style:italic;color:var(--muted);margin-bottom:12px}
 .desc{font-size:14px;color:var(--text);margin:0 0 14px}
 .specs{background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:2px 12px}
@@ -670,7 +382,7 @@ function RfqForm({ commodityId }) {
 /* =====================================================================
    APP
    ===================================================================== */
-export default function App() {
+export function HomePage() {
   const [activeTab, setActiveTab] = useState('ALL');
   const [inquiryId, setInquiryId] = useState('');
   const [time, setTime] = useState({ bom: '--:--:--', dxb: '--:--:--', sin: '--:--:--' });
@@ -798,7 +510,7 @@ export default function App() {
                     <span className="cat">{item.category}</span>
                     <span className="hs">HS {item.hs}</span>
                   </div>
-                  <h3>{item.name}</h3>
+                  <h3><Link className="product-title-link" to={`/products/${productSlug(item)}/`}>{item.name}</Link></h3>
                   <div className="bot">{item.botanical}</div>
                   <p className="desc">{item.desc}</p>
 
@@ -824,6 +536,9 @@ export default function App() {
                 </div>
 
                 <div className="card-actions">
+                  <Link className="btn btn-navy" to={`/products/${productSlug(item)}/`}>
+                    VIEW DETAILS
+                  </Link>
                   <a className="btn btn-navy grow" href="#inquiry" onClick={() => setInquiryId(item.id)}>
                     REQUEST QUOTE
                   </a>
@@ -983,6 +698,144 @@ export default function App() {
           </div>
         </div>
       </footer>
+    </div>
+  );
+}
+
+
+const productSlug = (item) => ({
+  'basmati-1121': '1121-basmati-rice',
+  'basmati-1509': '1509-basmati-rice',
+  'ir64-parboiled': 'ir64-parboiled-rice',
+  'sona-masoori': 'sona-masoori-rice',
+  'teja-s17-chilli': 's17-teja-red-chilli',
+  'byadgi-chilli': 'byadgi-red-chilli',
+  'green-cardamom': 'alleppey-green-cardamom',
+  'fresh-moringa': 'odc3-moringa-drumsticks',
+  'red-onion': 'indian-red-onion',
+  'g4-green-chilli': 'g4-green-chilli',
+  'g9-banana': 'g9-cavendish-banana',
+  'pomegranate': 'bhagwa-pomegranate',
+  'semi-husked-coconut': 'semi-husked-coconut',
+}[item.id]);
+
+export function ProductPage({ slug }) {
+  const item = COMMODITIES.find((product) => productSlug(product) === slug);
+  const [time, setTime] = useState({ bom: '--:--:--', dxb: '--:--:--', sin: '--:--:--' });
+
+  useEffect(() => {
+    if (!item) return;
+    const title = `${item.name} Exporter India | Vaayu Elixir`;
+    const description = `${item.desc} Mumbai-based Indian merchant exporter. Enquire for bulk supply, specifications, packaging and export quotations.`;
+    document.title = title;
+    const setMeta = (name, content, attr = 'name') => {
+      let element = document.head.querySelector(`meta[${attr}="${name}"]`);
+      if (!element) {
+        element = document.createElement('meta');
+        element.setAttribute(attr, name);
+        document.head.appendChild(element);
+      }
+      element.setAttribute('content', content);
+    };
+    setMeta('description', description);
+    setMeta('og:title', title, 'property');
+    setMeta('og:description', description, 'property');
+    setMeta('og:url', `https://www.vaayuelixir.com/products/${slug}/`, 'property');
+    setMeta('twitter:title', title);
+    setMeta('twitter:description', description);
+    let canonical = document.head.querySelector('link[rel="canonical"]');
+    if (!canonical) {
+      canonical = document.createElement('link');
+      canonical.rel = 'canonical';
+      document.head.appendChild(canonical);
+    }
+    canonical.href = `https://www.vaayuelixir.com/products/${slug}/`;
+    let schema = document.getElementById('product-schema');
+    if (!schema) {
+      schema = document.createElement('script');
+      schema.id = 'product-schema';
+      schema.type = 'application/ld+json';
+      document.head.appendChild(schema);
+    }
+    schema.textContent = JSON.stringify({
+      '@context': 'https://schema.org',
+      '@type': 'Product',
+      name: item.name,
+      description,
+      category: item.category,
+      brand: { '@type': 'Brand', name: 'Vaayu Elixir' },
+      countryOfOrigin: { "@type": "Country", name: "India" },
+      manufacturer: {
+        '@type': 'Organization',
+        name: 'Vaayu Elixir Global Trade & Strategic Ventures',
+        url: 'https://www.vaayuelixir.com/'
+      }
+    });
+    return () => {
+      document.title = 'Vaayu Elixir | Indian Rice, Spices & Fresh Produce Exporter, Mumbai';
+      document.getElementById('product-schema')?.remove();
+    };
+  }, [item, slug]);
+
+  useEffect(() => {
+    const update = () => {
+      const now = new Date();
+      const fmt = (tz) => now.toLocaleTimeString('en-GB', { timeZone: tz, hour12: false });
+      setTime({ bom: fmt('Asia/Kolkata'), dxb: fmt('Asia/Dubai'), sin: fmt('Asia/Singapore') });
+    };
+    update();
+    const id = setInterval(update, 1000);
+    return () => clearInterval(id);
+  }, []);
+
+  if (!item) {
+    return <div className="ve"><style>{CSS}</style><main className="section wrap"><h1>Product not found</h1><p>The requested product page may have moved.</p><Link className="btn btn-navy" to="/">Return to homepage</Link></main></div>;
+  }
+
+  const related = COMMODITIES.filter((p) => p.id !== item.id && p.category === item.category).slice(0, 4);
+  const description = item.desc;
+  return (
+    <div className="ve">
+      <style>{CSS}</style>
+      <div className="topbar"><div className="wrap"><span>MUMBAI, INDIA • MERCHANT EXPORTER • DISPATCH FROM JNPT NHAVA SHEVA & MUMBAI AIR CARGO</span><div className="clocks"><span>BOM <b>{time.bom}</b></span><span>DXB <b>{time.dxb}</b></span><span>SIN <b>{time.sin}</b></span><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></div></div></div>
+      <nav className="nav"><div className="wrap">
+        <Link className="brand" to="/"><VaayuLogo size={48}/><div><div className="brand-name">VAAYU <span>ELIXIR</span></div><div className="brand-sub">Global Trade & Strategic Ventures</div></div></Link>
+        <div className="nav-links"><Link className="lnk" to="/#portfolio">Products</Link><Link className="lnk" to="/#process">How we work</Link><Link className="btn btn-navy" to="/#inquiry">REQUEST A QUOTE</Link></div>
+      </div></nav>
+      <main className="section wrap">
+        <div className="product-detail">
+          <div className="product-breadcrumb"><Link to="/">Home</Link> / <Link to="/#portfolio">Products</Link> / {item.name}</div>
+          <div className="eyebrow">{item.category} • HS {item.hs}</div>
+          <h1>{item.name} Exporter & Supplier from India</h1>
+          <p className="lead">{description} Vaayu Elixir coordinates sourcing, grading, export packing and shipment from India for importers, distributors and food-service buyers.</p>
+          <div className="btn-row"><a className="btn btn-gold" href="#product-inquiry">REQUEST A QUOTE</a><a className="btn btn-wa" href={waLink(`Hello Vaayu Elixir Trade Desk, I would like to enquire about ${item.name}. Please share specifications, availability and indicative pricing.`)} target="_blank" rel="noopener noreferrer">WHATSAPP</a></div>
+          <h2>Product overview</h2>
+          <div className="specs">
+            <div className="row"><span>Botanical name</span><strong>{item.botanical}</strong></div>
+            <div className="row"><span>Origin</span><strong>{item.origin}</strong></div>
+            <div className="row"><span>Availability</span><strong>{item.season}</strong></div>
+            <div className="row"><span>Shipment</span><strong>{item.mode}</strong></div>
+            <div className="row"><span>Indicative minimum order</span><strong>{item.moq}</strong></div>
+            <div className="row"><span>Target markets</span><strong>{item.markets}</strong></div>
+          </div>
+          <h2>Specifications</h2>
+          <div className="specs">
+            {item.specs.map(([label,value]) => <div className="row" key={label}><span>{label}</span><strong>{value}</strong></div>)}
+            <div className="row"><span>Packaging</span><strong>{item.packaging}</strong></div>
+            <div className="row"><span>Container loading</span><strong>{item.loading}</strong></div>
+            <div className="row"><span>Testing & documents</span><strong>{item.testing}</strong></div>
+          </div>
+          <h2>Export supply from Mumbai, India</h2>
+          <p className="desc">Vaayu Elixir is a Mumbai-based merchant exporter coordinating export shipments through JNPT Nhava Sheva for sea freight and Mumbai air cargo where suitable. Final grade, packing, quantity, documentation, shipment schedule and commercial terms are confirmed against the buyer's purchase requirements and the prevailing export policy.</p>
+          <h2>Request bulk pricing and availability</h2>
+          <p className="desc">Share your required quantity, destination country or port, preferred packing and Incoterm. Our trade desk can respond with the relevant specification and a quotation subject to availability.</p>
+          <div id="product-inquiry"><RfqForm commodityId={item.id}/></div>
+          <h2>Explore related products</h2>
+          <div className="product-links">{related.map((p) => <Link key={p.id} to={`/products/${productSlug(p)}/`}>{p.name} →</Link>)}<Link to="/#portfolio">View all export products →</Link></div>
+          <p className="fine">Specifications, availability and minimum order quantities are indicative and must be confirmed in the quotation and sales contract. Import requirements and Indian export policy vary by product and destination.</p>
+        </div>
+      </main>
+      <footer className="footer"><div className="wrap"><div className="fbottom"><div>© {new Date().getFullYear()} Vaayu Elixir Global Trade & Strategic Ventures. All rights reserved.</div><div><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a> • {CONTACT.phone}</div></div></div></footer>
     </div>
   );
 }
