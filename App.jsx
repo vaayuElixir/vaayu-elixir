@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react';
 import logoImg from './IMG_9377.jpeg';
 import { COMMODITIES } from './products.js';
 import { Link } from 'react-router-dom';
-
+import { LanguageSelector, CertificationsSection, GallerySection } from './extras.jsx';
 /* =====================================================================
    EDIT THESE FIRST
    ===================================================================== */
@@ -429,9 +429,11 @@ export function HomePage() {
             </div>
           </a>
           <div className="nav-links">
+             <div style={{ order: 99 }}><LanguageSelector /></div>
             <a className="lnk" href="#portfolio">Products</a>
             <a className="lnk" href="#process">How we work</a>
             <a className="lnk" href="#terms">Terms</a>
+<a className="lnk" href="#certifications">Certifications</a>
             <a className="btn btn-navy" href="#inquiry" onClick={() => setInquiryId('')}>REQUEST A QUOTE</a>
           </div>
         </div>
@@ -562,7 +564,7 @@ export function HomePage() {
             to prevailing DGFT policy.
           </p>
         </section>
-
+<GallerySection />
         {/* About + Process */}
         <section id="process" className="section alt">
           <div className="wrap">
@@ -625,7 +627,7 @@ export function HomePage() {
             for the stated period and subject to prevailing policy.
           </div>
         </section>
-
+<CertificationsSection />
         {/* FAQ */}
         <section className="section alt">
           <div className="wrap" style={{ maxWidth: 820 }}>
@@ -800,7 +802,7 @@ export function ProductPage({ slug }) {
       <div className="topbar"><div className="wrap"><span>MUMBAI, INDIA • MERCHANT EXPORTER • DISPATCH FROM JNPT NHAVA SHEVA & MUMBAI AIR CARGO</span><div className="clocks"><span>BOM <b>{time.bom}</b></span><span>DXB <b>{time.dxb}</b></span><span>SIN <b>{time.sin}</b></span><a href={`mailto:${CONTACT.email}`}>{CONTACT.email}</a></div></div></div>
       <nav className="nav"><div className="wrap">
         <Link className="brand" to="/"><VaayuLogo size={48}/><div><div className="brand-name">VAAYU <span>ELIXIR</span></div><div className="brand-sub">Global Trade & Strategic Ventures</div></div></Link>
-        <div className="nav-links"><Link className="lnk" to="/#portfolio">Products</Link><Link className="lnk" to="/#process">How we work</Link><Link className="btn btn-navy" to="/#inquiry">REQUEST A QUOTE</Link></div>
+        <div className="nav-links"><div style={{ order: 99 }}><LanguageSelector /></div><Link className="lnk" to="/#portfolio">Products</Link><Link className="lnk" to="/#process">How we work</Link><Link className="btn btn-navy" to="/#inquiry">REQUEST A QUOTE</Link></div>
       </div></nav>
       <main className="section wrap">
         <div className="product-detail">
